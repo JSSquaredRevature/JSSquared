@@ -2,36 +2,28 @@ package com.revature.beans;
 
 import java.sql.Date;
 
-public class Transportation {
-
+public class CourtDate {
 	private int id;
-	private int socialworkerid;
 	private int caseid;
 	private Date time;
 	private String location;
-	public Transportation() {
+	private int transportationid;
+	public CourtDate() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Transportation(int id, int socialworkerid, int caseid, Date time, String location) {
+	public CourtDate(int id, int caseid, Date time, String location, int transportationid) {
 		super();
 		this.id = id;
-		this.socialworkerid = socialworkerid;
 		this.caseid = caseid;
 		this.time = time;
 		this.location = location;
+		this.transportationid = transportationid;
 	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getSocialworkerid() {
-		return socialworkerid;
-	}
-	public void setSocialworkerid(int socialworkerid) {
-		this.socialworkerid = socialworkerid;
 	}
 	public int getCaseid() {
 		return caseid;
@@ -51,6 +43,12 @@ public class Transportation {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public int getTransportationid() {
+		return transportationid;
+	}
+	public void setTransportationid(int transportationid) {
+		this.transportationid = transportationid;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -58,8 +56,8 @@ public class Transportation {
 		result = prime * result + caseid;
 		result = prime * result + id;
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + socialworkerid;
 		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		result = prime * result + transportationid;
 		return result;
 	}
 	@Override
@@ -70,7 +68,7 @@ public class Transportation {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Transportation other = (Transportation) obj;
+		CourtDate other = (CourtDate) obj;
 		if (caseid != other.caseid)
 			return false;
 		if (id != other.id)
@@ -80,20 +78,19 @@ public class Transportation {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
-		if (socialworkerid != other.socialworkerid)
-			return false;
 		if (time == null) {
 			if (other.time != null)
 				return false;
 		} else if (!time.equals(other.time))
 			return false;
+		if (transportationid != other.transportationid)
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Transportation [id=" + id + ", socialworkerid=" + socialworkerid + ", caseid=" + caseid + ", time="
-				+ time + ", location=" + location + "]";
+		return "Court_Date [id=" + id + ", caseid=" + caseid + ", time=" + time + ", location=" + location
+				+ ", transportationid=" + transportationid + "]";
 	}
-	
 	
 }

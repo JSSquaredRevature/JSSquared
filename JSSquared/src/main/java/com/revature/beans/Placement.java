@@ -1,7 +1,6 @@
 package com.revature.beans;
 
 public class Placement {
-
 	private int id;
 	private String type;
 	private int maxcapacity;
@@ -9,7 +8,6 @@ public class Placement {
 	private int agemax;
 	public Placement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Placement(int id, String type, int maxcapacity, int agemin, int agemax) {
 		super();
@@ -89,6 +87,5 @@ public class Placement {
 		return "Placement [id=" + id + ", type=" + type + ", maxcapacity=" + maxcapacity + ", agemin=" + agemin
 				+ ", agemax=" + agemax + "]";
 	}
-	
 	
 }

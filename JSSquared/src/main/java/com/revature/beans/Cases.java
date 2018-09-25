@@ -3,7 +3,6 @@ package com.revature.beans;
 import java.sql.Date;
 
 public class Cases {
-	
 	private int caseid;
 	private String firstname;
 	private String lastname;
@@ -140,6 +139,4 @@ public class Cases {
 				+ placementid + "]";
 	}
 	
-	
-
 }

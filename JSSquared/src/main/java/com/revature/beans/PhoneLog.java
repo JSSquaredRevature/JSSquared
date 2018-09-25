@@ -3,7 +3,6 @@ package com.revature.beans;
 import java.sql.Date;
 
 public class PhoneLog {
-
 	private int id;
 	private int caseid;
 	private String caller;
@@ -11,7 +10,6 @@ public class PhoneLog {
 	private String duration;
 	public PhoneLog() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public PhoneLog(int id, int caseid, String caller, Date time, String duration) {
 		super();
@@ -90,6 +88,4 @@ public class PhoneLog {
 	public String toString() {
 		return "PhoneLog [id=" + id + ", caseid=" + caseid + ", caller=" + caller + ", duration=" + duration + "]";
 	}
-	
-	
 }

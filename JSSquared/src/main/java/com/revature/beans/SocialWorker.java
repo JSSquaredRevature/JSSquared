@@ -1,7 +1,20 @@
 package com.revature.beans;
 
-public class Social_Worker {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="SOCIAL_WORKER")
+public class SocialWorker {
+	@Id
+	@Column(name="id")
+	@SequenceGenerator(name="SWID_SEQ", sequenceName="SWID_SEQ")
+	@GeneratedValue(generator="SWID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int isadmin;
 	private String username;
@@ -9,10 +22,10 @@ public class Social_Worker {
 	private String firstname;
 	private String lastname;
 	
-	public Social_Worker() {
+	public SocialWorker() {
 		super();
 	}
-	public Social_Worker(int id, int isadmin, String username, String pass, String firstname, String lastname) {
+	public SocialWorker(int id, int isadmin, String username, String pass, String firstname, String lastname) {
 		super();
 		this.id = id;
 		this.isadmin = isadmin;
@@ -77,7 +90,7 @@ public class Social_Worker {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Social_Worker other = (Social_Worker) obj;
+		SocialWorker other = (SocialWorker) obj;
 		if (firstname == null) {
 			if (other.firstname != null)
 				return false;
@@ -109,7 +122,5 @@ public class Social_Worker {
 		return "Social_Worker [id=" + id + ", isadmin=" + isadmin + ", username=" + username + ", pass=" + pass
 				+ ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
-	
-	
 	
 }

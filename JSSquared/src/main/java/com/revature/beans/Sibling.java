@@ -1,13 +1,11 @@
 package com.revature.beans;
 
 public class Sibling {
-	
 	private int id;
 	private int eldercaseid;
 	private int youngercaseid;
 	public Sibling() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Sibling(int id, int eldercaseid, int youngercaseid) {
 		super();
@@ -63,7 +61,4 @@ public class Sibling {
 	public String toString() {
 		return "Sibling [id=" + id + ", eldercaseid=" + eldercaseid + ", youngercaseid=" + youngercaseid + "]";
 	}
-	
-	
-
 }
