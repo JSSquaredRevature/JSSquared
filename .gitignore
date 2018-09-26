@@ -42,9 +42,6 @@ typings/
 # Optional npm cache directory
 .npm
 
-# Optional eslint cache
-.eslintcache
-
 # Optional REPL history
 .node_repl_history
 
@@ -58,7 +55,9 @@ typings/
 *.class
 .classpath
 database.properties
+
 case_schema.sql
+
 .project
 .idea/
 
@@ -125,4 +124,3 @@ AssociateEvaluationSystem/logs/*
 .env
 
 # next.js build output
-.nexts
