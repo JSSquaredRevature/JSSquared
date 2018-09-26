@@ -30,15 +30,16 @@ public class AdminController {
 		SocialWorker sw = (SocialWorker) s.getAttribute("user");
 		System.out.println("Is admin: " + sw.getIsadmin());
 		
-		List<Cases> casesList;
-		casesList = ch.getAll();
-
-//		Cases newCase = ch.getById(sw.getId());
+		List<Cases> casesList = null;
+		if (sw.getIsadmin() == 1)
+			casesList = ch.getAll();
+		else if (sw.getIsadmin() == 0)
+			casesList = ch.getBySocialWorkerId(sw.getId());
+		
 		// Eventually, this response needs to be written as object instead of string
 		String response = "";
 		try {
 			response = om.writeValueAsString(casesList);
-//			response = om.writeValueAsString(newCase);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

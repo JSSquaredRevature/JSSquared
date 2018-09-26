@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Cases;
+import com.revature.beans.SocialWorker;
 import com.revature.utils.HibernateUtil;
 
 @Component
@@ -24,6 +25,15 @@ public class CasesHibernate implements CasesDao {
 			return c;
 		}
 
+		@Override
+		public List<Cases> getBySocialWorkerId(int socialworkerid) {
+			Session s = hu.getSession();
+			List<Cases> c = s.createQuery("From com.revature.beans.Cases where socialworkerid= :socialworkerid", Cases.class).setParameter("socialworkerid", socialworkerid).list();
+			s.close();
+			return c;
+		}
+		
+		
 		@Override
 		public List<Cases> getAll() {
 			Session s = hu.getSession();
