@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Configure our database -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@revature-training-instance.coiw3wsahutb.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.username">case</property>
+		<property name="hibernate.connection.password">jssquared</property>
+		<property name="hibernate.connection.pool_size">35</property>
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		
+		<!-- We can some hibernate specific things -->
+		<property name="show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<!-- Tell Hibernate that we are mapping classes -->
+		<!-- XML -->
+		<!-- <mapping resource="HoneyPot.hbm.xml"/> -->
+		
+		<!-- Annotation -->
+		<mapping class="com.revature.beans.SocialWorker"/>
+		
+	</session-factory>
+</hibernate-configuration>
