@@ -17,6 +17,12 @@ public class HomeController {
 			return "redirect:login";
 	}
 	
+	
+	@RequestMapping(value="/viewAllCases", method=RequestMethod.GET)
+	public String viewAllCases(HttpSession s) {
+			return "static/viewAllCases.html";
+	}
+	
 	@RequestMapping(value="/logout", method=RequestMethod.POST)
 	public String logout(HttpSession s) {
 		s.invalidate();
