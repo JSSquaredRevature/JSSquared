@@ -23,12 +23,16 @@ function getForms() {
         	cases = JSON.parse(xhttp.responseText);
         	console.log(cases);
         	
-        	cases.forEach(function(form, index) {
-                addFormToTable(form);
-            });
+        	if (cases.length === 1)
+        		addFormToTable(cases[0]);
+        	else if (cases.length > 1) {
+        		cases.forEach(function(form, index) {
+        			addFormToTable(form);
+        			});
+        		}
+        	}
         }
     }
-}
 
 function addFormToTable(cases) {
     var table = document.getElementById("cases");
