@@ -13,8 +13,10 @@ import com.revature.data.SocialWorkerHibernate;
 @Controller
 @RequestMapping(value="/login")
 public class LoginController {
+	
 	@Autowired
 	private SocialWorkerHibernate swh;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public String goLogin(HttpSession session) {
 		if(session.getAttribute("user")!=null)
@@ -32,6 +34,7 @@ public class LoginController {
 			return "redirect:home";
 		}
 	}
+	
 	@RequestMapping(value="/hello", method=RequestMethod.GET)
 	public String byPassLogin() {
 		return "/static/hello.html";

@@ -21,6 +21,7 @@
 		
 		<!-- Annotation -->
 		<mapping class="com.revature.beans.SocialWorker"/>
+		<mapping class="com.revature.beans.Cases"/>
 		
 	</session-factory>
 </hibernate-configuration>
