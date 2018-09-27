@@ -21,18 +21,21 @@ function getForms() {
     function displayForms() {
         if(xhttp.readyState === 4 && xhttp.status === 200) {
         	cases = JSON.parse(xhttp.responseText);
-        	console.log(cases);
         	
-        	if (cases.length === 1)
-        		addFormToTable(cases[0]);
-        	else if (cases.length > 1) {
+        	if (cases.length > 1) {
+
         		cases.forEach(function(form, index) {
         			addFormToTable(form);
         			});
+        		
         		}
+        	else {
+        		// Need to check for all the cases for when this else condition may run.
+        		addFormToTable(cases);
         	}
-        }
-    }
+        }   
+    }    
+}
 
 function addFormToTable(cases) {
     var table = document.getElementById("cases");
