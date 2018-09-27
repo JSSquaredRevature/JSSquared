@@ -3,36 +3,34 @@ package com.revature.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.SocialWorker;
 import com.revature.data.SocialWorkerHibernate;
 
-@Controller
+@CrossOrigin(origins="http://localhost:4200")
+@RestController
 @RequestMapping(value="/login")
 public class LoginController {
 	
 	@Autowired
 	private SocialWorkerHibernate swh;
 	
-	@RequestMapping(method=RequestMethod.GET)
+/*	@RequestMapping(method=RequestMethod.GET)
 	public String goLogin(HttpSession session) {
 		if(session.getAttribute("user")!=null)
-			return "/static/hello.html";
-		return "static/login.html";
-	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public String login(String username, String password, HttpSession session) {
-		SocialWorker u = swh.getByLogin(username,  password);
-		if(u==null) {
-			return "redirect:login";
-		} else {
-			session.setAttribute("user", u);
 			return "redirect:home";
-		}
+		return "static/login.html";
+	}*/
+
+	@RequestMapping(method=RequestMethod.POST)
+	public SocialWorker login(String username, String password, HttpSession session) {
+		SocialWorker u = swh.getByLogin(username,  password);
+		return u;
 	}
 	
 	@RequestMapping(value="/hello", method=RequestMethod.GET)
