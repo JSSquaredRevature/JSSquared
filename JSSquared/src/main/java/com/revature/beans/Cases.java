@@ -2,12 +2,28 @@ package com.revature.beans;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CASES")
 public class Cases {
+	
+	@Id
+	@Column(name="caseid")
+	@SequenceGenerator(name="CID_SEQ", sequenceName="CID_SEQ")
+	@GeneratedValue(generator="CID_SEQ", strategy=GenerationType.AUTO)	
 	private int caseid;
 	private String firstname;
 	private String lastname;
 	private Date birthdate;
 	private int rating;
+	// Need to add annotations to denote relationships with SocialWorker and Placement entities
 	private int socialworkerid;
 	private int placementid;
 	
