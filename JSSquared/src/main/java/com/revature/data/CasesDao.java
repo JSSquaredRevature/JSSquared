@@ -7,6 +7,7 @@ import com.revature.beans.Cases;
 public interface CasesDao {
 
 	 Cases getById(int id);
+	 List<Cases> getBySocialWorkerId(int socialWorkerId);
 	 List<Cases> getAll();
 	 Cases save(Cases s);
 	 Cases update(Cases s);
