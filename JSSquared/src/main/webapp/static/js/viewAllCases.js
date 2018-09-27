@@ -23,7 +23,7 @@ function getForms() {
         	cases = JSON.parse(xhttp.responseText);
         	
         	if (cases.length > 1) {
-        		
+
         		cases.forEach(function(form, index) {
         			addFormToTable(form);
         			});

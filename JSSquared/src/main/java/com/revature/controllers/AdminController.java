@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,14 +29,18 @@ public class AdminController {
 	public @ResponseBody String processViewAllCasesRequest(HttpSession s) {
 
 		SocialWorker sw = (SocialWorker) s.getAttribute("user");
-		System.out.println("Is admin: " + sw.getIsadmin());
-		
-		List<Cases> casesList = null;
+		List<Cases> casesList = new ArrayList<>();
 		if (sw.getIsadmin() == 1)
 			casesList = ch.getAll();
 		else if (sw.getIsadmin() == 0)
 			casesList = ch.getBySocialWorkerId(sw.getId());
 		
+/*		if (casesList.isEmpty()) {
+			casesList.add(new Cases(0, "", "", null, 0, 0, 0));	
+			System.out.println("Checking if case list is empty.");
+			
+		}
+*/		
 		// Eventually, this response needs to be written as object instead of string
 		String response = "";
 		try {
