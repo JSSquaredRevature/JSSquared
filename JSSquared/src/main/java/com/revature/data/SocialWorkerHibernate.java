@@ -1,5 +1,7 @@
 package com.revature.data;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,14 @@ public class SocialWorkerHibernate implements SocialWorkerDao{
 		return sw;
 	}
 
+	@Override
+	public List<SocialWorker> getAll() {
+		Session se = hu.getSession();
+		List<SocialWorker> s = se.createQuery("From com.revature.beans.SocialWorker", SocialWorker.class).list();
+		
+		se.close();
+		return s;
+	}
 	@Override
 	public SocialWorker getByLogin(String username, String pass) {
 		Session se = hu.getSession();

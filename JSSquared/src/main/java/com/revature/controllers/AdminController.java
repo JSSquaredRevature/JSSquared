@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,7 @@ import com.revature.data.CasesHibernate;
 @RestController
 public class AdminController {
 	
-	@Autowired
+	@Autowired 
 	private CasesHibernate ch;
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
