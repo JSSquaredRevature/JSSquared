@@ -1,5 +1,7 @@
 package com.revature.data;
 
+import java.util.List;
+
 import com.revature.beans.SocialWorker;
 
 public interface SocialWorkerDao {
@@ -9,5 +11,6 @@ public interface SocialWorkerDao {
 	 SocialWorker save(SocialWorker s);
 	 SocialWorker update(SocialWorker s);
 	 void delete(SocialWorker s);
+	 List<SocialWorker> getAll();
 	
 }
