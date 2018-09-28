@@ -1,0 +1,33 @@
+<p>
+  create-form works!
+</p>
+<form (submit)="newForm($event)">
+  <input type="text" id="firstname" placeholder="First Name">
+  <br>
+  <input type="text" id="lastname" placeholder="Last Name">
+  <br>
+  <input type="date" id="birthdate" placeholder="Birth Date">
+  <br>
+  <input type="number" id="rating" placeholder="Rating">
+  <br>
+  <select type="text" id="socialworker" placeholder="Social Worker">
+    <option [value]="sw.id" *ngFor="let sw of thisSoc">
+    {{sw.firstname+" "+sw.lastname}}</option>
+  </select>
+  <br>
+  <select type="text" id="placement" placeholder="Placement">
+    <option [value]="placement" *ngFor="let p of ps"
+    {{p}}></option>
+  </select>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<pre>
+  {{thisSoc}}
+</pre>
+<h1>Customer List</h1>
+<ul>
+ <li *ngFor="let Soc of thisSoc">
+   {{ Soc | json }}
+ </li>
+</ul>
