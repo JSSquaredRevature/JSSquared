@@ -13,8 +13,10 @@ import javax.persistence.Table;
 public class Placement {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="CID_SEQ", sequenceName="CID_SEQ")
-	@GeneratedValue(generator="CID_SEQ", strategy=GenerationType.AUTO)	
+
+	@SequenceGenerator(name="PLACEID_SEQ", sequenceName="PLACEID_SEQ")
+	@GeneratedValue(generator="PLACEID_SEQ", strategy=GenerationType.AUTO)	
+
 	private int id;
 	private String type;
 	private int maxcapacity;

@@ -1,5 +1,6 @@
 package com.revature.data;
 
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -62,3 +63,4 @@ public class PlacementHibernate implements PlacementDao {
     }
 
 }
+
