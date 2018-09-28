@@ -7,18 +7,24 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateFormComponent } from './create-form/create-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
+    {
+      path: 'create-form',
+      component: CreateFormComponent
+    },
     {
       path: 'dashboard',
       component: DashboardComponent
