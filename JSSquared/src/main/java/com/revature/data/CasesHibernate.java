@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Cases;
-import com.revature.beans.SocialWorker;
 import com.revature.utils.HibernateUtil;
 
 @Component

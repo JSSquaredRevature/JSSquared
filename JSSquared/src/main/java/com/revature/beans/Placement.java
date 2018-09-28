@@ -1,6 +1,20 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Placement")
 public class Placement {
+	@Id
+	@Column(name="id")
+	@SequenceGenerator(name="PLACEID_SEQ", sequenceName="PLACEID_SEQ")
+	@GeneratedValue(generator="PLACEID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private String type;
 	private int maxcapacity;
