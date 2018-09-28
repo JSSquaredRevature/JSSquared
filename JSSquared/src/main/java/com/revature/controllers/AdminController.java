@@ -6,28 +6,34 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.stereotype.Controller;
+=======
+>>>>>>> staging
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Cases;
 import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
+<<<<<<< HEAD
 @CrossOrigin(origins="http://localhost:4200")
 @Controller
+=======
+
+@CrossOrigin(origins="http://localhost:4200")
+@RestController
+>>>>>>> staging
 public class AdminController {
 	
 	@Autowired
 	private CasesHibernate ch;
 	
-	private ObjectMapper om = new ObjectMapper();
-	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public @ResponseBody String processViewAllCasesRequest(HttpSession s) {
+	public @ResponseBody List<Cases> processViewAllCasesRequest(HttpSession s) {
 
 		SocialWorker sw = (SocialWorker) s.getAttribute("user");
 		List<Cases> casesList = new ArrayList<>();
@@ -35,21 +41,7 @@ public class AdminController {
 			casesList = ch.getAll();
 		else if (sw.getIsadmin() == 0)
 			casesList = ch.getBySocialWorkerId(sw.getId());
-		
-/*		if (casesList.isEmpty()) {
-			casesList.add(new Cases(0, "", "", null, 0, 0, 0));	
-			System.out.println("Checking if case list is empty.");
-			
-		}
-*/		
-		// Eventually, this response needs to be written as object instead of string
-		String response = "";
-		try {
-			response = om.writeValueAsString(casesList);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		
-	    return response;
+
+	    return casesList;
 	    }
 }

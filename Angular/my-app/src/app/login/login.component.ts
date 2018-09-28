@@ -23,11 +23,15 @@ export class LoginComponent implements OnInit {
 
   this.Auth.getUserDetails(username, password).subscribe(data => {
   	if(data){
+<<<<<<< HEAD
       this.Auth.sendToken(username)
+=======
+>>>>>>> staging
   		this.router.navigate(['dashboard'])
   	} else {
-  		window.alert("Bad Credentials")
-  	}
+      window.alert("Bad Credentials")
+      
+    }
   })
   }
 }
