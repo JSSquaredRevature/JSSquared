@@ -23,6 +23,10 @@
 		<mapping class="com.revature.beans.SocialWorker"/>
 		<mapping class="com.revature.beans.Cases"/>
 		<mapping class="com.revature.beans.Placement"/>
+		<mapping class="com.revature.beans.PhoneLog"/>
+		<mapping class="com.revature.beans.CourtDate"/>
+		<mapping class="com.revature.beans.Transportation"/>
+		
 		
 	</session-factory>
 </hibernate-configuration>

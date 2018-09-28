@@ -2,7 +2,20 @@ package com.revature.beans;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+@Entity
+@Table(name="transportation")
 public class Transportation {
+	@Id
+	@Column(name="id")
+	@SequenceGenerator(name="TRAN_SEQ", sequenceName="TRAN_SEQ")
+	@GeneratedValue(generator="TRAN_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private int socialworkerid;
 	private int caseid;
@@ -10,7 +23,6 @@ public class Transportation {
 	private String location;
 	public Transportation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Transportation(int id, int socialworkerid, int caseid, Date time, String location) {
 		super();
