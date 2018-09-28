@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   const password = target.querySelector('#password').value
 
   this.Auth.getUserDetails(username, password).subscribe(data => {
-  	if(data.success){
+  	if(data){
+      this.Auth.sendToken(username)
   		this.router.navigate(['dashboard'])
   	} else {
   		window.alert("Bad Credentials")

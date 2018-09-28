@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RouterModule.forRoot([
     {
       path: 'dashboard',
-      component: DashboardComponent
+      component: DashboardComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: '',
@@ -33,7 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     }
     ])
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
