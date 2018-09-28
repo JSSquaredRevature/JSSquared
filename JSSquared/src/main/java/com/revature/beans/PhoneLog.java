@@ -2,7 +2,20 @@ package com.revature.beans;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+@Entity
+@Table(name="phonelog")
 public class PhoneLog {
+	@Id
+	@Column(name="id")
+	@SequenceGenerator(name="PHONE_SEQ", sequenceName="PHONE_SEQ")
+	@GeneratedValue(generator="PHONE_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int caseid;
 	private String caller;
