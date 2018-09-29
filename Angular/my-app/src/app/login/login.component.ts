@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   			  private router: Router) { }
 
   ngOnInit() {
+    document.body.className = 'hold-transition login page skin-blue';
   }
 
   loginUser(event) {
@@ -23,7 +24,11 @@ export class LoginComponent implements OnInit {
 
   this.Auth.getUserDetails(username, password).subscribe(data => {
   	if(data){
-      this.Auth.sendToken(username)
+      console.log(data['firstname'], data['lastname'], data['isadmin'], data['id'])
+      const fullname = data['firstname']+''+data['lastname'];
+      const isadmin = data['isadmin'];
+      const id = data['id'];
+      this.Auth.sendToken(username, fullname, isadmin, id)
   		this.router.navigate(['dashboard'])
   	} else {
       window.alert("Bad Credentials")

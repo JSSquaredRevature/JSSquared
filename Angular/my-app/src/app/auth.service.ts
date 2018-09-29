@@ -20,8 +20,11 @@ export class AuthService {
    return this.http.post('http://localhost:8080/JSSquared/login', body, {headers: this.headers, withCredentials: true})
   }
 
-  sendToken(token) {
+  sendToken(token, fullname, isadmin, id) {
     localStorage.setItem("LoggedInUser", token)
+    localStorage.setItem("Fullname", fullname)
+    localStorage.setItem("IsAdmin", isadmin)
+    localStorage.setItem("id", id)
   }
   getToken() {
     return localStorage.getItem("LoggedInUser")

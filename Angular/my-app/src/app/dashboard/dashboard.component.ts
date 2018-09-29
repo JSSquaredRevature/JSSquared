@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
-=======
 import { Router } from '@angular/router';
->>>>>>> staging
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-<<<<<<< HEAD
-  constructor(private auth: AuthService) { }
-=======
-  constructor(private router: Router) { }
->>>>>>> staging
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    document.body.className = "hold-transition skin-blue sidebar-mini";
+  }
+
+  ngOnDestroy() :void {
+    document.body.className = "";
   }
 
   CreateCase(){

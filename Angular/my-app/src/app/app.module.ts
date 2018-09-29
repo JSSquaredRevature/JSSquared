@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import { AuthGuard } from './auth.guard';
-
-=======
 import { CreateFormComponent } from './create-form/create-form.component';
->>>>>>> staging
+import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
+import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +20,10 @@ import { CreateFormComponent } from './create-form/create-form.component';
     LoginComponent,
     AdminComponent,
     DashboardComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    TopnavbarComponent,
+    SidenavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { CreateFormComponent } from './create-form/create-form.component';
     RouterModule.forRoot([
     {
       path: 'create-form',
-      component: CreateFormComponent
+      component: CreateFormComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'dashboard',
