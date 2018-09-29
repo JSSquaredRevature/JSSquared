@@ -16,9 +16,14 @@ export class AuthService {
   constructor(private http: HttpClient, private myRoute: Router) { }
 
   getUserDetails(username, password){
+<<<<<<< HEAD
    const body = `username=${username}&password=${password}`;
    return this.http.post('http://localhost:8080/JSSquared/login', body, {headers: this.headers, withCredentials: true})
   }
+=======
+    const body = `username=${username}&password=${password}`;
+    return this.http.post('http://localhost:8080/JSSquared/login', body, {headers: this.headers, withCredentials: true})
+>>>>>>> staging
 
   sendToken(token, fullname, isadmin, id) {
     localStorage.setItem("LoggedInUser", token)

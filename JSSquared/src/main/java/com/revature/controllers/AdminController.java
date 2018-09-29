@@ -20,25 +20,31 @@ import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
+<<<<<<< HEAD
 @Controller
 
 
 
+=======
+@RestController
+@RequestMapping(value = "/admin")
+>>>>>>> staging
 public class AdminController {
 	
 	@Autowired
 	private CasesHibernate ch;
 	
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Cases> processViewAllCasesRequest(HttpSession s) {
 
-		SocialWorker sw = (SocialWorker) s.getAttribute("user");
+//		SocialWorker sw = (SocialWorker) s.getAttribute("user");
 		List<Cases> casesList = new ArrayList<>();
-		if (sw.getIsadmin() == 1)
+/*		if (sw.getIsadmin() == 1)
 			casesList = ch.getAll();
 		else if (sw.getIsadmin() == 0)
 			casesList = ch.getBySocialWorkerId(sw.getId());
-
+*/
+		casesList = ch.getAll();
 	    return casesList;
 	    }
 }

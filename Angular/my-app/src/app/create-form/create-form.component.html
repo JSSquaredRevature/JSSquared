@@ -54,18 +54,9 @@
   </select>
   <br>
   <select type="text" id="placement" placeholder="Placement">
-    <option [value]="placement" *ngFor="let p of ps"
-    {{p}}></option>
+    <option [value]="p.id" *ngFor="let p of thisp">
+    {{p.type}}</option>
   </select>
   <br>
   <input type="submit" value="Submit">
 </form>
-<pre>
-  {{thisSoc}}
-</pre>
-<h1>Customer List</h1>
-<ul>
- <li *ngFor="let Soc of thisSoc">
-   {{ Soc | json }}
- </li>
-</ul>
