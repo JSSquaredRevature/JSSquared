@@ -21,11 +21,12 @@ import com.revature.data.CasesHibernate;
 @RequestMapping(value = "/admin")
 public class AdminController {
 	
-	@Autowired
+	@Autowired 
 	private CasesHibernate ch;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Cases> processViewAllCasesRequest(HttpSession s) {
+		
 
 //		SocialWorker sw = (SocialWorker) s.getAttribute("user");
 		List<Cases> casesList = new ArrayList<>();
@@ -36,5 +37,5 @@ public class AdminController {
 */
 		casesList = ch.getAll();
 	    return casesList;
-	    }
+	}
 }

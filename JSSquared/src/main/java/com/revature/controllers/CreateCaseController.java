@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Cases;
+import com.revature.beans.Placement;
+import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
@@ -25,7 +27,13 @@ public class CreateCaseController {
 	@RequestMapping(method = RequestMethod.POST)
 	public Cases createNewCaseRequest(String firstname, String lastname, Date birthdate, int rating,
 			int socialId, int placementId, HttpSession s) {
-		Cases c = new Cases(0, firstname, lastname, birthdate, rating, socialId, placementId);
+		Cases c = new Cases(0, firstname, lastname, birthdate, rating);
+		Placement p = new Placement();
+		p.setId(placementId);
+		SocialWorker sw = new SocialWorker();
+		sw.setId(socialId);
+		c.setPlacement(p);
+		c.setSw(sw);
 		return ch.save(c);
 	}
 }

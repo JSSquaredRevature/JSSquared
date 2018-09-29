@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashService } from '../dash.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  cases =null;
+  constructor(private router: Router,private dashserv: DashService) { }
 
   ngOnInit() {
   }
@@ -16,6 +18,16 @@ export class DashboardComponent implements OnInit {
   CreateCase(){
     this.router.navigate(['create-form'])
     console.log("reached")
+  }
+
+  viewCases(){
+
+    this.dashserv.getForms().subscribe(data=>{
+      this.cases=data;
+      console.log(data);
+    })
+
+
   }
 
 }

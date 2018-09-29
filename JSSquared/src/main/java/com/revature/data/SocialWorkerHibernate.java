@@ -23,6 +23,14 @@ public class SocialWorkerHibernate implements SocialWorkerDao{
 	}
 
 	@Override
+	public List<SocialWorker> getAll() {
+		Session se = hu.getSession();
+		List<SocialWorker> s = se.createQuery("From com.revature.beans.SocialWorker", SocialWorker.class).list();
+		
+		se.close();
+		return s;
+	}
+	@Override
 	public SocialWorker getByLogin(String username, String pass) {
 		Session se = hu.getSession();
 		SocialWorker s = se.createQuery("From com.revature.beans.SocialWorker where username= :username and pass= :pass", SocialWorker.class).setParameter("username", username).setParameter("pass", pass).uniqueResult();
@@ -61,14 +69,6 @@ public class SocialWorkerHibernate implements SocialWorkerDao{
 		
 	}
 
-	@Override
-	public List<SocialWorker> getAll() {
-		Session se = hu.getSession();
-		List<SocialWorker> s = se.createQuery("From com.revature.beans.SocialWorker ", SocialWorker.class).list();
-		
-		se.close();
-		return s;
-		
-	}
+	
 
 }
