@@ -13,7 +13,11 @@ export class AuthService {
 
   getUserDetails(username, password){
     const body = `username=${username}&password=${password}`;
+<<<<<<< HEAD
     return this.http.post(this.url.getUrl()+'login', body, {headers: this.headers, withCredentials: true})
+=======
+    return this.http.post('http://localhost:8080/JSSquared/login', body, {headers: this.headers, withCredentials: true})
+>>>>>>> 4ad3538aae5d8f28209f48c2519dd2c077219df4
 
   }
 }
