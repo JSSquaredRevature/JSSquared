@@ -9,15 +9,12 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { CreateFormComponent } from './create-form/create-form.component';
-<<<<<<< HEAD
 import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
 import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
-=======
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
->>>>>>> staging
 
 @NgModule({
   declarations: [
@@ -26,14 +23,11 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     AdminComponent,
     DashboardComponent,
     CreateFormComponent,
-<<<<<<< HEAD
     TopnavbarComponent,
     SidenavbarComponent,
-    FooterComponent
-=======
+    FooterComponent,
     CaseComponent,
     SocialWorkerComponent
->>>>>>> staging
   ],
   imports: [
     BrowserModule,

@@ -20,15 +20,10 @@ import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
-<<<<<<< HEAD
 @Controller
-
-
-
-=======
 @RestController
 @RequestMapping(value = "/admin")
->>>>>>> staging
+
 public class AdminController {
 	
 	@Autowired

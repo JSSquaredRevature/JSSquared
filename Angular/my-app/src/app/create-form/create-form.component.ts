@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialwService } from './socialw.service';
 import { PlacementService } from './placement.service';
-<<<<<<< HEAD
 import { AuthService } from '../auth.service';
-=======
 import { SubmitService } from './submit.service';
 import { Router } from '@angular/router';
->>>>>>> staging
 
 @Component({
   selector: 'app-create-form',
@@ -18,12 +15,9 @@ export class CreateFormComponent implements OnInit {
   constructor(
     private socialw:SocialwService,
     private placement:PlacementService,
-<<<<<<< HEAD
-    private auth: AuthService
-=======
+    private auth: AuthService,
     private submit:SubmitService,
     private router: Router
->>>>>>> staging
   ) { }
 
   thisSoc = null;

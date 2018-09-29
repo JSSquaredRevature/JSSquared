@@ -4,7 +4,9 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu tree" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-      <li><a href="/create-form"><i class="fa fa-address-card-o"></i>Add Case</a></li>
+      <li><a href="dashboard"><i class="fa fa-home"></i>Dashboard</a></li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="create-form"><i class="fa fa-address-card-o"></i>Add Case</a></li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="cases"><i class="fa fa fa-archive"></i>View All Cases</a></li>
       <li>
         <a href="pages/widgets.html">
           <i class="fa fa-th"></i> <span>Widgets</span>
