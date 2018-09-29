@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   this.Auth.getUserDetails(username, password).subscribe(data => {
   	if(data){
+      console.log(data);
   		this.router.navigate(['dashboard'])
   	} else {
       window.alert("Bad Credentials")
