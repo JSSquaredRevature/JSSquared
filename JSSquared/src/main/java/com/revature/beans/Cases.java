@@ -2,11 +2,15 @@ package com.revature.beans;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,25 +28,48 @@ public class Cases {
 	private Date birthdate;
 	private int rating;
 	// Need to add annotations to denote relationships with SocialWorker and Placement entities
-	private int socialworkerid;
-	private int placementid;
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="socialworkerid")
+	private SocialWorker sw;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="placementid")
+	private Placement placement;
+
+	
+
+
+	
 	
 	public Cases() {
 		super();
 	}
 
-	public Cases(int caseid, String firstname, String lastname, Date birthdate, int rating, int socialworkerid,
-			int placementid) {
+	public Cases(int caseid, String firstname, String lastname, Date birthdate, int rating) {
 		super();
 		this.caseid = caseid;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.rating = rating;
-		this.socialworkerid = socialworkerid;
-		this.placementid = placementid;
+	
 	}
 
+	public Placement getPlacement() {
+		return placement;
+	}
+
+	public void setPlacement(Placement placement) {
+		this.placement = placement;
+	}
+
+	public SocialWorker getSw() {
+		return sw;
+	}
+
+	public void setSw(SocialWorker sw) {
+		this.sw = sw;
+	}
 	public int getCaseid() {
 		return caseid;
 	}
@@ -83,22 +110,7 @@ public class Cases {
 		this.rating = rating;
 	}
 
-	public int getSocialworkerid() {
-		return socialworkerid;
-	}
-
-	public void setSocialworkerid(int socialworkerid) {
-		this.socialworkerid = socialworkerid;
-	}
-
-	public int getPlacementid() {
-		return placementid;
-	}
-
-	public void setPlacementid(int placementid) {
-		this.placementid = placementid;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -107,9 +119,8 @@ public class Cases {
 		result = prime * result + caseid;
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
-		result = prime * result + placementid;
 		result = prime * result + rating;
-		result = prime * result + socialworkerid;
+		
 		return result;
 	}
 
@@ -139,20 +150,17 @@ public class Cases {
 				return false;
 		} else if (!lastname.equals(other.lastname))
 			return false;
-		if (placementid != other.placementid)
-			return false;
+		
 		if (rating != other.rating)
 			return false;
-		if (socialworkerid != other.socialworkerid)
-			return false;
+		
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Cases [caseid=" + caseid + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate="
-				+ birthdate + ", rating=" + rating + ", socialworkerid=" + socialworkerid + ", placementid="
-				+ placementid + "]";
+				+ birthdate + ", rating=" + rating  + "]";
 	}
 	
 }
