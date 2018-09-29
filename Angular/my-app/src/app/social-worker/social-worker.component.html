@@ -1,0 +1,24 @@
+<div *ngIf="socialWorkers">
+    <h2>Case Files</h2>
+    <table>
+      <tr>
+        <th> Social Worker ID </th>
+        <th> Administrator Status </th>
+        <th> Username </th>
+        <th> Password </th>
+        <th> First Name </th>
+        <th> Last Name </th>
+      </tr>
+      <tr *ngFor="let socialWorker of socialWorkers">
+        <th> {{socialWorker.id}} </th>
+        <th> {{socialWorker.isadmin}} </th>
+        <th> {{socialWorker.username}} </th>
+        <th> {{socialWorker.pass}} </th>
+        <th> {{socialWorker.firstname}} </th>
+        <th> {{socialWorker.lastname}} </th>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <button (click)="goBack()">go back</button>
+  </div>

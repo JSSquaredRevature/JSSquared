@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFormComponent } from './create-form/create-form.component';
+import { CaseComponent } from './case/case.component';
+import { SocialWorkerComponent } from './social-worker/social-worker.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CreateFormComponent } from './create-form/create-form.component';
     LoginComponent,
     AdminComponent,
     DashboardComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    CaseComponent,
+    SocialWorkerComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import { CreateFormComponent } from './create-form/create-form.component';
     {
       path: 'admin',
       component: AdminComponent
-    }
+    },
+    {path: 'cases', component: CaseComponent},
+    {path: 'socialworkers', component: SocialWorkerComponent},
     ])
   ],
   providers: [],
