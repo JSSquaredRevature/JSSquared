@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UrlService } from '../url.service';
 
 
 @Injectable({
@@ -7,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SocialwService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private url:UrlService) { }
 
 
   getSocialW(){
-    return this.http.get('http://localhost:8080/JSSquared/sw')
+    return this.http.get(this.url.getUrl()+'sw')
   }
 }

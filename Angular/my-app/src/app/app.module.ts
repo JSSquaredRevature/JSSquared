@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateFormComponent } from './create-form/create-form.component';
-
+import {UrlService} from './url.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,7 @@ import { CreateFormComponent } from './create-form/create-form.component';
     }
     ])
   ],
-  providers: [],
+  providers: [UrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
