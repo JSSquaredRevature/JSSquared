@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +25,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public @ResponseBody List<Cases> processViewAllCasesRequest(HttpSession s) {
+		
 
 		SocialWorker sw = (SocialWorker) s.getAttribute("user");
 		List<Cases> casesList = new ArrayList<>();
@@ -35,5 +35,5 @@ public class AdminController {
 			casesList = ch.getBySocialWorkerId(sw.getId());
 
 	    return casesList;
-	    }
+	}
 }
