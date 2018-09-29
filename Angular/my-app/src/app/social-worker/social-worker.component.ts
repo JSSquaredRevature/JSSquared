@@ -18,11 +18,11 @@ export class SocialWorkerComponent implements OnInit {
     private location: Location) { }
 
     ngOnInit(): void {
-      this.getCases();
+      this.getSocialWorkers();
     }
    
-    getCases(): void {
-      this.socialWorkerService.getCases()
+    getSocialWorkers(): void {
+      this.socialWorkerService.getSocialWorkers()
         .subscribe(SocialWorker=> this.socialWorkers = SocialWorker);
     }
    

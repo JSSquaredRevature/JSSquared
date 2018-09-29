@@ -1,0 +1,97 @@
+<div *ngIf="courtDates">
+  <h2>Court Dates</h2>
+  <table>
+    <tr>
+      <th> Court Date ID </th>
+      <th> Case ID </th>
+      <th> Time </th>
+      <th> Location </th>
+      <th> Transportation ID </th>
+    </tr>
+    <tr *ngFor="let courtDate of courtDates" (click)="onSelect(courtDate)">
+      <th> {{courtDate.id}} </th>
+      <th> {{courtDate.caseid}} </th>
+      <th> {{courtDate.time}} </th>
+      <th> {{courtDate.location}} </th>
+      <th> {{courtDate.transportationid}} </th>
+    </tr>
+  </table>
+</div>
+<div>
+  <button (click)="addButtonSelected()" class="btn btn-default">Add Court Date</button>
+  <button (click)="goBack()" class="btn btn-default">Back</button>
+</div>
+
+<div *ngIf="selectedCourtDate"> 
+  <div>
+    <h3 class="box-title"> Update Form </h3>
+  </div>
+  <div>
+    <label for="Student">Court Date ID
+      <input name ="Student" [(ngModel)]="selectedCourtDate.id" class="form-control" placeholder="Court Date ID">
+    </label>
+  <div>
+    <label>Case ID
+      <input [(ngModel)]="selectedCourtDate.caseid" class="form-control" placeholder="Case ID">  
+    </label>
+  <div>
+    <label>Time
+      <input [(ngModel)]="selectedCourtDate.time" class="form-control" placeholder="Time">
+    </label>
+  <div>
+    <label>Location
+        <input [(ngModel)]="selectedCourtDate.location" class="form-control" placeholder="Location">
+    </label>
+  <div>
+      <label>Transportation ID
+        <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control" placeholder="Transportation ID">
+      </label>
+<div class="box-footer">
+  <button (click)="save()" class="btn btn-default">Update</button>
+  <button (click)="cancel()" class="btn btn-default">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+  
+
+<div *ngIf="showAddCourtForm">
+  <div class="box-header with-border">
+    <h3 class="box-title">Add Court Date Form</h3>
+  </div>
+  <div>
+    <label>Court Date Id
+      <input #id class="form-control"/>
+    </label>
+  <div>
+    <label>Case Id
+      <input #caseid class="form-control"/>
+      </label>
+  <div>    
+    <label>Time
+        <input #time class="form-control"/>
+    </label>
+  <div>
+    <label>Location
+        <input #location class="form-control"/>
+    </label>
+  <div>        
+    <label>Transportation Id:
+        <input #transportationid class="form-control"/>
+      </label>
+  </div>
+<div>
+  <button (click)="insert(id.value, caseid.value, time.value, location.value, 
+                   transportationid.value); id.value=''; caseid.value=''; time.value=''; 
+                   location.value=''; transportationid.value='';" class="btn btn-default"> 
+                   Insert Court Date</button>
+  <button (click)="cancel()" class="btn btn-default">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
