@@ -17,12 +17,14 @@
     </tr>
   </table>
 </div>
-<div>
+<br>
+<div style="text-align:center;">
   <button (click)="addButtonSelected()" class="btn btn-default">Add Court Date</button>
   <button (click)="goBack()" class="btn btn-default">Back</button>
 </div>
+<br>
 
-<div *ngIf="selectedCourtDate"> 
+<div *ngIf="selectedCourtDate" style="text-align:center;"> 
   <div>
     <h3 class="box-title"> Update Form </h3>
   </div>
@@ -36,7 +38,7 @@
     </label>
   <div>
     <label>Time
-      <input [(ngModel)]="selectedCourtDate.time" class="form-control" placeholder="Time">
+      <input [(ngModel)]="selectedCourtDate.time" type="datetime" class="form-control" placeholder="Time">
     </label>
   <div>
     <label>Location
@@ -46,7 +48,7 @@
       <label>Transportation ID
         <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control" placeholder="Transportation ID">
       </label>
-<div class="box-footer">
+<div style="text-align:center;" class="box-footer">
   <button (click)="save()" class="btn btn-default">Update</button>
   <button (click)="cancel()" class="btn btn-default">Cancel</button>
 </div>
@@ -58,7 +60,7 @@
 </div>
   
 
-<div *ngIf="showAddCourtForm">
+<div *ngIf="showAddCourtForm" style="text-align:center;">
   <div class="box-header with-border">
     <h3 class="box-title">Add Court Date Form</h3>
   </div>
@@ -83,7 +85,7 @@
         <input #transportationid class="form-control"/>
       </label>
   </div>
-<div>
+<div style="text-align:center;">
   <button (click)="insert(id.value, caseid.value, time.value, location.value, 
                    transportationid.value); id.value=''; caseid.value=''; time.value=''; 
                    location.value=''; transportationid.value='';" class="btn btn-default"> 

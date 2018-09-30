@@ -1,5 +1,5 @@
 <div *ngIf="socialWorkers">
-    <h2>Social Workers</h2>
+  <h2>Social Workers</h2>
     <table>
       <tr>
         <th> Social Worker ID </th>
@@ -18,7 +18,8 @@
         <th> {{socialWorker.lastname}} </th>
       </tr>
     </table>
-  </div>
-  <div>
-    <button (click)="goBack()">Back</button>
-  </div>
+</div>
+<br>
+<div style="text-align:center;">
+  <button (click)="goBack()" class="btn btn-default">Back</button>
+</div>

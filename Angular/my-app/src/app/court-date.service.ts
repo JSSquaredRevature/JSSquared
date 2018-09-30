@@ -19,7 +19,6 @@ export class CourtDateService {
   constructor(private http: HttpClient) { }
 
   getCourtDates (): Observable<CourtDate[]> {
-    console.log(this.http.get<CourtDate[]>(this.courtDateUrl));
     return this.http.get<CourtDate[]>(this.courtDateUrl);
   }
 
