@@ -12,9 +12,7 @@ import { CourtDateService }  from '../court-date.service';
 export class CourtDateComponent implements OnInit {
 
   courtDates: CourtDate[];
-
   selectedCourtDate: CourtDate;
-  newCourtDate : boolean;
   
   showAddCourtForm: boolean;
 
@@ -48,12 +46,7 @@ export class CourtDateComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
 
-    add(id: number, something: string): void {
-      this.newCourtDate = true;
-    }
-
     insert(id: number, caseid: number, time: Time, location: string, transportationid: number): void {
-      console.log(id);
       this.courtDateService.addCourtDate({ id, caseid, time, location, transportationid} as CourtDate)
         .subscribe(CourtDate => {
           this.courtDate.push(CourtDate);

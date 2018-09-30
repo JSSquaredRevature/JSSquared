@@ -1,13 +1,16 @@
-<div *ngIf="courtDates">
+<div class="container" *ngIf="courtDates">
   <h2>Court Dates</h2>
-  <table>
+  <table class="table table-striped table-hover">
+    <thead>
     <tr>
-      <th> Court Date ID </th>
-      <th> Case ID </th>
+      <th> Court Date Id </th>
+      <th> Case Id </th>
       <th> Time </th>
       <th> Location </th>
-      <th> Transportation ID </th>
+      <th> Transportation Id </th>
     </tr>
+  </thead>
+  <tbody>
     <tr *ngFor="let courtDate of courtDates" (click)="onSelect(courtDate)">
       <th> {{courtDate.id}} </th>
       <th> {{courtDate.caseid}} </th>
@@ -15,12 +18,15 @@
       <th> {{courtDate.location}} </th>
       <th> {{courtDate.transportationid}} </th>
     </tr>
+  </tbody>
   </table>
 </div>
 <br>
 <div style="text-align:center;">
-  <button (click)="addButtonSelected()" class="btn btn-default">Add Court Date</button>
-  <button (click)="goBack()" class="btn btn-default">Back</button>
+<div class="btn-group">
+  <button (click)="addButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
+  <button (click)="goBack()" class="btn btn-outline-dark">Back</button>
+</div>
 </div>
 <br>
 
@@ -28,9 +34,13 @@
   <div>
     <h3 class="box-title"> Update Form </h3>
   </div>
+  <div id="from">
+    <label for="name">from:</label>
+    <input type="text" name="user_name">
+  </div>
   <div>
     <label for="Student">Court Date ID
-      <input name ="Student" [(ngModel)]="selectedCourtDate.id" class="form-control" placeholder="Court Date ID">
+      <input name ="Student" [(ngModel)]="selectedCourtDate.id" placeholder="Court Date ID">
     </label>
   <div>
     <label>Case ID
@@ -49,7 +59,7 @@
         <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control" placeholder="Transportation ID">
       </label>
 <div style="text-align:center;" class="box-footer">
-  <button (click)="save()" class="btn btn-default">Update</button>
+  <button (click)="save()" class="btn btn-default">Submit</button>
   <button (click)="cancel()" class="btn btn-default">Cancel</button>
 </div>
 </div>
@@ -58,38 +68,44 @@
 </div>
 </div>
 </div>
-  
 
 <div *ngIf="showAddCourtForm" style="text-align:center;">
   <div class="box-header with-border">
-    <h3 class="box-title">Add Court Date Form</h3>
+    <h3 class="box-title">Insert Form</h3>
+    <br>
   </div>
   <div>
-    <label>Court Date Id
-      <input #id class="form-control"/>
-    </label>
+    <label>Court Date Id</label>
+    <div class="col-sm-10 center-block">
+      <input #id class="form-control" />
+    </div>
   <div>
-    <label>Case Id
-      <input #caseid class="form-control"/>
-      </label>
+      <div class="col-sm-10 center-block">
+      <label>Case Id</label>
+        <input #caseid class="form-control"/>
+    </div>
   <div>    
-    <label>Time
+    <label>Time</label>
+    <div class="col-sm-10 center-block">
         <input #time class="form-control"/>
-    </label>
+        </div>
   <div>
-    <label>Location
+    <label>Location</label>
+    <div class="col-sm-10 center-block">
         <input #location class="form-control"/>
-    </label>
+        </div>
   <div>        
-    <label>Transportation Id:
+    <label>Transportation Id</label>
+    <div class="col-sm-10 center-block">
         <input #transportationid class="form-control"/>
-      </label>
+        </div>
   </div>
+  <br>
 <div style="text-align:center;">
   <button (click)="insert(id.value, caseid.value, time.value, location.value, 
                    transportationid.value); id.value=''; caseid.value=''; time.value=''; 
                    location.value=''; transportationid.value='';" class="btn btn-default"> 
-                   Insert Court Date</button>
+                   Submit</button>
   <button (click)="cancel()" class="btn btn-default">Cancel</button>
 </div>
 </div>
