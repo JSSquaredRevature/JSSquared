@@ -4,6 +4,6 @@ export class Case {
 	lastname: string; 
 	birthdate: Date;
 	rating: number;
-	socialworkerid: number;
-	placementid: number;
+	sw: object;
+	placement: object;
   }

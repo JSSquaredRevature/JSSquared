@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialwService } from './socialw.service';
 import { PlacementService } from './placement.service';
+import { AuthService } from '../auth.service';
 import { SubmitService } from './submit.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class CreateFormComponent implements OnInit {
   constructor(
     private socialw:SocialwService,
     private placement:PlacementService,
+    private auth: AuthService,
     private submit:SubmitService,
     private router: Router
   ) { }
@@ -21,15 +23,16 @@ export class CreateFormComponent implements OnInit {
   thisSoc = null;
   thisp = null;
   ngOnInit() {
+    document.body.className = "hold-transition skin-blue sidebar-mini";
     this.socialw.getSocialW().subscribe(data =>{
       this.thisSoc = data;
       console.log(data);
-    })
+    });
     
     this.placement.getPlacement().subscribe(data =>{
       this.thisp = data;
       console.log(data);
-    })
+    });
   }
 
   newForm(event){
@@ -41,6 +44,8 @@ export class CreateFormComponent implements OnInit {
     const rating = target.querySelector('#rating').value
     const socialw = target.querySelector('#socialworker').value
     const placement = target.querySelector('#placement').value
+    console.log(target.querySelector('#socialworker'));
+    console.log(target.querySelector('#placement'));
     console.log(firstname,lastname,birthdate,rating,socialw,placement);
     
     this.submit.submitForm(firstname,lastname,birthdate,rating,socialw,placement).subscribe(data =>{

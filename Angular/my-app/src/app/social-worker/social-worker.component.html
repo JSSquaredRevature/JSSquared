@@ -1,24 +1,37 @@
-<div *ngIf="socialWorkers">
-    <h2>Case Files</h2>
-    <table>
-      <tr>
-        <th> Social Worker ID </th>
-        <th> Administrator Status </th>
-        <th> Username </th>
-        <th> Password </th>
-        <th> First Name </th>
-        <th> Last Name </th>
-      </tr>
-      <tr *ngFor="let socialWorker of socialWorkers">
-        <th> {{socialWorker.id}} </th>
-        <th> {{socialWorker.isadmin}} </th>
-        <th> {{socialWorker.username}} </th>
-        <th> {{socialWorker.pass}} </th>
-        <th> {{socialWorker.firstname}} </th>
-        <th> {{socialWorker.lastname}} </th>
-      </tr>
-    </table>
-  </div>
-  <div>
-    <button (click)="goBack()">go back</button>
-  </div>
+  <div class="wrapper">
+      <app-topnavbar></app-topnavbar>
+      <app-sidenavbar></app-sidenavbar>
+      <div class="content-wrapper" style="min-height: 960px;">
+        <section class="content">
+          <div *ngIf="socialWorkers">
+            <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Social Worker List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <table class="table table-striped">
+                    <tr>
+                      <th style="width: 40px">Social Worker ID</th>
+                      <th style="width: 40px">Administrator Status</th>
+                      <th style="width: 40px">Username</th>
+                      <th style="width: 40px">First Name</th>
+                      <th style="width: 40px">Last Name</th>
+                    </tr>
+                    <tr *ngFor="let socialWorker of socialWorkers">
+                        <td> {{socialWorker.id}} </td>
+                        <td> {{socialWorker.isadmin}} </td>
+                        <td> {{socialWorker.username}} </td>
+                        <td> {{socialWorker.firstname}} </td>
+                        <td> {{socialWorker.lastname}} </td>
+                      </tr>
+                  </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+          </div>
+        
+        </section>
+      </div><!-- End Content-Wrapper -->
+      <app-footer></app-footer>
+    </div><!-- End Wrapper -->

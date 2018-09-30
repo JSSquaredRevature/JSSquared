@@ -18,6 +18,7 @@ export class CaseComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
+    document.body.className = "hold-transition skin-blue sidebar-mini";
     this.getCases();
   }
  

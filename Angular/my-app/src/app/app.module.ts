@@ -7,14 +7,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
 import { CreateFormComponent } from './create-form/create-form.component';
-<<<<<<< HEAD
+
+import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
+import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+
+
 import {UrlService} from './url.service';
-=======
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 
->>>>>>> 24494f745e524221b88b6dc7a04483ff8d625410
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +27,9 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     AdminComponent,
     DashboardComponent,
     CreateFormComponent,
+    TopnavbarComponent,
+    SidenavbarComponent,
+    FooterComponent,
     CaseComponent,
     SocialWorkerComponent
   ],
@@ -31,11 +39,13 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     RouterModule.forRoot([
     {
       path: 'create-form',
-      component: CreateFormComponent
+      component: CreateFormComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'dashboard',
-      component: DashboardComponent
+      component: DashboardComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: '',
@@ -49,7 +59,7 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     {path: 'socialworkers', component: SocialWorkerComponent},
     ])
   ],
-  providers: [UrlService],
+  providers: [AuthGuard, UrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
