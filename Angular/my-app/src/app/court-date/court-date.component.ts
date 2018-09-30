@@ -13,9 +13,7 @@ export class CourtDateComponent implements OnInit {
 
   courtDates: CourtDate[];
   selectedCourtDate: CourtDate;
-  
-  showAddCourtForm: boolean;
-
+  showInsertForm: boolean;
   courtDate: CourtDate[];
   
   constructor(
@@ -26,13 +24,13 @@ export class CourtDateComponent implements OnInit {
       this.getCourtDates();
     }
    
-    addButtonSelected(): void {
-      this.showAddCourtForm = true;
+    insertButtonSelected(): void {
+      this.showInsertForm = true;
       this.selectedCourtDate = null;
     }
     
-    onSelect(courtDate: CourtDate): void {
-      this.showAddCourtForm = false;
+    courtDateSelected(courtDate: CourtDate): void {
+      this.showInsertForm = false;
       this.selectedCourtDate = courtDate;
     }
 
@@ -55,7 +53,7 @@ export class CourtDateComponent implements OnInit {
 
     cancel(): void {
       this.selectedCourtDate = null;
-      this.showAddCourtForm = false;
+      this.showInsertForm = false;
     }
 
     goBack(): void {
