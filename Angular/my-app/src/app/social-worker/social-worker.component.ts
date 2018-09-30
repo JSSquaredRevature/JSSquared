@@ -18,12 +18,8 @@ export class SocialWorkerComponent implements OnInit {
     private location: Location) { }
 
     ngOnInit(): void {
-<<<<<<< HEAD
       this.getSocialWorkers();
-=======
       document.body.className = "hold-transition skin-blue sidebar-mini";
-      this.getCases();
->>>>>>> ef5ab2efed90a29066428ee9b4250c1b6e486163
     }
    
     getSocialWorkers(): void {
