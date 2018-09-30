@@ -10,12 +10,7 @@ import { DashService } from '../dash.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-<<<<<<< HEAD
   constructor(private auth: AuthService, private router: Router) { }
-=======
-  cases =null;
-  constructor(private router: Router,private dashserv: DashService) { }
->>>>>>> staging
 
   ngOnInit() {
     document.body.className = "hold-transition skin-blue sidebar-mini";
@@ -30,14 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log("reached")
   }
 
-  viewCases(){
 
-    this.dashserv.getForms().subscribe(data=>{
-      this.cases=data;
-      console.log(data);
-    })
-
-
-  }
+  
 
 }

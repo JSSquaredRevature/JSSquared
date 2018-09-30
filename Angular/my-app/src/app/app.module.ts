@@ -9,20 +9,17 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { CreateFormComponent } from './create-form/create-form.component';
-<<<<<<< HEAD
+
 import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
 import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
-=======
-<<<<<<< HEAD
+
 import {UrlService} from './url.service';
-=======
->>>>>>> staging
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 
->>>>>>> 24494f745e524221b88b6dc7a04483ff8d625410
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,11 +59,7 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     {path: 'socialworkers', component: SocialWorkerComponent},
     ])
   ],
-<<<<<<< HEAD
-  providers: [AuthGuard],
-=======
-  providers: [UrlService],
->>>>>>> staging
+  providers: [AuthGuard, UrlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

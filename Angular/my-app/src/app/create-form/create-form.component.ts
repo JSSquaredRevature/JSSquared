@@ -27,12 +27,12 @@ export class CreateFormComponent implements OnInit {
     this.socialw.getSocialW().subscribe(data =>{
       this.thisSoc = data;
       console.log(data);
-    })
+    });
     
     this.placement.getPlacement().subscribe(data =>{
       this.thisp = data;
       console.log(data);
-    })
+    });
   }
 
   newForm(event){
@@ -44,6 +44,8 @@ export class CreateFormComponent implements OnInit {
     const rating = target.querySelector('#rating').value
     const socialw = target.querySelector('#socialworker').value
     const placement = target.querySelector('#placement').value
+    console.log(target.querySelector('#socialworker'));
+    console.log(target.querySelector('#placement'));
     console.log(firstname,lastname,birthdate,rating,socialw,placement);
     
     this.submit.submitForm(firstname,lastname,birthdate,rating,socialw,placement).subscribe(data =>{

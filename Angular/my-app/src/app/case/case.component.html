@@ -17,8 +17,8 @@
                     <th style="width: 40px">Last Name</th>
                     <th style="width: 40px">Birthdate</th>
                     <th style="width: 40px">Rating</th>
-                    <th style="width: 40px">Social Worker ID</th>
-                    <th style="width: 40px">Placement ID</th> 
+                    <th style="width: 40px">Social Worker</th>
+                    <th style="width: 40px">Placement</th> 
                   </tr>
                   <tr *ngFor="let case of cases">
                     <th> {{case.caseid}} </th>
@@ -26,8 +26,8 @@
                     <th> {{case.lastname}} </th>
                     <th> {{case.birthdate}} </th>
                     <th> {{case.rating}} </th>
-                    <th> {{case.socialworkerid}} </th>
-                    <th> {{case.placementid}} </th>
+                    <th> {{case.sw.firstname}} {{case.sw.lastname}} </th>
+                    <th> {{case.placement.type}} </th>
                   </tr>
                 </table>
               </div>
