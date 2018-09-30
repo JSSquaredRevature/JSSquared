@@ -62,5 +62,6 @@ public class PlacementHibernate implements PlacementDao {
         return p;
     }
 
+
 }
 
