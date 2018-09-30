@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FullCalendarModule} from 'ng-fullcalendar'
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +21,7 @@ import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +33,12 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     SidenavbarComponent,
     FooterComponent,
     CaseComponent,
-    SocialWorkerComponent
+    SocialWorkerComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FullCalendarModule,
     RouterModule.forRoot([
     {
       path: 'create-form',
@@ -53,10 +56,11 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
     },
     {
       path: 'admin',
-      component: AdminComponent
+      component: AdminComponent,
+      canActivate: [AuthGuard]
     },
-    {path: 'cases', component: CaseComponent},
-    {path: 'socialworkers', component: SocialWorkerComponent},
+    {path: 'cases', component: CaseComponent, canActivate: [AuthGuard]},
+    {path: 'socialworkers', component: SocialWorkerComponent, canActivate: [AuthGuard]},
     ])
   ],
   providers: [AuthGuard, UrlService],

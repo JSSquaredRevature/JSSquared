@@ -6,24 +6,8 @@
       <li class="header">MAIN NAVIGATION</li>
       <li><a href="dashboard"><i class="fa fa-home"></i>Dashboard</a></li>
       <li *ngIf="auth.getIsAdmin() != 0"><a href="create-form"><i class="fa fa-address-card-o"></i>Add Case</a></li>
-      <li *ngIf="auth.getIsAdmin() != 0"><a href="cases"><i class="fa fa fa-archive"></i>View All Cases</a></li>
-      <li>
-        <a href="pages/widgets.html">
-          <i class="fa fa-th"></i> <span>Widgets</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="pages/calendar.html">
-          <i class="fa fa-calendar"></i> <span>Calendar</span>
-          <span class="pull-right-container">
-            <small class="label pull-right bg-red">3</small>
-            <small class="label pull-right bg-blue">17</small>
-          </span>
-        </a>
-      </li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="cases"><i class="fa fa-archive"></i>View All Cases</a></li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="socialworkers"><i class="fa fa-users"></i>View Social Workers</a></li>
       <li>
         <a href="pages/mailbox/mailbox.html">
           <i class="fa fa-envelope"></i> <span>Mailbox</span>

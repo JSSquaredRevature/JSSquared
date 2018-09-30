@@ -1,13 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css">
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper" style="min-height: 960px;">
     <section class="content">
-      <button (click)="auth.logout()">Logout</button>
-      <button routerLink="/cases">View Cases</button>
-      <button routerLink="/socialworkers">View Social Workers</button>
-      <br>
-      <button mat-button (click)="CreateCase()">Input New Case</button>
+      <div *ngIf="calendarOptions">
+        <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+            (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
+    </div>
     </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
