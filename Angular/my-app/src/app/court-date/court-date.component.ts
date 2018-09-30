@@ -44,8 +44,8 @@ export class CourtDateComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
 
-    insert(id: number, caseid: number, time: Time, location: string, transportationid: number): void {
-      this.courtDateService.addCourtDate({ id, caseid, time, location, transportationid} as CourtDate)
+    insert(id: number, caseid: number, time: Date, location: string, transportationid: number): void {
+      this.courtDateService.addCourtDate({ id, caseid,time, location, transportationid} as CourtDate)
         .subscribe(CourtDate => {
           this.courtDate.push(CourtDate);
         });
