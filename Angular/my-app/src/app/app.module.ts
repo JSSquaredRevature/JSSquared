@@ -2,11 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { FullCalendarModule} from 'ng-fullcalendar'
-=======
 import { FormsModule } from '@angular/forms';
->>>>>>> staging
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -39,19 +36,13 @@ import { CourtDateComponent } from './court-date/court-date.component';
     FooterComponent,
     CaseComponent,
     SocialWorkerComponent,
-<<<<<<< HEAD
-=======
     CourtDateComponent
->>>>>>> staging
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-<<<<<<< HEAD
     FullCalendarModule,
-=======
     FormsModule,
->>>>>>> staging
     RouterModule.forRoot([
     {
       path: 'create-form',
@@ -72,14 +63,9 @@ import { CourtDateComponent } from './court-date/court-date.component';
       component: AdminComponent,
       canActivate: [AuthGuard]
     },
-<<<<<<< HEAD
-    {path: 'cases', component: CaseComponent, canActivate: [AuthGuard]},
-    {path: 'socialworkers', component: SocialWorkerComponent, canActivate: [AuthGuard]},
-=======
     {path: 'case', component: CaseComponent},
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent},    
->>>>>>> staging
     ])
   ],
   providers: [AuthGuard, UrlService],

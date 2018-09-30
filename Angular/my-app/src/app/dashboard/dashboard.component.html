@@ -4,18 +4,10 @@
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper " style="min-height: 960px;">
     <section class="content">
-<<<<<<< HEAD
       <div *ngIf="calendarOptions">
         <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
             (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
     </div>
-=======
-      <button (click)="auth.logout()">Logout</button>
-      <button routerLink="/case">Cases</button>
-      <button mat-button (click)="CreateCase()">Input New Case</button>
-      <button routerLink="/socialworker">Social Workers</button>
-      <button routerLink="/courtdate">Court Dates</button>
->>>>>>> staging
     </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
