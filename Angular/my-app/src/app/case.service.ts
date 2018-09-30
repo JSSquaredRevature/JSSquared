@@ -15,7 +15,6 @@ export class CaseService {
 
   constructor(private http: HttpClient, private url:UrlService) { }
 
-  /** GET heroes from the server */
   getCases (): Observable<Case[]> {
     return this.http.get<Case[]>(this.casessUrl);
   }

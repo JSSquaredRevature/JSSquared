@@ -1,13 +1,13 @@
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
-  <div class="content-wrapper" style="min-height: 960px;">
+  <div class="content-wrapper " style="min-height: 960px;">
     <section class="content">
       <button (click)="auth.logout()">Logout</button>
-      <button routerLink="/cases">View Cases</button>
-      <button routerLink="/socialworkers">View Social Workers</button>
-      <br>
+      <button routerLink="/case">Cases</button>
       <button mat-button (click)="CreateCase()">Input New Case</button>
+      <button routerLink="/socialworker">Social Workers</button>
+      <button routerLink="/courtdate">Court Dates</button>
     </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
