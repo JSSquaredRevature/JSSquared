@@ -4,15 +4,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import {SocialWorker } from './social-worker';
+import { UrlService } from './url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocialWorkerService {
 
-  private socialWorkersUrl = 'http://localhost:8080/JSSquared/sw';  // URL to web api
+  private socialWorkersUrl = this.url.getUrl() + 'sw';  // URL to web api
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private url: UrlService) { }
 
   /** GET heroes from the server */
   getCases (): Observable<SocialWorker[]> {
