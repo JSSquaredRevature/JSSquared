@@ -20,6 +20,7 @@ import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
+import { TransportationComponent } from './transportation/transportation.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CourtDateComponent } from './court-date/court-date.component';
     FooterComponent,
     CaseComponent,
     SocialWorkerComponent,
-    CourtDateComponent
+    CourtDateComponent,
+    TransportationComponent
   ],
   imports: [
     BrowserModule,
