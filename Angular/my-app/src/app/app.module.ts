@@ -23,8 +23,6 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
