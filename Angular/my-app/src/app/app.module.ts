@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FullCalendarModule} from 'ng-fullcalendar'
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
+import { CalexComponent } from './calex/calex.component';
+
 
 
 @NgModule({
@@ -34,11 +37,13 @@ import { CourtDateComponent } from './court-date/court-date.component';
     FooterComponent,
     CaseComponent,
     SocialWorkerComponent,
-    CourtDateComponent
+    CourtDateComponent,
+    CalexComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FullCalendarModule,
     FormsModule,
     RouterModule.forRoot([
     {
@@ -57,11 +62,13 @@ import { CourtDateComponent } from './court-date/court-date.component';
     },
     {
       path: 'admin',
-      component: AdminComponent
+      component: AdminComponent,
+      canActivate: [AuthGuard]
     },
     {path: 'case', component: CaseComponent},
     {path: 'socialworker', component: SocialWorkerComponent},
-    {path: 'courtdate', component: CourtDateComponent},    
+    {path: 'courtdate', component: CourtDateComponent}, 
+    {path: 'calex', component: CalexComponent}   
     ])
   ],
   providers: [AuthGuard, UrlService],
