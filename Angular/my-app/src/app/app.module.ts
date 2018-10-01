@@ -65,7 +65,8 @@ import { CalexComponent } from './calex/calex.component';
       component: AdminComponent,
       canActivate: [AuthGuard]
     },
-    {path: 'case', component: CaseComponent},
+    {path: 'cases', component: CaseComponent},
+    {path: 'case',component: CaseComponent},
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent}   

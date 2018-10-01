@@ -6,9 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +17,6 @@ import com.revature.data.CasesHibernate;
 import com.revature.data.SocialWorkerHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
-@Controller
-
-
-
 @RestController
 
 @RequestMapping(value="/login")
@@ -50,14 +43,10 @@ public class LoginController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public Object login(String username, String password, HttpSession session) {
-		SocialWorker cur =(SocialWorker) session.getAttribute("user");
-//		if(cur!=null) {
-//			if (cur.getIsadmin() !=0)return ch.getAll();
-//			return ch.getBySocialWorkerId(cur.getId());
-//		}
+	public SocialWorker login(String username, String password, HttpSession session) {
+
 		SocialWorker u = swh.getByLogin(username,  password);
-		if(u!=null)s.setAttribute("user", u);
+	
 		return u;
 	}
 	
