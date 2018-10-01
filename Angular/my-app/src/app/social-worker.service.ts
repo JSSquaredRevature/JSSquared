@@ -15,8 +15,7 @@ export class SocialWorkerService {
 
   constructor(private http: HttpClient, private url: UrlService) { }
 
-  /** GET heroes from the server */
-  getCases (): Observable<SocialWorker[]> {
+  getSocialWorkers (): Observable<SocialWorker[]> {
     return this.http.get<SocialWorker[]>(this.socialWorkersUrl);
   }
 }

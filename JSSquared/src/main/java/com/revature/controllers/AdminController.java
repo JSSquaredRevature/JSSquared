@@ -6,7 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,8 +21,10 @@ import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
+@Controller
 @RestController
 @RequestMapping(value = "/admin")
+
 public class AdminController {
 	
 	@Autowired 
@@ -38,4 +44,12 @@ public class AdminController {
 		casesList = ch.getAll();
 	    return casesList;
 	}
+	
+	@RequestMapping(value="{id}", method = RequestMethod.GET)
+	public List<Cases> viewSWCases(@PathVariable("id") int id){
+		List<Cases> casesList = new ArrayList<>();
+		casesList = ch.getBySocialWorkerId(id);
+		return casesList;
+	}
+	
 }

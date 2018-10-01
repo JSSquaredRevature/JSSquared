@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { DashService } from '../dash.service';
 
@@ -7,12 +8,16 @@ import { DashService } from '../dash.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  cases =null;
-  constructor(private router: Router,private dashserv: DashService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    document.body.className = "hold-transition skin-blue sidebar-mini";
+  }
+
+  ngOnDestroy() :void {
+    document.body.className = "";
   }
 
   CreateCase(){
@@ -20,14 +25,7 @@ export class DashboardComponent implements OnInit {
     console.log("reached")
   }
 
-  viewCases(){
 
-    this.dashserv.getForms().subscribe(data=>{
-      this.cases=data;
-      console.log(data);
-    })
-
-
-  }
+  
 
 }
