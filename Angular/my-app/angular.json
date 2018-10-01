@@ -27,12 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+             
+              "src/assets/bower_components/jquery/dist/jquery.min.js",
+              "src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/plugins/iCheck/icheck.min.js"
             ]
           },
           "configurations": {
