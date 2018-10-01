@@ -21,12 +21,8 @@ import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
-<<<<<<< HEAD
-import { TransportationComponent } from './transportation/transportation.component';
-=======
 import { CalexComponent } from './calex/calex.component';
 
->>>>>>> 1d1e744358341e16bea5b1620005d29eeec6f0a3
 
 
 @NgModule({
@@ -42,11 +38,7 @@ import { CalexComponent } from './calex/calex.component';
     CaseComponent,
     SocialWorkerComponent,
     CourtDateComponent,
-<<<<<<< HEAD
-    TransportationComponent
-=======
     CalexComponent
->>>>>>> 1d1e744358341e16bea5b1620005d29eeec6f0a3
   ],
   imports: [
     BrowserModule,
