@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +19,12 @@ public class Transportation {
 	private int id;
 	private int socialworkerid;
 	private int caseid;
-	private Date time;
+	private Timestamp time;
 	private String location;
 	public Transportation() {
 		super();
 	}
-	public Transportation(int id, int socialworkerid, int caseid, Date time, String location) {
+	public Transportation(int id, int socialworkerid, int caseid, Timestamp time, String location) {
 		super();
 		this.id = id;
 		this.socialworkerid = socialworkerid;
@@ -50,10 +50,10 @@ public class Transportation {
 	public void setCaseid(int caseid) {
 		this.caseid = caseid;
 	}
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public String getLocation() {

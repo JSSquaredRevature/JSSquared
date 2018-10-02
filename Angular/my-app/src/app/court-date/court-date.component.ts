@@ -46,7 +46,7 @@ export class CourtDateComponent implements OnInit {
     }
 
     insert(id: number, caseid: number, time: Date, location: string, transportationid: number): void {
-      this.courtDateService.addCourtDate({ id, caseid,time, location, transportationid} as CourtDate)
+      this.courtDateService.addCourtDate({ id, caseid, time, location, transportationid} as CourtDate)
         .subscribe(CourtDate => {
           this.courtDate.push(CourtDate);
         });

@@ -23,14 +23,16 @@
                     <th style="width: 40px">Phone Call Logs</th>
                   </tr>
                   <tr *ngFor="let case of cases">
-                    <th> {{case.caseid}} </th>
-                    <th> {{case.firstname}} </th>
-                    <th> {{case.lastname}} </th>
-                    <th> {{case.birthdate}} </th>
-                    <th> {{case.rating}} </th>
-                    <th> {{case.sw.firstname}} {{case.sw.lastname}} </th>
-                    <th> {{case.placement.type}} </th>
-                    <th><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></th>
+
+                    <td> {{case.caseid}} </td>
+                    <td> {{case.firstname}} </td>
+                    <td> {{case.lastname}} </td>
+                    <td> {{case.birthdate}} </td>
+                    <td> {{case.rating}} </td>
+                    <td> {{case.sw.firstname}} {{case.sw.lastname}} </td>
+                    <td> {{case.placement.type}} </td>
+                    <td><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></td>
+
                   </tr>
                 </table>
               </div>

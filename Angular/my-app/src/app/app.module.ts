@@ -16,14 +16,14 @@ import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
 import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
-
 import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
-import { PhoneLogComponent } from './phone-log/phone-log.component';
 
+import { TransportationComponent } from './transportation/transportation.component';
+import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
 @NgModule({
@@ -40,6 +40,7 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
+    TransportationComponent,
     PhoneLogComponent
   ],
   imports: [
@@ -72,7 +73,8 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calex', component: CalexComponent}   
+    {path: 'calex', component: CalexComponent},   
+    {path: 'transportation', component: TransportationComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],
