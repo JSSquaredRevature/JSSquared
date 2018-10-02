@@ -22,6 +22,7 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 import { TransportationComponent } from './transportation/transportation.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TransportationComponent } from './transportation/transportation.compone
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
-    TransportationComponent
+    TransportationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -65,11 +67,12 @@ import { TransportationComponent } from './transportation/transportation.compone
       canActivate: [AuthGuard]
     },
     {path: 'cases', component: CaseComponent},
-    {path: 'case',component: CaseComponent},
+    {path: 'case', component: CaseComponent},
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent},   
-    {path: 'transportation', component: TransportationComponent}
+    {path: 'transportation', component: TransportationComponent},
+    {path: 'profile', component: ProfileComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],

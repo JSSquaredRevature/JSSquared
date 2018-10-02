@@ -6,7 +6,7 @@
         <div *ngIf="courtDates">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Court Dates</h3>
+                <h3 class="box-title">Court Date</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
@@ -50,9 +50,9 @@
                         <input [(ngModel)]="selectedCourtDate.id" class="form-control text-center" placeholder="Court Date ID">
                       </label>
                     <div>
-                      <label>Case ID</label>
+                      <label>Case ID
                         <input [(ngModel)]="selectedCourtDate.caseid" class="form-control text-center" placeholder="Case ID">  
-                      
+                      </label>
                     <div>
                       <label>Time
                         <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
