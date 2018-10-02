@@ -16,7 +16,6 @@ import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
 import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
-
 import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
@@ -24,6 +23,9 @@ import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 import { VisitComponent } from './visit/visit.component';
 
+import { TransportationComponent } from './transportation/transportation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
 @NgModule({
@@ -40,7 +42,10 @@ import { VisitComponent } from './visit/visit.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
-    VisitComponent
+    VisitComponent,
+    TransportationComponent,
+    ProfileComponent,
+    PhoneLogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +73,14 @@ import { VisitComponent } from './visit/visit.component';
       canActivate: [AuthGuard]
     },
     {path: 'cases', component: CaseComponent},
-    {path: 'case',component: CaseComponent},
+    {path: 'case', component: CaseComponent},
+    {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent},
-    {path: 'visit', component: VisitComponent}
+    {path: 'visit', component: VisitComponent},
+    {path: 'transportation', component: TransportationComponent},
+    {path: 'profile', component: ProfileComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],

@@ -31,6 +31,13 @@ public class CourtDateHibernate implements CourtDateDao {
 		s.close();
 		return cd;
 	}
+	@Override
+	public List<CourtDate> getBySwId(int swId){
+		Session s = hu.getSession();
+		List<CourtDate> cd = s.createQuery("From com.revature.beans.CourtDate where caseid in (From com.revature.beans.Cases where socialworkerid=:swid)", CourtDate.class).setParameter("swid", swId).list();
+		s.close();
+		return cd;
+	}
 
 	@Override
 	public List<CourtDate> getByCaseId(int caseId) {
