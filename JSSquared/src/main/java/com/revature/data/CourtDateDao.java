@@ -12,5 +12,6 @@ public interface CourtDateDao {
 	CourtDate update(CourtDate cd);
 	CourtDate save(CourtDate cd);
 	void delete(CourtDate cd);
+	List<CourtDate> getBySwId(int swId);
 	
 }

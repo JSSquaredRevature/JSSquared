@@ -21,8 +21,11 @@ import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
+
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PhoneLogComponent } from './phone-log/phone-log.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { ProfileComponent } from './profile/profile.component';
     CourtDateComponent,
     CalexComponent,
     TransportationComponent,
-    ProfileComponent
+    ProfileComponent,
+    PhoneLogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ import { ProfileComponent } from './profile/profile.component';
     },
     {path: 'cases', component: CaseComponent},
     {path: 'case', component: CaseComponent},
+    {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent},   

@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
@@ -18,9 +19,11 @@
                     <th style="width: 40px">Birthdate</th>
                     <th style="width: 40px">Rating</th>
                     <th style="width: 40px">Social Worker</th>
-                    <th style="width: 40px">Placement</th> 
+                    <th style="width: 40px">Placement</th>
+                    <th style="width: 40px">Phone Call Logs</th>
                   </tr>
                   <tr *ngFor="let case of cases">
+
                     <td> {{case.caseid}} </td>
                     <td> {{case.firstname}} </td>
                     <td> {{case.lastname}} </td>
@@ -28,12 +31,14 @@
                     <td> {{case.rating}} </td>
                     <td> {{case.sw.firstname}} {{case.sw.lastname}} </td>
                     <td> {{case.placement.type}} </td>
+                    <td><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></td>
+
                   </tr>
                 </table>
               </div>
               <!-- /.box-body -->
             </div>
-      </div>
+        </div>
     </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
