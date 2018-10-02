@@ -61,7 +61,7 @@
                       <label>Location
                           <input [(ngModel)]="selectedCourtDate.location" class="form-control text-center" placeholder="Location">
                       </label>
-                    <div>
+                      <div>
                         <label>Transportation ID
                           <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control text-center" placeholder="Transportation ID">
                         </label>
@@ -105,7 +105,7 @@
                     </div>
                     <br>
                   <div style="text-align:center;">
-                    <button (click)="insert(id.value, caseid.value, time.value, location.value, 
+                    <button (click)="insert(id.value, caseid.value, time.value+':00.000Z', location.value, 
                                      transportationid.value); id.value=''; caseid.value=''; time.value=''; 
                                      location.value=''; transportationid.value='';" class="btn btn-default"> 
                                      Submit</button>

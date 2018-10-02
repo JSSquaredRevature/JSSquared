@@ -7,7 +7,7 @@
       <div *ngIf="calendarOptions">
         <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
             (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
-    </div>
+      </div>
     </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
