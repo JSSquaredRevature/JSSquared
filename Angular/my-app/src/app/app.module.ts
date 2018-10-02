@@ -21,6 +21,7 @@ import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
+import { VisitComponent } from './visit/visit.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -41,6 +42,7 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
+    VisitComponent,
     TransportationComponent,
     ProfileComponent,
     PhoneLogComponent
@@ -75,7 +77,8 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calex', component: CalexComponent},   
+    {path: 'calex', component: CalexComponent},
+    {path: 'visit', component: VisitComponent},
     {path: 'transportation', component: TransportationComponent},
     {path: 'profile', component: ProfileComponent}
     ])
