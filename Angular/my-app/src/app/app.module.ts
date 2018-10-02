@@ -23,6 +23,8 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 import { PhoneLogComponent } from './phone-log/phone-log.component';
+import { CalweekComponent } from './calweek/calweek.component';
+import { CalagendaComponent } from './calagenda/calagenda.component';
 
 
 
@@ -40,7 +42,9 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
-    PhoneLogComponent
+    PhoneLogComponent,
+    CalweekComponent,
+    CalagendaComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,7 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calex', component: CalexComponent}   
+    {path: 'calendar', component: CalexComponent}   
     ])
   ],
   providers: [AuthGuard, UrlService],

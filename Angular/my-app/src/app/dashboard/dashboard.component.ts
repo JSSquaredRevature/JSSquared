@@ -24,8 +24,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      }
+        right: 'agendaDay'
+      },
+      defaultView: 'agenda'
       
     };
   }
