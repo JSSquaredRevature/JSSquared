@@ -22,6 +22,7 @@ import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
+import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
 
@@ -38,7 +39,8 @@ import { CalexComponent } from './calex/calex.component';
     CaseComponent,
     SocialWorkerComponent,
     CourtDateComponent,
-    CalexComponent
+    CalexComponent,
+    PhoneLogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { CalexComponent } from './calex/calex.component';
     },
     {path: 'cases', component: CaseComponent},
     {path: 'case',component: CaseComponent},
+    {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent}   
