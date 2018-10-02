@@ -16,7 +16,6 @@ export class CaseService {
   constructor(private http: HttpClient, private url:UrlService) { }
 
   getCases (): Observable<Case[]> {
-    console.log(this.casessUrl);
     return this.http.get<Case[]>(this.casessUrl);
   }
 
