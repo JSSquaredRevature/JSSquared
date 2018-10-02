@@ -4,9 +4,18 @@
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper " style="min-height: 960px;">
     <section class="content">
-      <div *ngIf="calendarOptions">
-        <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
-            (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
+      <div class="row">
+        <div class="col-md-6">
+          
+        </div>
+        <div class="col-md-6">
+          <app-calagenda></app-calagenda>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-calweek></app-calweek>
+        </div>
       </div>
     </section>
   </div><!-- End Content-Wrapper -->

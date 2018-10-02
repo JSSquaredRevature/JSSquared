@@ -6,4 +6,6 @@ export class Case {
 	rating: number;
 	sw: object;
 	placement: object;
+	siblings:Case[];
+	youngsiblings: Case[];
   }
