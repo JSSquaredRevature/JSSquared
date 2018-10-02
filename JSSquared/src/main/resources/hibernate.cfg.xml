@@ -26,6 +26,6 @@
 		<mapping class="com.revature.beans.PhoneLog"/>
 		<mapping class="com.revature.beans.CourtDate"/>
 		<mapping class="com.revature.beans.Transportation"/>
-		
+		<mapping class="com.revature.beans.Visitation"/>
 	</session-factory>
 </hibernate-configuration>

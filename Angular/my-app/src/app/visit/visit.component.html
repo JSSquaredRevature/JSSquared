@@ -3,17 +3,18 @@
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper " style="min-height: 960px;">
     <section class="content">
-        <div *ngIf="courtDates">
+        <div *ngIf="visits">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Court Date</h3>
+                <h3 class="box-title">Visitation</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
                 <table class="table table-striped table-hover">
                   <thead>
                     <tr>
-                      <th> Court Date Id </th>
+                      <th> Visitation Id </th>
+                      <th> Socail Worker Id</th>
                       <th> Case Id </th>
                       <th> Time </th>
                       <th> Location </th>
@@ -21,12 +22,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let courtDate of courtDates" (click)="courtDateSelected(courtDate)">
-                      <td> {{courtDate.id}} </td>
-                      <td> {{courtDate.caseid}} </td>
-                      <td> {{courtDate.time | date:'M/d/yy h:mm a'}} </td>
-                      <td> {{courtDate.location}} </td>
-                      <td> {{courtDate.transportationid}} </td>
+                    <tr *ngFor="let visit of visits" (click)="visitSelected(visit)">
+                      <td> {{visit.id}} </td>
+                      <td> {{visit.socialworkerid}}</td>
+                      <td> {{visit.caseid}} </td>
+                      <td> {{visit.time | date:'M/d/yy h:mm a'}} </td>
+                      <td> {{visit.location}} </td>
+                      <td> {{visit.transportationid}} </td>
                     </tr>
                   </tbody>
                 </table>
@@ -40,35 +42,40 @@
                 </div>
               </section>
                 <br>
-                <div *ngIf="selectedCourtDate" style="text-align:center;"> 
+                <div *ngIf="selectedvist" style="text-align:center;"> 
                     <div>
                       <h3 class="box-title"> Update Form </h3>
                       <br>
                     </div>
                     <div>
-                      <label>Court Date ID
-                        <input [(ngModel)]="selectedCourtDate.id" class="form-control text-center" placeholder="Court Date ID">
+                      <label>Visitation ID
+                        <input [(ngModel)]="selectedvisit.id" class="form-control text-center" placeholder="Visitation ID">
                       </label>
                     <div>
+                        <label>Socail Worker ID
+                          <input [(ngModel)]="selectedvisit.socialworkerid" class="form-control text-center" placeholder="Socail Worker ID">  
+                        </label>
+                    <div>
                       <label>Case ID
-                        <input [(ngModel)]="selectedCourtDate.caseid" class="form-control text-center" placeholder="Case ID">  
+                        <input [(ngModel)]="selectedvisit.caseid" class="form-control text-center" placeholder="Case ID">  
                       </label>
                     <div>
                       <label>Time
-                        <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
+                        <input [ngModel]="selectedvisit.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
                       </label>
                     <div>
                       <label>Location
-                          <input [(ngModel)]="selectedCourtDate.location" class="form-control text-center" placeholder="Location">
+                          <input [(ngModel)]="selectedvisit.location" class="form-control text-center" placeholder="Location">
                       </label>
                       <div>
                         <label>Transportation ID
-                          <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control text-center" placeholder="Transportation ID">
+                          <input [(ngModel)]="selectedvisit.transportationid" class="form-control text-center" placeholder="Transportation ID">
                         </label>
                   <div style="text-align:center;">
                     <br>
                     <button (click)="save()" class="btn btn-default">Submit</button>
                     <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
                   </div>
                   </div>
                   </div>
@@ -83,9 +90,13 @@
                       <br>
                     </div>
                     <div>
-                      <label>Court Date Id
+                      <label>Visitation Id
                         <input #id class="form-control text-center" />
                       </label>
+                    <div>
+                        <label>Socail Worker Id
+                          <input #socialworkerid class="form-control text-center"/>
+                        </label>
                     <div>
                         <label>Case Id
                           <input #caseid class="form-control text-center"/>
@@ -105,11 +116,12 @@
                     </div>
                     <br>
                   <div style="text-align:center;">
-                    <button (click)="insert(id.value, caseid.value, time.value+':00.000Z', location.value, 
+                    <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value+':00.000Z', location.value, 
                                      transportationid.value); id.value=''; caseid.value=''; time.value=''; 
                                      location.value=''; transportationid.value='';" class="btn btn-default"> 
                                      Submit</button>
                     <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
                   </div>
                   </div>
                   </div>

@@ -22,6 +22,7 @@ import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
+import { VisitComponent } from './visit/visit.component';
 
 
 
@@ -38,7 +39,8 @@ import { CalexComponent } from './calex/calex.component';
     CaseComponent,
     SocialWorkerComponent,
     CourtDateComponent,
-    CalexComponent
+    CalexComponent,
+    VisitComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { CalexComponent } from './calex/calex.component';
     {path: 'case',component: CaseComponent},
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calex', component: CalexComponent}   
+    {path: 'calex', component: CalexComponent},
+    {path: 'visit', component: VisitComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],
