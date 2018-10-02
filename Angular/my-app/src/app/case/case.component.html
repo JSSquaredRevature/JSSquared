@@ -7,7 +7,7 @@
       <div *ngIf="cases">
           <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Cases</h3>
+                <h3 class="box-title">Case</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
@@ -24,16 +24,18 @@
                     <th style="width: 40px">Phone Call Logs</th>
                   </tr>
                   <tr *ngFor="let case of cases">
-                    <th> {{case.caseid}} </th>
-                    <th> {{case.firstname}} </th>
-                    <th> {{case.lastname}} </th>
-                    <th> {{case.birthdate}} </th>
-                    <th> {{case.rating}} </th>
-                    <th> {{case.sw.firstname}} {{case.sw.lastname}} </th>
-                    <th> {{case.placement.type}} </th>
-                    <th *ngIf="case.siblings[0];else nosiblings"><span *ngFor="let sib of case.siblings">{{sib.firstname }} {{sib.lastname}} <br></span> </th>
-                    <ng-template #nosiblings><th>N/A</th></ng-template>
-                    <th><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></th>
+
+                    <td> {{case.caseid}} </td>
+                    <td> {{case.firstname}} </td>
+                    <td> {{case.lastname}} </td>
+                    <td> {{case.birthdate}} </td>
+                    <td> {{case.rating}} </td>
+                    <td> {{case.sw.firstname}} {{case.sw.lastname}} </td>
+                    <td> {{case.placement.type}} </td>
+                    <td *ngIf="case.siblings[0];else nosiblings"><span *ngFor="let sib of case.siblings">{{sib.firstname }} {{sib.lastname}} <br></span> </td>
+                    <ng-template #nosiblings><td>N/A</td></ng-template>
+                    <td><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></td>
+
                   </tr>
                 </table>
               </div>

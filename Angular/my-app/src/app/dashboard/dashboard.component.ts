@@ -40,7 +40,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log("reached")
   }
 
-
-  
-
 }

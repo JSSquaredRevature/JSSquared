@@ -18,7 +18,7 @@ export class AuthService {
 
   getUserDetails(username, password){
     const body = `username=${username}&password=${password}`;
-    return this.http.post(this.url.getUrl()+'login', body, {headers: this.headers, withCredentials: true})
+    return this.http.post(this.url.getUrl() + 'login', body, {headers: this.headers, withCredentials: true})
   }
 
   sendToken(token, fullname, isadmin, id) {
@@ -27,12 +27,15 @@ export class AuthService {
     localStorage.setItem("IsAdmin", isadmin)
     localStorage.setItem("id", id)
   }
+  
   getToken() {
     return localStorage.getItem("LoggedInUser")
   }  
+  
   isLoggedIn() {
     return this.getToken() !== null;
   }
+  
   logout() {
     localStorage.removeItem("LoggedInUser");
     localStorage.removeItem("Fullname");
@@ -40,15 +43,17 @@ export class AuthService {
     localStorage.removeItem("IsAdmin");
     this.myRoute.navigate(["/"]);
   }
+  
   getFullname() {
     return localStorage.getItem("Fullname")
   }
+  
   getId() {
     return localStorage.getItem("id")
   }
+  
   getIsAdmin(){
     return localStorage.getItem("IsAdmin")
   }
-
   
 }

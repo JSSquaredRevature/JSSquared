@@ -16,16 +16,22 @@ import { TopnavbarComponent } from './layout/topnavbar/topnavbar.component';
 import { SidenavbarComponent } from './layout/sidenavbar/sidenavbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
-
 import {UrlService} from './url.service';
 import { CaseComponent } from './case/case.component';
 import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
+
 import { PhoneLogComponent } from './phone-log/phone-log.component';
 import { CalweekComponent } from './calweek/calweek.component';
 import { CalagendaComponent } from './calagenda/calagenda.component';
 
+import { VisitComponent } from './visit/visit.component';
+
+
+import { TransportationComponent } from './transportation/transportation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
 @NgModule({
@@ -42,9 +48,12 @@ import { CalagendaComponent } from './calagenda/calagenda.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
-    PhoneLogComponent,
     CalweekComponent,
-    CalagendaComponent
+    CalagendaComponent,
+    VisitComponent,
+    TransportationComponent,
+    ProfileComponent,
+    PhoneLogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,11 +81,18 @@ import { CalagendaComponent } from './calagenda/calagenda.component';
       canActivate: [AuthGuard]
     },
     {path: 'cases', component: CaseComponent},
-    {path: 'case',component: CaseComponent},
+    {path: 'case', component: CaseComponent},
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calendar', component: CalexComponent}   
+
+    {path: 'calendar', component: CalexComponent},   
+
+    {path: 'calex', component: CalexComponent},
+    {path: 'visit', component: VisitComponent},
+    {path: 'transportation', component: TransportationComponent},
+    {path: 'profile', component: ProfileComponent}
+
     ])
   ],
   providers: [AuthGuard, UrlService],
