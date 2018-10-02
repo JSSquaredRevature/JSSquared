@@ -1,6 +1,7 @@
 package com.revature.beans;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +19,13 @@ public class CourtDate {
 	@GeneratedValue(generator="COURT_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private int caseid;
-	private Date time;
+	private Timestamp time;
 	private String location;
 	private int transportationid;
 	public CourtDate() {
 		super();
 	}
-	public CourtDate(int id, int caseid, Date time, String location, int transportationid) {
+	public CourtDate(int id, int caseid, Timestamp time, String location, int transportationid) {
 		super();
 		this.id = id;
 		this.caseid = caseid;
@@ -44,10 +45,10 @@ public class CourtDate {
 	public void setCaseid(int caseid) {
 		this.caseid = caseid;
 	}
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public String getLocation() {
