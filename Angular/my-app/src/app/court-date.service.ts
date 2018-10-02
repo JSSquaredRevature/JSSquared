@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { CourtDate } from './court-date';
-
+import { UrlService } from './url.service'
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -14,9 +14,9 @@ const httpOptions = {
 })
 export class CourtDateService {
 
-  private courtDateUrl = 'http://localhost:8080/JSSquared/courtdate';  // URL to web api
+  private courtDateUrl = this.url.getUrl()+'courtdate';  // URL to web api
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private url :UrlService) { }
 
   getCourtDates (): Observable<CourtDate[]> {
     return this.http.get<CourtDate[]>(this.courtDateUrl);
