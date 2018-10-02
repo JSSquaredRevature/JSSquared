@@ -23,6 +23,7 @@ import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
@@ -41,6 +42,7 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     CourtDateComponent,
     CalexComponent,
     TransportationComponent,
+    ProfileComponent,
     PhoneLogComponent
   ],
   imports: [
@@ -69,12 +71,13 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
       canActivate: [AuthGuard]
     },
     {path: 'cases', component: CaseComponent},
-    {path: 'case',component: CaseComponent},
+    {path: 'case', component: CaseComponent},
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent},   
-    {path: 'transportation', component: TransportationComponent}
+    {path: 'transportation', component: TransportationComponent},
+    {path: 'profile', component: ProfileComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],

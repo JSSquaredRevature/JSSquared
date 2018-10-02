@@ -25,15 +25,15 @@ export class LoginComponent implements OnInit {
   this.Auth.getUserDetails(username, password).subscribe(data => {
   	if(data){
       console.log(data['firstname'], data['lastname'], data['isadmin'], data['id'])
-      const fullname = data['firstname']+' '+data['lastname'];
+      const fullname = data['firstname'] + ' ' + data['lastname'];
       const isadmin = data['isadmin'];
       const id = data['id'];
       this.Auth.sendToken(username, fullname, isadmin, id)
   		this.router.navigate(['dashboard'])
   	} else {
       window.alert("Bad Credentials")
-      
     }
   })
-  }
+}
+
 }
