@@ -20,6 +20,7 @@
                     <th style="width: 40px">Rating</th>
                     <th style="width: 40px">Social Worker</th>
                     <th style="width: 40px">Placement</th>
+                    <th style="width: 40px">Older Siblings</th>
                     <th style="width: 40px">Phone Call Logs</th>
                   </tr>
                   <tr *ngFor="let case of cases">
@@ -30,6 +31,8 @@
                     <th> {{case.rating}} </th>
                     <th> {{case.sw.firstname}} {{case.sw.lastname}} </th>
                     <th> {{case.placement.type}} </th>
+                    <th *ngIf="case.siblings[0];else nosiblings"><span *ngFor="let sib of case.siblings">{{sib.firstname }} {{sib.lastname}} <br></span> </th>
+                    <ng-template #nosiblings><th>N/A</th></ng-template>
                     <th><button (click)="getPhoneLog(case.caseid)" class="btn btn-default">View</button></th>
                   </tr>
                 </table>

@@ -1,6 +1,8 @@
 package com.revature.beans;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -35,11 +39,13 @@ public class Cases {
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="placementid")
 	private Placement placement;
-
 	
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinTable(name="sibling",joinColumns= {@JoinColumn(name="eldercaseid")},inverseJoinColumns= {@JoinColumn(name="youngercaseid")})
+
+	private Set<Cases> siblings = new HashSet<Cases>();
 
 
-	
 	
 	public Cases() {
 		super();
@@ -61,6 +67,14 @@ public class Cases {
 
 	public void setPlacement(Placement placement) {
 		this.placement = placement;
+	}
+
+	public Set<Cases> getSiblings() {
+		return siblings;
+	}
+
+	public void setSiblings(Set<Cases> siblings) {
+		this.siblings = siblings;
 	}
 
 	public SocialWorker getSw() {
