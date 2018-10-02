@@ -1,0 +1,121 @@
+
+<div class="wrapper">
+  <app-topnavbar></app-topnavbar>
+  <app-sidenavbar></app-sidenavbar>
+  <div class="content-wrapper" style="min-height: 960px;">
+    <section class="content">
+      <div *ngIf="phoneLogs">
+          <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Phone Calls for Case {{phoneLogService.getCaseId()}}</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped table-hover">
+                  <tr>
+                    <th style="width: 40px">Phone Log ID</th>
+                    <th style="width: 40px">Caller</th>
+                    <th style="width: 40px">Time</th>
+                    <th style="width: 40px">Duration</th>
+                  </tr>
+                  <tr *ngFor="let log of phoneLogs"(click)="phoneLogSelected(log)">
+                    <th> {{log.id}} </th>
+                    <th> {{log.caller}} </th>
+                    <th> {{log.time}} </th>
+                    <th> {{log.duration}} minutes </th>
+               
+                  </tr>
+                </table>
+
+
+
+                <div style="text-align:center;">
+                  <div class="btn-group">
+                    <button (click)="insertButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
+                    <button (click)="goBack()" class="btn btn-outline-dark">Back</button>
+                  </div>
+                </div>
+                <br>
+                <div *ngIf="selectedPhoneLog" style="text-align:center;"> 
+                    <div>
+                      <h3 class="box-title"> Update Form </h3>
+                    </div>
+                    <div>
+                      <label>Phone Log ID
+                        <input [(ngModel)]="selectedPhoneLog.id" class="form-control" placeholder="Phone Log ID">
+                      </label>
+                    <div>
+                      <label>Caller
+                        <input [(ngModel)]="selectedPhoneLog.caller" class="form-control" placeholder="Caller">  
+                      </label>
+                    <div>
+                      <label>Time
+                        <input [(ngModel)]="selectedPhoneLog.time" type="date" class="form-control" placeholder="Time">
+                      </label>
+                    <div>
+                      <label>Duration
+                          <input [(ngModel)]="selectedPhoneLog.duration" class="form-control" placeholder="Duration">
+                      </label>
+                      
+                  <div style="text-align:center;" class="box-footer">
+                    <button (click)="save()" class="btn btn-default">Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  
+                  <div *ngIf="showInsertForm" style="text-align:center;">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Insert Form</h3>
+                      <br>
+                    </div>
+                    <div>
+                      <label>Phone Log Id
+                        <input #id class="form-control" />
+                      </label>
+                    <div>
+                        <label>Caller
+                          <input #caller class="form-control"/>
+                        </label>
+                    <div>    
+                      <label>Time
+                          <input type="datetime-local" step="any" class="form-control" #time/>
+                        </label>
+                    <div>
+                      <label>Duration
+                          <input #duration class="form-control"/>
+                        </label>
+                   
+                    </div>
+                    <br>
+                  <div style="text-align:center;">
+                    <button (click)="insert(id.value, phoneLogService.getCaseId(), time.value+':00.000Z', duration.value, 
+                                     caller.value); id.value=''; time.value=''; 
+                                     duration.value=''; caller.value='';" class="btn btn-default"> 
+                                     Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+              </div>
+              <!-- /.box-body -->
+            </div>
+        </div>
+    </section>
+  </div><!-- End Content-Wrapper -->
+  <app-footer></app-footer>
+</div><!-- End Wrapper -->
