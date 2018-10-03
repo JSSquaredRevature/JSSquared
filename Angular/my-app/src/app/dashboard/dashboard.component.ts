@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { DashService } from '../dash.service';
-import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 
 @Component({

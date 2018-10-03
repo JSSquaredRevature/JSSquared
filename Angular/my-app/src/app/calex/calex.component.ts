@@ -1,13 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { Case } from '../case';
-import { EventObj } from '../calex';
-import { CaseService }  from '../case.service';
 
 @Component({
   selector: 'app-calex',
@@ -25,8 +21,7 @@ export class CalexComponent implements OnInit {
   eventStart: any;
   
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor(private caseService: CaseService,
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get(this.casesUrl + '/json').subscribe(data => {
@@ -61,7 +56,7 @@ export class CalexComponent implements OnInit {
 
      });  
       
-  };
+  }
 
   clickButton(model: any) {
     this.displayEvent = model;
@@ -75,7 +70,6 @@ export class CalexComponent implements OnInit {
         end: model.event.end,
         title: model.event.title,
         allDay: model.event.allDay
-        // other params
       },
       duration: {}
     }
@@ -89,7 +83,6 @@ export class CalexComponent implements OnInit {
         start: model.event.start,
         end: model.event.end,
         title: model.event.title
-        // other params
       },
       duration: {
         _data: model.duration._data
