@@ -29,6 +29,7 @@ export class CaseService {
     return this.http.get<Case[]>(this.casesUrl);
   }
 
+  
   updateCase (courtDate: Case): Observable<any> {
     return this.http.put(this.casesUrl, courtDate, httpOptions);
   }
