@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Cases;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Visitation;
 import com.revature.data.VisitationHibernate;
 
@@ -26,6 +27,8 @@ public class VisitationController {
 
 	@Autowired
 	private VisitationHibernate vh;
+	
+	private ObjectMapper om;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Visitation> processViewAllCasesRequest(HttpSession s) {
@@ -54,4 +57,20 @@ public class VisitationController {
 		vh.update(v);
 		return vh.getAll();
 	    }
+	
+	@RequestMapping(value="/json", method = RequestMethod.GET)
+	public String getVisitationsAsJSON(){
+		List<Visitation> visitationList = new ArrayList<>();
+		visitationList = vh.getAll();
+		om = new ObjectMapper();
+		String result = "";
+		try {
+			result = om.writeValueAsString(visitationList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("\n\n" + result + "\n\n");
+		return result;
+	}
 }

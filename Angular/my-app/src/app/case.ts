@@ -6,7 +6,7 @@ export class Case {
 	rating: number;
 	sw: object;
 	placement: object;
-	siblings:Case[];
+	siblings: Case[];
 	youngsiblings: Case[];
 
 	setCaseid(caseid : number) {
