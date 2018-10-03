@@ -34,6 +34,8 @@ export class PhoneLogComponent implements OnInit {
   }
 
   save(): void {
+   
+    this.selectedPhoneLog.time = new Date( this.selectedPhoneLog.time + ':00.000');
     this.phoneLogService.updatePhoneLog(this.selectedPhoneLog)
       .subscribe(() => this.goBack());
   }

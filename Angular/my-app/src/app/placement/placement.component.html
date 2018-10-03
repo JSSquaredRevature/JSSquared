@@ -1,0 +1,121 @@
+<div class="wrapper">
+  <app-topnavbar></app-topnavbar>
+  <app-sidenavbar></app-sidenavbar>
+  <div class="content-wrapper " style="min-height: 960px;">
+    <section class="content">
+        <div *ngIf="placements">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Placement</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th> Placement Id </th>
+                      <th> Place </th>
+                      <th> Max capacity </th>
+                      <th> Minimum Age </th>
+                      <th> Maximum Age </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let p of placements" (click)="pSelected(p)">
+                      <td> {{p.id}} </td>
+                      <td> {{p.type}} </td>
+                      <td> {{p.maxcapacity}} </td>
+                      <td> {{p.agemin}} </td>
+                      <td> {{p.agemax}} </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+                <div style="text-align:center;">
+                  <div class="btn-group">
+                    <button (click)="insertButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
+                  </div>
+                </div>
+              </section>
+                <br>
+                <div *ngIf="placementSelected" style="text-align:center;"> 
+                    <div>
+                      <h3 class="box-title"> Update Form </h3>
+                      <br>
+                    </div>
+                    <div>
+                      <label>Placement ID
+                        <input [(ngModel)]="placementSelected.id" class="form-control text-center" placeholder="Placement ID">
+                      </label>
+                    <div>
+                      <label>Place
+                        <input [(ngModel)]="placementSelected.type" class="form-control text-center" placeholder="Place">  
+                      </label>
+                    <div>
+                      <label>Maximum Capacity
+                        <input [ngModel]="placementSelected.maxcapacity" class="form-control text-center" placeholder="Max Capacity">
+                      </label>
+                    <div>
+                      <label>Minimum Age
+                          <input [(ngModel)]="placementSelected.agemin" class="form-control text-center" placeholder="Minimum age">
+                      </label>
+                      <div>
+                        <label>Maximum Age
+                          <input [(ngModel)]="placementSelected.agemax" class="form-control text-center" placeholder="Maximum Age">
+                        </label>
+                  <div style="text-align:center;">
+                    <br>
+                    <button (click)="save()" class="btn btn-default">Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  
+                  <div *ngIf="showInsertForm" style="text-align:center;">
+                    <div>
+                      <h3 class="box-title">Insert Form</h3>
+                      <br>
+                    </div>
+                    <div>
+                      <label>Placement Id
+                        <input #id class="form-control text-center" />
+                      </label>
+                    <div>
+                        <label>Place
+                          <input #type class="form-control text-center"/>
+                        </label>
+                    <div>    
+                      <label>Maximum capacity
+                          <input  class="form-control text-center" #maxcapacity/>
+                        </label>
+                    <div>
+                      <label>Mimimum Age
+                          <input #agemin class="form-control text-center"/>
+                        </label>
+                    <div>        
+                      <label>Maximum Age
+                          <input #agemax class="form-control text-center"/>
+                        </label>
+                    </div>
+                    <br>
+                  <div style="text-align:center;">
+                    <button (click)="insert(id.value, type.value, maxcapacity.value, agemin.value, 
+                                     agemax.value); id.value=''; type.value=''; maxcapacity.value=''; 
+                                     agemin.value=''; agemax.value='';" class="btn btn-default"> 
+                                     Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+  </div><!-- End Content-Wrapper -->
+  <app-footer></app-footer>
+</div><!-- End Wrapper -->

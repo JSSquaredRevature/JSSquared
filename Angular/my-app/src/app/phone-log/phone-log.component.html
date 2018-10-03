@@ -21,7 +21,7 @@
                   <tr *ngFor="let log of phoneLogs"(click)="phoneLogSelected(log)">
                     <th> {{log.id}} </th>
                     <th> {{log.caller}} </th>
-                    <th> {{log.time}} </th>
+                    <th> {{log.time | date:'M/d/yy h:mm a'}} </th>
                     <th> {{log.duration}} minutes </th>
                
                   </tr>
@@ -50,7 +50,7 @@
                       </label>
                     <div>
                       <label>Time
-                        <input [(ngModel)]="selectedPhoneLog.time" type="date" class="form-control" placeholder="Time">
+                        <input [(ngModel)]="selectedPhoneLog.time" type="datetime-local" class="form-control" placeholder="Time">
                       </label>
                     <div>
                       <label>Duration

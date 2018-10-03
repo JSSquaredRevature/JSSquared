@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +19,12 @@ public class PhoneLog {
 	private int id;
 	private int caseid;
 	private String caller;
-	private Date time;
+	private Timestamp time;
 	private String duration;
 	public PhoneLog() {
 		super();
 	}
-	public PhoneLog(int id, int caseid, String caller, Date time, String duration) {
+	public PhoneLog(int id, int caseid, String caller, Timestamp time, String duration) {
 		super();
 		this.id = id;
 		this.caseid = caseid;
@@ -50,10 +50,10 @@ public class PhoneLog {
 	public void setCaller(String caller) {
 		this.caller = caller;
 	}
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public String getDuration() {
