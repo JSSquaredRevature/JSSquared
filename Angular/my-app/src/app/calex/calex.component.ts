@@ -111,9 +111,6 @@ export class CalexComponent implements OnInit {
     this.case.caseid = model.event.caseid;
     this.case.firstname = model.event.firstname;
     this.case.lastname = model.event.lastname;
-    console.log(model.event.start['_d']);
-    console.log(model.event.start['_d'].getDay() + 1);
-    console.log(model.event.start['_d'].getDate() + 1);
     var newDate: Date = new Date(model.event.start['_d'].getFullYear() + '-' 
     + (model.event.start['_d'].getMonth() +1) + '-' + (model.event.start['_d'].getDate() + 2) +'Z');
     console.log(newDate);
