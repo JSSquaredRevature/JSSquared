@@ -26,7 +26,6 @@ import { TransportationComponent } from './transportation/transportation.compone
 import { ProfileComponent } from './profile/profile.component';
 import { PhoneLogComponent } from './phone-log/phone-log.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +76,7 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'courtdate', component: CourtDateComponent}, 
     {path: 'calex', component: CalexComponent},   
     {path: 'transportation', component: TransportationComponent},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent},
     ])
   ],
   providers: [AuthGuard, UrlService],

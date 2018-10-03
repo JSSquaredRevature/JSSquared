@@ -18,16 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     document.body.className = "hold-transition skin-blue sidebar-mini";
-    this.calendarOptions = {
-      editable: true,
-      eventLimit: false,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      }
-      
-    };
   }
 
   ngOnDestroy() :void {

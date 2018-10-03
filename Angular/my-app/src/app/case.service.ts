@@ -12,18 +12,17 @@ import { AuthService } from './auth.service';
 })
 export class CaseService {
   
+  private casesUrl = this.url.getUrl()+'admin';
 
-  private casessUrl = this.url.getUrl()+'admin';  // URL to web api
-
-  constructor(private http: HttpClient, private url:UrlService, private auth:AuthService) { }
+  constructor(private http: HttpClient, private url:UrlService, private auth:AuthService) { 
+  }
 
   getCases (): Observable<Case[]> {
-    //return this.http.get(this.casessUrl)
 
     if(+this.auth.getIsAdmin() == 0)
-      return this.http.get<Case[]>(this.casessUrl+ '/' + this.auth.getId());
+      return this.http.get<Case[]>(this.casesUrl+ '/' + this.auth.getId());
 
-    return this.http.get<Case[]>(this.casessUrl);
+    return this.http.get<Case[]>(this.casesUrl);
   }
 
 }

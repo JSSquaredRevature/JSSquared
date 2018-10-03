@@ -1,70 +1,53 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable} from 'rxjs';
+
+import { Case } from '../case';
+import { EventObj } from '../calex';
+import { CaseService }  from '../case.service';
 
 @Component({
   selector: 'app-calex',
   templateUrl: './calex.component.html',
   styleUrls: ['./calex.component.scss']
 })
+
 export class CalexComponent implements OnInit {
   calendarOptions: Options;
   displayEvent: any;
+  cases: Case[] = [];
+  private casesUrl = 'http://localhost:8080/JSSquared/admin';
+  convertDataObj2Any: any;
+  eventTitle: any;
+  eventStart: any;
+  
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor() { }
+  constructor(private caseService: CaseService,
+    private http: HttpClient) { }
 
   ngOnInit() {
-    const dateObj = new Date();
-    const yearMonth = dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
-    let data: any = [{
-        title: 'All Day Event',
-        start: yearMonth + '-01'
-    },
-    {
-        title: 'Long Event',
-        start: yearMonth + '-07',
-        end: yearMonth + '-10'
-    },
-    {
-        id: 999,
-        title: 'Repeating Event',
-        start: yearMonth + '-09T16:00:00'
-    },
-    {
-        id: 999,
-        title: 'Repeating Event',
-        start: yearMonth + '-16T16:00:00'
-    },
-    {
-        title: 'Conference',
-        start: yearMonth + '-11',
-        end: yearMonth + '-13'
-    },
-    {
-        title: 'Meeting',
-        start: yearMonth + '-12T10:30:00',
-        end: yearMonth + '-12T12:30:00'
-    },
-    {
-        title: 'Lunch',
-        start: yearMonth + '-12T12:00:00'
-    },
-    {
-        title: 'Meeting',
-        start: yearMonth + '-12T14:30:00'
-    },
-    {
-        title: 'Happy Hour',
-        start: yearMonth + '-12T17:30:00'
-    },
-    {
-        title: 'Dinner',
-        start: yearMonth + '-12T20:00:00'
-    },
-    {
-        title: 'Birthday Party',
-        start: yearMonth + '-13T07:00:00'
-    }];   
+    this.http.get(this.casesUrl + '/json').subscribe(data => {
+      this.convertDataObj2Any = data;
+      var eventArr: any[] = [];
+      
+      $.each(this.convertDataObj2Any, function (index, item) {
+        this.eventTitle = item.firstname + ' ' + item.lastname + '\'s Birthday';        
+        var monthDay = item.birthdate.substr(5, 7);
+        var date = new Date().getFullYear();
+        this.eventStart = date + '-' + monthDay;
+
+        var eventObj = {
+          title: this.eventTitle,
+          start: this.eventStart
+        };
+
+        eventArr.push(eventObj);
+
+      });
+
       this.calendarOptions = {
         editable: true,
         eventLimit: false,
@@ -73,12 +56,17 @@ export class CalexComponent implements OnInit {
           center: 'title',
           right: 'month,agendaWeek,agendaDay,listMonth'
         },
-        events: data
+        events: eventArr
       };
-  }
+
+     });  
+      
+  };
+
   clickButton(model: any) {
     this.displayEvent = model;
   }
+
   eventClick(model: any) {
     model = {
       event: {
@@ -93,6 +81,7 @@ export class CalexComponent implements OnInit {
     }
     this.displayEvent = model;
   }
+
   updateEvent(model: any) {
     model = {
       event: {
