@@ -32,6 +32,7 @@ export class CreateFormComponent implements OnInit {
     this.placement.getPlacement().subscribe(data =>{
       this.thisp = data;
       console.log(data);
+      this.selectedp=data[0];
     });
   }
 

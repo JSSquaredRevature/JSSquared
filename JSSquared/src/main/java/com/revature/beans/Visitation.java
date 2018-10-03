@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Visitation {
 	@SequenceGenerator(name="VISIT_SEQ", sequenceName="VISIT_SEQ")
 	@GeneratedValue(generator="VISIT_SEQ", strategy=GenerationType.AUTO)
 	private int id;
-	private Date time;
+	private Timestamp time;
 	private String location;
 	private int transportationid;
 	private int socialworkerid;
@@ -31,7 +31,7 @@ public class Visitation {
 	public Visitation() {
 		super();
 	}
-	public Visitation(int id, int socialworkerid, int caseid, Date time, String location, int transportationid) {
+	public Visitation(int id, int socialworkerid, int caseid, Timestamp time, String location, int transportationid) {
 		super();
 		this.id = id;
 		this.socialworkerid = socialworkerid;
@@ -47,10 +47,10 @@ public class Visitation {
 		this.id = id;
 	}
 	
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 	public String getLocation() {

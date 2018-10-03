@@ -31,7 +31,8 @@ import { VisitComponent } from './visit/visit.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PhoneLogComponent } from './phone-log/phone-log.component';
+import { PlacementComponent } from './placement/placement.component';
+
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     VisitComponent,
     TransportationComponent,
     ProfileComponent,
-    PhoneLogComponent
+    PhoneLogComponent,
+    PlacementComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +93,8 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'calex', component: CalexComponent},
     {path: 'visit', component: VisitComponent},
     {path: 'transportation', component: TransportationComponent},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent},
+    {path: 'placement', component: PlacementComponent}
 
     ])
   ],
