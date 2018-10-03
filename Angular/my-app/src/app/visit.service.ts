@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Visit } from './visit';
 import { UrlService } from './url.service'
+import { AuthService } from './auth.service';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,9 +18,12 @@ export class VisitService {
   
   private visitUrl = this.url.getUrl()+'visit';  // URL to web api
 
-  constructor(private http: HttpClient, private url :UrlService) { }
+  constructor(private http: HttpClient, private url :UrlService, private auth:AuthService) { }
 
   getVisits (): Observable<Visit[]> {
+    if(+this.auth.getIsAdmin() == 0)
+      return this.http.get<Visit[]>(this.visitUrl+ '/' + this.auth.getId());
+
     return this.http.get<Visit[]>(this.visitUrl);
   }
 

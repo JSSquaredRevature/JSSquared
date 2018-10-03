@@ -7,6 +7,7 @@ public interface VisitationDao {
 
 	Visitation getById(int id);
 	List<Visitation> getAll();
+	List<Visitation> getBySW(int swid);
 	List<Visitation> getByCaseId(int caseId);
 	Visitation update(Visitation v);
 	Visitation save(Visitation v);

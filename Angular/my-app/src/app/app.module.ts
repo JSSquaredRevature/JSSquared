@@ -31,6 +31,7 @@ import { VisitComponent } from './visit/visit.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
+
 import { PlacementComponent } from './placement/placement.component';
 
 
