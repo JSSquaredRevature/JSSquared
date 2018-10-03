@@ -18,6 +18,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     document.body.className = "hold-transition skin-blue sidebar-mini";
+    
+    // This block may be unnecessary since it's also initialized in calex.component.ts
+    // this.calendarOptions = {
+    //   editable: true,
+    //   eventLimit: false,
+    //   header: {
+    //     left: 'prev,next today',
+    //     center: 'title',
+    //     right: 'agendaDay'
+    //   },
+    //   defaultView: 'agenda'
+      
+    // };
   }
 
   ngOnDestroy() :void {

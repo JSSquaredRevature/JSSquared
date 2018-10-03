@@ -22,9 +22,18 @@ import { SocialWorkerComponent } from './social-worker/social-worker.component';
 import { CourtDateComponent } from './court-date/court-date.component';
 import { CalexComponent } from './calex/calex.component';
 
+import { PhoneLogComponent } from './phone-log/phone-log.component';
+import { CalweekComponent } from './calweek/calweek.component';
+import { CalagendaComponent } from './calagenda/calagenda.component';
+
+import { VisitComponent } from './visit/visit.component';
+
+
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PhoneLogComponent } from './phone-log/phone-log.component';
+
+import { PlacementComponent } from './placement/placement.component';
+
 
 @NgModule({
   declarations: [
@@ -40,9 +49,13 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     SocialWorkerComponent,
     CourtDateComponent,
     CalexComponent,
+    CalweekComponent,
+    CalagendaComponent,
+    VisitComponent,
     TransportationComponent,
     ProfileComponent,
-    PhoneLogComponent
+    PhoneLogComponent,
+    PlacementComponent
   ],
   imports: [
     BrowserModule,
@@ -74,9 +87,14 @@ import { PhoneLogComponent } from './phone-log/phone-log.component';
     {path: 'phonelog', component: PhoneLogComponent },
     {path: 'socialworker', component: SocialWorkerComponent},
     {path: 'courtdate', component: CourtDateComponent}, 
-    {path: 'calex', component: CalexComponent},   
+
+    {path: 'calendar', component: CalexComponent},   
+
+    {path: 'calex', component: CalexComponent},
+    {path: 'visit', component: VisitComponent},
     {path: 'transportation', component: TransportationComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'placement', component: PlacementComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],

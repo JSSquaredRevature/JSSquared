@@ -6,9 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Cases;
-import com.revature.beans.SocialWorker;
 import com.revature.data.CasesHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
-@Controller
 @RestController
 @RequestMapping(value = "/admin")
-
 public class AdminController {
 	
 	@Autowired 

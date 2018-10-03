@@ -19,7 +19,7 @@ export class CreateFormComponent implements OnInit {
     private submit:SubmitService,
     private router: Router
   ) { }
-
+  selectedp=null;
   thisSoc = null;
   thisp = null;
   ngOnInit() {
@@ -32,9 +32,16 @@ export class CreateFormComponent implements OnInit {
     this.placement.getPlacement().subscribe(data =>{
       this.thisp = data;
       console.log(data);
+      this.selectedp=data[0];
     });
   }
 
+  setSelectedP(p){
+
+    console.log(p);
+    console.log('change');
+    this.selectedp=p;
+  }
   newForm(event){
     event.preventDefault()
     const target = event.target
@@ -44,11 +51,22 @@ export class CreateFormComponent implements OnInit {
     const rating = target.querySelector('#rating').value
     const socialw = target.querySelector('#socialworker').value
     const placement = target.querySelector('#placement').value
+    const age = new Date().getFullYear()-new Date(birthdate).getFullYear();
+    console.log(this.selectedp.id);
+    if(age>this.selectedp.agemax){
+      alert(`Child must be under ${this.selectedp.agemax} for selected placement`);
+      return;
+    }
+    if(age<this.selectedp.agemin){
+      alert(`Child must be over ${this.selectedp.agemin} for selected placement`);
+      return;
+    }
+    
     console.log(target.querySelector('#socialworker'));
     console.log(target.querySelector('#placement'));
     console.log(firstname,lastname,birthdate,rating,socialw,placement);
     
-    this.submit.submitForm(firstname,lastname,birthdate,rating,socialw,placement).subscribe(data =>{
+    this.submit.submitForm(firstname,lastname,birthdate,rating,socialw,this.selectedp.id).subscribe(data =>{
       if(data){
         window.alert("Case Saved");
         this.router.navigate(['dashboard'])
