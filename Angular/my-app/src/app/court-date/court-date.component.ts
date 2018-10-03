@@ -33,6 +33,7 @@ export class CourtDateComponent implements OnInit {
     courtDateSelected(courtDate: CourtDate): void {
       this.showInsertForm = false;
       this.selectedCourtDate = courtDate;
+      console.log(courtDate);
     }
 
     getCourtDates(): void {

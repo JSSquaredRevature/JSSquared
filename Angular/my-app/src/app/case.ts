@@ -8,4 +8,8 @@ export class Case {
 	placement: object;
 	siblings:Case[];
 	youngsiblings: Case[];
+
+	setCaseid(caseid : number) {
+		this.caseid = caseid;
+	}
   }

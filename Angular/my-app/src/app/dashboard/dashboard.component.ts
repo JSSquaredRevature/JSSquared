@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { DashService } from '../dash.service';
-import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 
 @Component({
@@ -18,17 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     document.body.className = "hold-transition skin-blue sidebar-mini";
-    this.calendarOptions = {
-      editable: true,
-      eventLimit: false,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'agendaDay'
-      },
-      defaultView: 'agenda'
-      
-    };
+    
   }
 
   ngOnDestroy() :void {

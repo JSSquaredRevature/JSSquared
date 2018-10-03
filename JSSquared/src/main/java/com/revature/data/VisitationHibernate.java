@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.beans.Cases;
 import com.revature.beans.Visitation;
 import com.revature.utils.HibernateUtil;
 
@@ -69,5 +70,13 @@ public class VisitationHibernate implements VisitationDao{
 		t.commit();
 		se.close();
 		
+	}
+
+	@Override
+	public List<Visitation> getBySW(int swid) {
+		Session s = hu.getSession();
+		List<Visitation> v = s.createQuery("From com.revature.beans.Visitation where socialworkerid= :socialworkerid", Visitation.class).setParameter("socialworkerid", swid).list();
+		s.close();
+		return v;
 	}
 }

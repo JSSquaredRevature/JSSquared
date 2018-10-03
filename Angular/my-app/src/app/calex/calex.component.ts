@@ -1,70 +1,58 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
+import { HttpClient } from '@angular/common/http';
+
+import { Case } from '../case';
+import { CaseService }  from '../case.service';
 
 @Component({
   selector: 'app-calex',
   templateUrl: './calex.component.html',
   styleUrls: ['./calex.component.scss']
 })
+
 export class CalexComponent implements OnInit {
   calendarOptions: Options;
   displayEvent: any;
+  cases: Case[] = [];
+  private casesUrl = 'http://localhost:8080/JSSquared/admin';
+  convertDataObj2Any: any;
+  eventTitle: any;
+  eventStart: any;
+  case: Case = new Case();
+  
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor() { }
+  constructor(private http: HttpClient,
+    private caseService: CaseService) { }
 
   ngOnInit() {
-    const dateObj = new Date();
-    const yearMonth = dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
-    let data: any = [{
-        title: 'All Day Event',
-        start: yearMonth + '-01'
-    },
-    {
-        title: 'Long Event',
-        start: yearMonth + '-07',
-        end: yearMonth + '-10'
-    },
-    {
-        id: 999,
-        title: 'Repeating Event',
-        start: yearMonth + '-09T16:00:00'
-    },
-    {
-        id: 999,
-        title: 'Repeating Event',
-        start: yearMonth + '-16T16:00:00'
-    },
-    {
-        title: 'Conference',
-        start: yearMonth + '-11',
-        end: yearMonth + '-13'
-    },
-    {
-        title: 'Meeting',
-        start: yearMonth + '-12T10:30:00',
-        end: yearMonth + '-12T12:30:00'
-    },
-    {
-        title: 'Lunch',
-        start: yearMonth + '-12T12:00:00'
-    },
-    {
-        title: 'Meeting',
-        start: yearMonth + '-12T14:30:00'
-    },
-    {
-        title: 'Happy Hour',
-        start: yearMonth + '-12T17:30:00'
-    },
-    {
-        title: 'Dinner',
-        start: yearMonth + '-12T20:00:00'
-    },
-    {
-        title: 'Birthday Party',
-        start: yearMonth + '-13T07:00:00'
-    }];   
+    this.http.get(this.casesUrl + '/json').subscribe(data => {
+      this.convertDataObj2Any = data;
+      console.log(this.convertDataObj2Any);
+      var eventArr: any[] = [];
+      
+      $.each(this.convertDataObj2Any, function (index, item) {
+        this.eventTitle = item.firstname + ' ' + item.lastname + '\'s Birthday';        
+        var monthDay = item.birthdate.substr(5, 7);
+        var date = new Date().getFullYear();
+        this.eventStart = date + '-' + monthDay;
+
+        var eventObj = {
+          caseid: this.caseid,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          rating: this.rating,
+          socialworker: this.sw,
+          placement: this.placement,
+          title: this.eventTitle,
+          start: this.eventStart
+        };
+
+        eventArr.push(eventObj);
+        
+      });
+
       this.calendarOptions = {
         editable: true,
         eventLimit: false,
@@ -73,12 +61,17 @@ export class CalexComponent implements OnInit {
           center: 'title',
           right: 'month,agendaWeek,agendaDay,listMonth'
         },
-        events: data
+        events: eventArr
       };
+
+     });  
+      
   }
+
   clickButton(model: any) {
     this.displayEvent = model;
   }
+
   eventClick(model: any) {
     model = {
       event: {
@@ -87,26 +80,51 @@ export class CalexComponent implements OnInit {
         end: model.event.end,
         title: model.event.title,
         allDay: model.event.allDay
-        // other params
       },
       duration: {}
     }
     this.displayEvent = model;
   }
+
   updateEvent(model: any) {
+
     model = {
       event: {
         id: model.event.id,
         start: model.event.start,
         end: model.event.end,
-        title: model.event.title
-        // other params
+        title: model.event.title,
+        caseid: model.event.caseid,
+        firstname: model.event.firstname,
+        lastname: model.event.lastname,
+        rating: model.event.rating,
+        socialworker: model.event.socialworker,
+        placement: model.event.placement,
       },
       duration: {
         _data: model.duration._data
       }
+
     }
     this.displayEvent = model;
+
+    this.case.caseid = model.event.caseid;
+    this.case.firstname = model.event.firstname;
+    this.case.lastname = model.event.lastname;
+    var newDate: Date = new Date(model.event.start['_d'].getFullYear() + '-' 
+    + (model.event.start['_d'].getMonth() +1) + '-' + (model.event.start['_d'].getDate() + 2) +'Z');
+    console.log(newDate);
+    this.case.birthdate = newDate;
+    this.case.rating = model.event.rating;
+    this.case.sw = model.event.socialworker;
+    this.case.placement = model.event.placement;
+
+    this.caseService.updateCase(this.case).subscribe();
+
+    // Need to retrieve data from database to use right before updating.
+    // this.http.get(this.casesUrl + '/update').subscribe(data => {
+  
+    // });
   }
 
 }

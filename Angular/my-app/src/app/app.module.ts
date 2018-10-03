@@ -35,7 +35,6 @@ import { PlacementComponent } from './placement/placement.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

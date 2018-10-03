@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
+import { HttpClient } from '@angular/common/http';
+
+import { Case } from '../case';
 
 @Component({
   selector: 'app-calweek',
@@ -9,12 +11,36 @@ import { Options } from 'fullcalendar';
 })
 export class CalweekComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   calendarOptions: Options;
   displayEvent: any;
+  cases: Case[] = [];
+  private casesUrl = 'http://localhost:8080/JSSquared/admin';
+  convertDataObj2Any: any;
+  eventTitle: any;
+  eventStart: any;
 
   ngOnInit() {
+    this.http.get(this.casesUrl + '/json').subscribe(data => {
+      this.convertDataObj2Any = data;
+      var eventArr: any[] = [];
+      
+      $.each(this.convertDataObj2Any, function (index, item) {
+        this.eventTitle = item.firstname + ' ' + item.lastname + '\'s Birthday';        
+        var monthDay = item.birthdate.substr(5, 7);
+        var date = new Date().getFullYear();
+        this.eventStart = date + '-' + monthDay;
+
+        var eventObj = {
+          title: this.eventTitle,
+          start: this.eventStart
+        };
+
+        eventArr.push(eventObj);
+
+      });
+
     this.calendarOptions = {
       editable: true,
       eventLimit: false,
@@ -23,9 +49,13 @@ export class CalweekComponent implements OnInit {
         center: 'title',
         right: ''
       },
+      events: eventArr,
       defaultView: 'basicWeek'
       
     };
+
+  }); 
+
   }
 
   clickButton(model: any) {
@@ -39,7 +69,6 @@ export class CalweekComponent implements OnInit {
         end: model.event.end,
         title: model.event.title,
         allDay: model.event.allDay
-        // other params
       },
       duration: {}
     }
@@ -52,7 +81,6 @@ export class CalweekComponent implements OnInit {
         start: model.event.start,
         end: model.event.end,
         title: model.event.title
-        // other params
       },
       duration: {
         _data: model.duration._data

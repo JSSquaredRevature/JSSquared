@@ -35,47 +35,68 @@
           </div>
                 <div style="text-align:center;">
                   <div class="btn-group">
-                    <button (click)="insertButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
+                    <button (click)="insertButtonSelected()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> ADD</button>
                   </div>
                 </div>
-              
                 <br>
-                <div *ngIf="selectedCourtDate" style="text-align:center;"> 
-                    <div>
-                      <h3 class="box-title"> Update Form </h3>
-                      <br>
+              <!-- Start Update Form -->
+              <div *ngIf="selectedCourtDate" class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Update Form</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- form start -->
+                      <form class="form-horizontal">
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label for="id" class="col-sm-4 control-label">Court Date ID</label>
+                  
+                            <div class="col-sm-8">
+                              <input [(ngModel)]="selectedCourtDate.id" name="id" type="text" class="form-control" placeholder="Court Date Id">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="cid" class="col-sm-4 control-label">Case ID</label>
+                  
+                            <div class="col-sm-8">
+                              <input [(ngModel)]="selectedCourtDate.caseid" name="cid" type="text" class="form-control" id="cid" placeholder="Case Id">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="time" class="col-sm-4 control-label">Time</label>
+                  
+                            <div class="col-sm-8">
+                              <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" name="time" type="datetime-local" class="form-control" id="time" placeholder="Time">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="location" class="col-sm-4 control-label">Location</label>
+                    
+                              <div class="col-sm-8">
+                                <input [(ngModel)]="selectedCourtDate.location" name="location" type="text" class="form-control text-center" id="location" placeholder="Location">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="transportationid" class="col-sm-4 control-label">Transportation Id</label>
+                    
+                              <div class="col-sm-8">
+                                <input [(ngModel)]="selectedCourtDate.transportationid" name="transportationid" type="text" class="form-control text-center" id="transportationid" placeholder="Transportation Id">
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                          <button (click)="save()" class="btn btn-primary">Submit</button>
+                          <button (click)="cancel()" class="btn btn-danger">Close</button>
+                        </div>
+                        <!-- /.box-footer -->
+                      </form>
                     </div>
-                    <div>
-                      <label>Court Date ID
-                        <input [(ngModel)]="selectedCourtDate.id" class="form-control text-center" placeholder="Court Date ID">
-                      </label>
-                    <div>
-                      <label>Case ID
-                        <input [(ngModel)]="selectedCourtDate.caseid" class="form-control text-center" placeholder="Case ID">  
-                      </label>
-                    <div>
-                      <label>Time
-                        <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
-                      </label>
-                    <div>
-                      <label>Location
-                          <input [(ngModel)]="selectedCourtDate.location" class="form-control text-center" placeholder="Location">
-                      </label>
-                      <div>
-                        <label>Transportation ID
-                          <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control text-center" placeholder="Transportation ID">
-                        </label>
-                  <div style="text-align:center;">
-                    <br>
-                    <button (click)="save()" class="btn btn-default">Submit</button>
-                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
                   </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
+                </div>
+                  <!-- End Update Form -->
                   <!-- Start Insert Form -->
               <div *ngIf="showInsertForm" class="row">
                 <div class="col-md-4 col-md-offset-4">
@@ -118,19 +139,19 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type= "button" class="btn btn-primary active" (click)="insert(id.value, caseid.value, time.value+':00.000Z', location.value, 
+                            <button (click)="insert(id.value, caseid.value, time.value+':00.000Z', location.value, 
                             transportationid.value); id.value=''; caseid.value=''; time.value=''; 
-                            location.value=''; transportationid.value='';" class="btn btn-default">Submit</button>
-                            <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                            location.value=''; transportationid.value='';" class="btn btn-primary">Submit</button>
+                            <button (click)="cancel()" class="btn btn-danger">Close</button>
                         </div>
                         <!-- /.box-footer -->
                       </form>
                     </div>
-                    </div>
                   </div>
+                </div>
+                <!-- End Insert Form -->
                 </section>
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
 </div><!-- End Wrapper -->
-
 
