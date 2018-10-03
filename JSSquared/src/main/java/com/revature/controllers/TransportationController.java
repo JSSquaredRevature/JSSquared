@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Cases;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Transportation;
 import com.revature.data.TransportationHibernate;
 
@@ -25,6 +26,7 @@ public class TransportationController {
 
 	@Autowired
 	private TransportationHibernate th;
+	private ObjectMapper om;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<Transportation> processViewAllCasesRequest(HttpSession s) {
@@ -53,5 +55,21 @@ public class TransportationController {
 		System.out.println("In id method.");
 		transportationList = th.getBySocialWorkerId(id);
 		return transportationList;
+	}
+	
+	@RequestMapping(value="/json", method = RequestMethod.GET)
+	public String getTransportationAsJSON(){
+		List<Transportation> transportationList = new ArrayList<>();
+		transportationList = th.getAll();
+		om = new ObjectMapper();
+		String result = "";
+		try {
+			result = om.writeValueAsString(transportationList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("\n\n" + result + "\n\n");
+		return result;
 	}
 }

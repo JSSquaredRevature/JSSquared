@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.CourtDate;
 import com.revature.data.CourtDateHibernate;
 
@@ -24,6 +26,8 @@ public class CourtDateController {
 
 	@Autowired
 	private CourtDateHibernate ch;
+	
+	private ObjectMapper om;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<CourtDate> processViewAllCasesRequest(HttpSession s) {
@@ -51,4 +55,20 @@ public class CourtDateController {
 		ch.update(cd);
 		return ch.getAll();
 	    }
+	
+	@RequestMapping(value="/json", method = RequestMethod.GET)
+	public String getCourtDatesAsJSON(){
+		List<CourtDate> courtDateList = new ArrayList<>();
+		courtDateList = ch.getAll();
+		om = new ObjectMapper();
+		String result = "";
+		try {
+			result = om.writeValueAsString(courtDateList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("\n\n" + result + "\n\n");
+		return result;
+	}
 }
