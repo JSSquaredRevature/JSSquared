@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CourtDate } from './court-date';
 import { UrlService } from './url.service'
 import { AuthService } from './auth.service';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,7 +16,7 @@ const httpOptions = {
 })
 export class CourtDateService {
 
-  private courtDateUrl = this.url.getUrl()+'courtdate';  // URL to web api
+  private courtDateUrl = this.url.getUrl()+'courtdate';
 
   constructor(private http: HttpClient, private url :UrlService, private auth: AuthService) { }
 
@@ -25,7 +26,7 @@ export class CourtDateService {
   }
 
   updateCourtDate (courtDate: CourtDate): Observable<any> {
-    return this.http.put(this.courtDateUrl, courtDate, httpOptions)
+    return this.http.put(this.courtDateUrl, courtDate, httpOptions);
   }
 
   addCourtDate (courtDate: CourtDate): Observable<CourtDate> {

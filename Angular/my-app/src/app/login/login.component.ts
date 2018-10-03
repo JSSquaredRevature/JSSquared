@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   this.Auth.getUserDetails(username, password).subscribe(data => {
   	if(data){
-      console.log(data['firstname'], data['lastname'], data['isadmin'], data['id'])
       const fullname = data['firstname'] + ' ' + data['lastname'];
       const isadmin = data['isadmin'];
       const id = data['id'];

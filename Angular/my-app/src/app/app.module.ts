@@ -35,7 +35,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { PlacementComponent } from './placement/placement.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +95,6 @@ import { PlacementComponent } from './placement/placement.component';
     {path: 'transportation', component: TransportationComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'placement', component: PlacementComponent}
-
     ])
   ],
   providers: [AuthGuard, UrlService],
