@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { Case } from './case';
 import { UrlService } from './url.service';
 import { AuthService } from './auth.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +27,10 @@ export class CaseService {
       return this.http.get<Case[]>(this.casesUrl+ '/' + this.auth.getId());
 
     return this.http.get<Case[]>(this.casesUrl);
+  }
+
+  updateCase (courtDate: Case): Observable<any> {
+    return this.http.put(this.casesUrl, courtDate, httpOptions);
   }
 
 }
