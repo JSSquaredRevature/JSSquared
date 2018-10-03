@@ -4,6 +4,7 @@ import { PlacementService } from './placement.service';
 import { AuthService } from '../auth.service';
 import { SubmitService } from './submit.service';
 import { Router } from '@angular/router';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-create-form',
@@ -17,7 +18,8 @@ export class CreateFormComponent implements OnInit {
     private placement:PlacementService,
     private auth: AuthService,
     private submit:SubmitService,
-    private router: Router
+    private router: Router,
+    private permissionsService: NgxPermissionsService
   ) { }
   selectedp=null;
   thisSoc = null;
@@ -34,6 +36,13 @@ export class CreateFormComponent implements OnInit {
       console.log(data);
       this.selectedp=data[0];
     });
+    var perm;
+    if(Number(this.auth.getIsAdmin()) ==0){
+      perm = ["SW"];
+    } else{
+      perm = ["ADMIN"];
+    }
+    this.permissionsService.loadPermissions(perm);
   }
 
   setSelectedP(p){

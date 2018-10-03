@@ -21,7 +21,7 @@ export class CalweekComponent implements OnInit {
       header: {
         left: 'prev,next week',
         center: 'title',
-        right: 'agendaWeek'
+        right: ''
       },
       defaultView: 'basicWeek'
       

@@ -1,3 +1,4 @@
+<ng-template ngxPermissionsOnly="ADMIN">
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
@@ -62,4 +63,12 @@
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
 </div><!-- End Wrapper -->
-
+</ng-template>
+<ng-template ngxPermissionsOnly="SW">
+    <div class="row">
+    <div class=".col-md-4 col-sm-offset-1">
+        <h1>403 Forbidden</h1>
+        <h3>We know its you {{auth.getFullname()}}.</h3>
+    </div>
+    </div>
+</ng-template>
