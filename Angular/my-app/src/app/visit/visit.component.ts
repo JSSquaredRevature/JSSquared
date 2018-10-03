@@ -23,6 +23,7 @@ export class VisitComponent implements OnInit {
     ngOnInit(): void {
       document.body.className = "hold-transition skin-blue sidebar-mini";
       this.getVisits();
+      this.showInsertForm = false;
     }
    
     insertButtonSelected(): void {

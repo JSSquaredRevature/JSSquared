@@ -31,7 +31,6 @@ import { VisitComponent } from './visit/visit.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PhoneLogComponent } from './phone-log/phone-log.component';
 
 
 @NgModule({
