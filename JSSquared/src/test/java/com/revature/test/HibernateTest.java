@@ -35,7 +35,7 @@ public class HibernateTest {
 	private static final SocialWorkerHibernate swh = new SocialWorkerHibernate();
 	private static final TransportationHibernate th = new TransportationHibernate();
 	private static final VisitationHibernate vh = new VisitationHibernate();
-		
+		 
 	@Rule
 	public ExpectedException ee = ExpectedException.none();
 	
