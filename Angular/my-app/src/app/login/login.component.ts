@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   			  private router: Router) { }
 
   ngOnInit() {
-    document.body.style.backgroundImage = "url('http://wsredes.com.br/worksys/wp-content/uploads/2016/01/website-background-1.jpg')";    document.body.className = 'hold-transition login page skin-blue';
+    document.body.className = 'hold-transition login page skin-blue';
   }
 
   loginUser(event) {

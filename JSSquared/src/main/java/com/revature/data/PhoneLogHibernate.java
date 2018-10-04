@@ -14,7 +14,7 @@ import com.revature.utils.HibernateUtil;
 public class PhoneLogHibernate implements PhoneLogDao {
 
 	@Autowired
-	private HibernateUtil hu = new HibernateUtil();
+	private HibernateUtil hu;
 	
 	@Override
 	public PhoneLog getById(int id) {
