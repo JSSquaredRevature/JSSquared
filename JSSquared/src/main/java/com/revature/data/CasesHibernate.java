@@ -14,7 +14,7 @@ import com.revature.utils.HibernateUtil;
 public class CasesHibernate implements CasesDao {
 
 		@Autowired
-		private HibernateUtil hu;
+		private HibernateUtil hu = new HibernateUtil();
 		
 		@Override
 		public Cases getById(int id) {

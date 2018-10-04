@@ -15,10 +15,21 @@ import java.util.HashMap;
 import java.util.List;	
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.*;
+
+import com.revature.beans.SocialWorker;
 import com.revature.controllers.AdminController;
 import com.revature.controllers.CourtDateController;
 import com.revature.controllers.CreateCaseController;
@@ -43,9 +54,53 @@ public class ControllerTest {
 	private static final TransportationController tc = new TransportationController();
 	private static final VisitationController vc = new VisitationController();
 	
+	@Autowired
+	private HttpSession s;
+	
 	@Rule
 	public ExpectedException ee = ExpectedException.none();
 	
+	/*******************************************************************
+	 * Admin Controller Tests
+	 ******************************************************************/
+	@Test
+	public void testViewAllCases() {
+		
+	}
+	/*******************************************************************
+	 * Court Date Controller Tests
+	 ******************************************************************/
 	
+	/*******************************************************************
+	 * Home Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Login Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Phone Log Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Placement Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Create Case Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Social Worker Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Transportation Controller Tests
+	 ******************************************************************/
+	
+	/*******************************************************************
+	 * Visitation Controller Tests
+	 ******************************************************************/
 
 }
