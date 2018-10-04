@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Location, Time } from '@angular/common';
+import { Location } from '@angular/common';
+import * as moment from 'moment';
 
 import { Visit } from '../visit';
 import { VisitService } from '../visit.service';
@@ -42,6 +43,8 @@ export class VisitComponent implements OnInit {
     }
    
     save(): void {
+      var alteredDate = moment(new Date(this.selectedvisit.time).toISOString(), 'YYYY-MM-DD');
+      this.selectedvisit.time = alteredDate['_i'];
       this.visitService.updateVisits(this.selectedvisit)
       .subscribe(() => this.getVisits());
     }

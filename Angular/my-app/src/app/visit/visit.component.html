@@ -14,7 +14,7 @@
                   <thead>
                     <tr>
                       <th> Visitation Id </th>
-                      <th> Socail Worker Id</th>
+                      <th> Social Worker Id</th>
                       <th> Case Id </th>
                       <th> Time </th>
                       <th> Location </th>
@@ -51,7 +51,7 @@
                         <input [(ngModel)]="selectedvisit.id" class="form-control text-center" placeholder="Visitation ID">
                       </label>
                     <div>
-                        <label>Socail Worker ID
+                        <label>Social Worker ID
                           <input [(ngModel)]="selectedvisit.socialworkerid" class="form-control text-center" placeholder="Socail Worker ID">  
                         </label>
                     <div>
@@ -60,7 +60,8 @@
                       </label>
                     <div>
                       <label>Time
-                        <input [ngModel]="selectedvisit.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
+                        <input [ngModel]="selectedvisit.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
+                        (ngModelChange)="selectedvisit.time=$event" class="form-control text-center" placeholder="Time">
                       </label>
                     <div>
                       <label>Location
@@ -93,7 +94,7 @@
                         <input #id class="form-control text-center" />
                       </label>
                     <div>
-                        <label>Socail Worker Id
+                        <label>Social Worker Id
                           <input #socialworkerid class="form-control text-center"/>
                         </label>
                     <div>
@@ -116,7 +117,7 @@
                     <br>
                   <div style="text-align:center;">
                     <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value+':00.000Z', location.value, 
-                                     transportationid.value); id.value=''; caseid.value=''; time.value=''; 
+                                     transportationid.value); id.value=''; socialworkerid.value=''; caseid.value=''; time.value=''; 
                                      location.value=''; transportationid.value='';" class="btn btn-default"> 
                                      Submit</button>
                     <button (click)="cancel()" class="btn btn-default">Cancel</button>

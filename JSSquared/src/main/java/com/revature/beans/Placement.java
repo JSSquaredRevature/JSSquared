@@ -14,7 +14,7 @@ public class Placement {
 	@Id
 	@Column(name="id")
 
-	@SequenceGenerator(name="PLACEID_SEQ", sequenceName="PLACEID_SEQ")
+	@SequenceGenerator(name="PLACEID_SEQ", sequenceName="PLACEID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="PLACEID_SEQ", strategy=GenerationType.AUTO)	
 
 	private int id;

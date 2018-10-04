@@ -45,13 +45,15 @@ public class CourtDateController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody List<CourtDate> addCourtDate(@RequestBody CourtDate cd) {
-		System.out.println(cd);
+		System.out.println("What" + cd);
 		ch.save(cd);
 		return ch.getAll();
 	    }
 	
 	@RequestMapping(method = RequestMethod.PUT)
 	public @ResponseBody List<CourtDate> updateCourtDate(@RequestBody CourtDate cd) {
+		System.out.println("\nHello" + cd.getTime());
+		System.out.println("\nWorld" + cd);
 		ch.update(cd);
 		return ch.getAll();
 	    }

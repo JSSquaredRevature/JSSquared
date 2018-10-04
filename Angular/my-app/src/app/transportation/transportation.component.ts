@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location } from '@angular/common';
-import  { Timestamp } from 'rxjs';
-import { Time } from "@angular/common";
+import * as moment from 'moment';
 
 import { Transportation } from '../transportation';
 import { TransportationService } from '../transportation.service';
@@ -43,11 +42,13 @@ export class TransportationComponent implements OnInit {
     }
    
     save(): void {
+      var alteredDate = moment(new Date(this.selectedTransportation.time).toISOString(), 'YYYY-MM-DD');
+      this.selectedTransportation.time = alteredDate['_i'];
       this.transportationService.updateTransportation(this.selectedTransportation)
       .subscribe(() => this.getTransportations());
     }
 
-    insert(id: number, socialworkerid: number, caseid: number, time: Timestamp<Time>, location: string): void {
+    insert(id: number, socialworkerid: number, caseid: number, time: Date, location: string): void {
       this.transportationService.addTransportation({ id, socialworkerid, caseid, time, location } as Transportation)
       .subscribe(() => this.getTransportations());
     }

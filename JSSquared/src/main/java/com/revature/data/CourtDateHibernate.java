@@ -52,6 +52,7 @@ public class CourtDateHibernate implements CourtDateDao {
 		Session se = hu.getSession();
 		Transaction t = se.beginTransaction();
 		se.update(cd);
+		System.out.println(cd);
 		t.commit();
 		se.close();
 		return cd;

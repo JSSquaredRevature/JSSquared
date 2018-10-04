@@ -29,8 +29,6 @@ export class CalexComponent implements OnInit {
     let visitations = this.http.get('http://localhost:8080/JSSquared/visit/json');
     let transportation = this.http.get('http://localhost:8080/JSSquared/transportation/json');
 
-    console.log((cases.subscribe() as any).firstname);
-
     forkJoin([cases, courtDates, transportation, visitations]).subscribe(data=> {
       var eventArr: any[] = [];
 
@@ -40,6 +38,7 @@ export class CalexComponent implements OnInit {
         var monthDay = anyCase[i].birthdate.substr(5, 7);
         var date = new Date().getFullYear();
         var eventStart = date + '-' + monthDay;
+        eventStart = new Date(eventStart).toISOString();
 
         var caseEventObj = {
           caseid: anyCase[i].caseid,
@@ -59,7 +58,7 @@ export class CalexComponent implements OnInit {
       var anyCourtDate: any = data[1];
       for (let i = 0; i < Object.keys(data[1]).length; i++) {
         var eventTitle = "Case #" + anyCourtDate[i].caseid + '\nCourt Date';
-        var eventStart = (new Date(anyCourtDate[i].time)).toString();
+        var eventStart = (new Date(anyCourtDate[i].time)).toISOString();
   
         var courtDateEventObj = {
           id: anyCourtDate[i].id,
@@ -77,7 +76,7 @@ export class CalexComponent implements OnInit {
       for (let i = 0; i < Object.keys(data[3]).length; i++) {
         var eventTitle = "Social Worker #" + anyTransportation[i].socialworkerid +
                         "\nCase #" + anyTransportation[i].caseid + '\nTransportation Date';
-        var eventStart = (new Date(anyTransportation[i].time)).toString();
+        var eventStart = (new Date(anyTransportation[i].time)).toISOString();
 
         var transportationEventObj = {
           id: anyTransportation[i].id,
@@ -95,7 +94,7 @@ export class CalexComponent implements OnInit {
       for (let i = 0; i < Object.keys(data[2]).length; i++) {
         var eventTitle = "Social Worker #" + anyVisitation[i].socialworkerid +
         "\nCase #" + anyVisitation[i].caseid + '\nVisitation';
-        var eventStart = (new Date(anyVisitation[i].time)).toString();
+        var eventStart = (new Date(anyVisitation[i].time)).toISOString();
 
         var visitationEventObj = {
           id: anyVisitation[i].id,
