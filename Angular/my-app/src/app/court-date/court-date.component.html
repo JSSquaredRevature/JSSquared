@@ -17,7 +17,7 @@
                       <th> Case Id </th>
                       <th> Time </th>
                       <th> Location </th>
-                      <th> Transportation Id </th>
+                      <th> Transportation </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -26,7 +26,7 @@
                       <td> {{courtDate.caseid}} </td>
                       <td> {{courtDate.time | date:'M/d/yy h:mm a'}} </td>
                       <td> {{courtDate.location}} </td>
-                      <td> {{courtDate.transportationid}} </td>
+                      <td><span *ngIf="courtDate.transportationid != 0" style="color:green"> Scheduled</span> </td>
                     </tr>
                   </tbody>
                 </table>
@@ -94,6 +94,40 @@
                         <!-- /.box-footer -->
                       </form>
                     </div>
+<<<<<<< HEAD
+=======
+                    <div>
+                      <label>Court Date ID
+                        <input [(ngModel)]="selectedCourtDate.id" class="form-control text-center" placeholder="Court Date ID">
+                      </label>
+                    <div>
+                      <label>Case ID
+                        <input [(ngModel)]="selectedCourtDate.caseid" class="form-control text-center" placeholder="Case ID">  
+                      </label>
+                    <div>
+                      <label>Time
+                        <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
+                        (ngModelChange)="selectedCourtDate.time=$event" class="form-control text-center" placeholder="Time">
+                      </label>
+                    <div>
+                      <label>Location
+                          <input [(ngModel)]="selectedCourtDate.location" class="form-control text-center" placeholder="Location">
+                      </label>
+                      <div>
+                        <label>Transportation ID
+                          <input [(ngModel)]="selectedCourtDate.transportationid" class="form-control text-center" placeholder="Transportation ID">
+                        </label>
+                  <div style="text-align:center;">
+                    <br>
+                    <button (click)="save()" class="btn btn-default">Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+>>>>>>> staging
                   </div>
                 </div>
                   <!-- End Update Form -->
@@ -154,6 +188,21 @@
                         <!-- /.box-footer -->
                       </form>
                     </div>
+<<<<<<< HEAD
+=======
+                    <br>
+                  <div style="text-align:center;">
+                    <button (click)="insert(id.value, caseid.value, time.value, location.value, 
+                                     transportationid.value); id.value=''; caseid.value=''; time.value=''; 
+                                     location.value=''; transportationid.value='';" class="btn btn-default"> 
+                                     Submit</button>
+                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+>>>>>>> staging
                   </div>
                 </div>
                 <!-- End Insert Form -->

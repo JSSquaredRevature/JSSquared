@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Visitation {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="VISIT_SEQ", sequenceName="VISIT_SEQ")
+	@SequenceGenerator(name="VISIT_SEQ", sequenceName="VISIT_SEQ", allocationSize=1)
 	@GeneratedValue(generator="VISIT_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private Timestamp time;

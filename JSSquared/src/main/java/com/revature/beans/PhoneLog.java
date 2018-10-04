@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class PhoneLog {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="PHONE_SEQ", sequenceName="PHONE_SEQ")
+	@SequenceGenerator(name="PHONE_SEQ", sequenceName="PHONE_SEQ", allocationSize=1)
 	@GeneratedValue(generator="PHONE_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int caseid;

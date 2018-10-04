@@ -37,14 +37,12 @@ export class PhoneLogComponent implements OnInit {
    
     this.selectedPhoneLog.time = new Date( this.selectedPhoneLog.time + ':00.000');
     this.phoneLogService.updatePhoneLog(this.selectedPhoneLog)
-      .subscribe(() => this.goBack());
+    .subscribe(() => this.getPhoneLogs());
   }
 
   insert(id: number, caseid: number, time: Date, duration: string, caller: string): void {
     this.phoneLogService.addPhoneLog({ id, caseid,caller,time, duration} as PhoneLog)
-      .subscribe(PhoneLog => {
-        //this.phoneLog.push(PhoneLog);
-      });
+    .subscribe(() => this.getPhoneLogs());
   }
   
   cancel(): void {

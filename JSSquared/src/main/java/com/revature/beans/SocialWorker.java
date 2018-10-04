@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class SocialWorker {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="SWID_SEQ", sequenceName="SWID_SEQ")
+	@SequenceGenerator(name="SWID_SEQ", sequenceName="SWID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="SWID_SEQ", strategy=GenerationType.AUTO)	
 	private int id;
 	private int isadmin;

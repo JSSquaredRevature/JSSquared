@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class CourtDate {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="COURT_SEQ", sequenceName="COURT_SEQ")
+	@SequenceGenerator(name="COURT_SEQ", sequenceName="COURT_SEQ", allocationSize=1)
 	@GeneratedValue(generator="COURT_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private int caseid;

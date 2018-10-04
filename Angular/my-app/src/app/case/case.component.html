@@ -23,7 +23,7 @@
                     <th style="width: 40px">Older Siblings</th>
                     <th style="width: 40px">Phone Call Logs</th>
                   </tr>
-                  <tr *ngFor="let case of cases">
+                  <tr *ngFor="let case of cases" (click)="setSelectedP(case.placement);setCase(case);">
 
                     <td> {{case.caseid}} </td>
                     <td> {{case.firstname}} </td>
@@ -45,6 +45,67 @@
             </div>
         </div>
     </section>
+    <section class="content" *ngIf="+this.auth.getIsAdmin()!=0 && selectedp">
+      <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Edit Case</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" (submit)="newForm($event)">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+      
+                <div class="col-sm-10">
+                    <input [(ngModel)]="selectedcase.firstname" name="fname" type="text" id="firstname" placeholder="First Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
+      
+                <div class="col-sm-10">
+                    <input [(ngModel)]="selectedcase.lastname" name="lname"type="text" id="lastname" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="birthdate" class="col-sm-2 control-label">Birth Date:</label>
+                  <div class="col-sm-10">
+                      <input [(ngModel)]="selectedcase.birthdate" name="bday" type="date" id="birthdate" placeholder="Birth Date">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="rating" class="col-sm-2 control-label">Rating:</label>
+        
+                  <div class="col-sm-10">
+                      <input [(ngModel)]="selectedcase.rating" name="rating" type="number" id="rating" placeholder="Rating">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="socialworker" class="col-sm-2 control-label">Social Worker:</label>
+              <select type="text" id="socialworker" placeholder="Social Worker" [(ngModel)]="selectedcase.sw" name="second"margin-left="20px">
+                  <option [ngValue]="sw" *ngFor="let sw of thisSoc">{{sw.firstname+" "+sw.lastname}}</option>
+              </select>
+              </div>
+              <div class="form-group">
+                  <label for="placement" class="col-sm-2 control-label">Placement:</label>
+              <select type="text" id="placement" placeholder="Placement" [(ngModel)]="selectedcase.placement" name="first">
+                  <option [ngValue]="p" *ngFor="let p of thisp" >{{p.type}}</option>
+              </select>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer col-md-offset-3">
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+      </div>
+  </section>
   </div><!-- End Content-Wrapper -->
+
+ 
+   
+  
   <app-footer></app-footer>
 </div><!-- End Wrapper -->

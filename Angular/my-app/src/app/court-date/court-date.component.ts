@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location, Time } from '@angular/common';
+import * as moment from 'moment';
 
 import { CourtDate } from '../court-date';
 import { CourtDateService }  from '../court-date.service';
@@ -33,7 +34,11 @@ export class CourtDateComponent implements OnInit {
     courtDateSelected(courtDate: CourtDate): void {
       this.showInsertForm = false;
       this.selectedCourtDate = courtDate;
+<<<<<<< HEAD
       console.log(courtDate);
+=======
+      this.selectedCourtDate.time = new Date(this.selectedCourtDate.time);
+>>>>>>> staging
     }
 
     getCourtDates(): void {
@@ -42,15 +47,16 @@ export class CourtDateComponent implements OnInit {
     }
    
     save(): void {
+      var alteredDate = moment(new Date(this.selectedCourtDate.time).toISOString(), 'YYYY-MM-DD');
+      this.selectedCourtDate.time = alteredDate['_i'];
       this.courtDateService.updateCourtDate(this.selectedCourtDate)
-        .subscribe(() => this.goBack());
+        .subscribe(() => this.getCourtDates());
     }
 
     insert(id: number, caseid: number, time: Date, location: string, transportationid: number): void {
       this.courtDateService.addCourtDate({ id, caseid, time, location, transportationid} as CourtDate)
-        .subscribe(CourtDate => {
-          this.courtDate.push(CourtDate);
-        });
+      .subscribe(() => this.getCourtDates());
+
     }
 
     cancel(): void {

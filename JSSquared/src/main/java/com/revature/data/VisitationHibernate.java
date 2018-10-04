@@ -15,7 +15,7 @@ import com.revature.utils.HibernateUtil;
 public class VisitationHibernate implements VisitationDao{
 
 	@Autowired
-	private HibernateUtil hu;
+	private HibernateUtil hu = new HibernateUtil();
 	
 	@Override
 	public Visitation getById(int id) {
@@ -46,6 +46,7 @@ public class VisitationHibernate implements VisitationDao{
 		Session se = hu.getSession();
 		Transaction t = se.beginTransaction();
 		se.update(v);
+		se.flush();
 		t.commit();
 		se.close();
 		return v;
