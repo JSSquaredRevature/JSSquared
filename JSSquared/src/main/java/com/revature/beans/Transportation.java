@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Transportation {
 	@Id
 	@Column(name="id")
-	@SequenceGenerator(name="TRAN_SEQ", sequenceName="TRAN_SEQ")
+	@SequenceGenerator(name="TRAN_SEQ", sequenceName="TRAN_SEQ", allocationSize = 1)
 	@GeneratedValue(generator="TRAN_SEQ", strategy=GenerationType.AUTO)
 	private int id;
 	private int socialworkerid;

@@ -59,7 +59,8 @@
           </label>
         <div>
           <label>Time
-              <input [ngModel]="selectedTransportation.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" class="form-control text-center" placeholder="Time">
+              <input [ngModel]="selectedTransportation.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
+              (ngModelChange)="selectedTransportation.time=$event" class="form-control text-center" placeholder="Time">
           </label>
         <div>
             <label>Location
@@ -106,7 +107,7 @@
         </div>
         <br>
       <div style="text-align:center;">
-        <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value, 
+        <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value+':00.000Z', 
                          location.value); id.value=''; socialworkerid.value=''; caseid.value=''; 
                          time.value=''; location.value='';" class="btn btn-default"> 
                          Submit</button>

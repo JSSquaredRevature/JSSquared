@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   constructor(private socialWorkerService: SocialWorkerService) { }
 
   ngOnInit() {
+    document.body.className = "hold-transition skin-blue sidebar-mini";
     this.getSocialWorker();
   }
 

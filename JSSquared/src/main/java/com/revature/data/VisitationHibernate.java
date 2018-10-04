@@ -46,6 +46,7 @@ public class VisitationHibernate implements VisitationDao{
 		Session se = hu.getSession();
 		Transaction t = se.beginTransaction();
 		se.update(v);
+		se.flush();
 		t.commit();
 		se.close();
 		return v;

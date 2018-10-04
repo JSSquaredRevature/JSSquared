@@ -24,7 +24,7 @@ public class Cases {
 	
 	@Id
 	@Column(name="caseid")
-	@SequenceGenerator(name="CID_SEQ", sequenceName="CID_SEQ")
+	@SequenceGenerator(name="CID_SEQ", sequenceName="CID_SEQ", allocationSize=1)
 	@GeneratedValue(generator="CID_SEQ", strategy=GenerationType.AUTO)	
 	private int caseid;
 	private String firstname;
