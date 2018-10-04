@@ -13,7 +13,7 @@ import com.revature.utils.HibernateUtil;
 @Component
 public class SocialWorkerHibernate implements SocialWorkerDao{
 	@Autowired
-	private HibernateUtil hu;
+	private HibernateUtil hu = new HibernateUtil();
 	@Override
 	public SocialWorker getById(int id) {
 		Session se = hu.getSession();
