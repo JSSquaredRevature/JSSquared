@@ -13,7 +13,7 @@ import com.revature.utils.HibernateUtil;
 @Component
 public class TransportationHibernate implements TransportationDao {
 	@Autowired
-	private HibernateUtil hu = new HibernateUtil();
+	private HibernateUtil hu;
 	@Override
 	public List<Transportation> getAll() {
 		Session s = hu.getSession();

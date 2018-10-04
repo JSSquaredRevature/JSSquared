@@ -15,7 +15,7 @@ import com.revature.utils.HibernateUtil;
 public class VisitationHibernate implements VisitationDao{
 
 	@Autowired
-	private HibernateUtil hu = new HibernateUtil();
+	private HibernateUtil hu;
 	
 	@Override
 	public Visitation getById(int id) {
