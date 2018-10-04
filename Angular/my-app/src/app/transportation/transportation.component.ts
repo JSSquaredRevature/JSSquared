@@ -44,14 +44,12 @@ export class TransportationComponent implements OnInit {
    
     save(): void {
       this.transportationService.updateTransportation(this.selectedTransportation)
-        .subscribe(() => this.goBack());
+      .subscribe(() => this.getTransportations());
     }
 
     insert(id: number, socialworkerid: number, caseid: number, time: Timestamp<Time>, location: string): void {
       this.transportationService.addTransportation({ id, socialworkerid, caseid, time, location } as Transportation)
-        .subscribe(Transportation => {
-          this.transportation.push(Transportation);
-        });
+      .subscribe(() => this.getTransportations());
     }
 
     cancel(): void {

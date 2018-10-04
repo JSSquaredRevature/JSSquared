@@ -42,14 +42,12 @@ export class CourtDateComponent implements OnInit {
    
     save(): void {
       this.courtDateService.updateCourtDate(this.selectedCourtDate)
-        .subscribe(() => this.goBack());
+        .subscribe(() => this.getCourtDates());
     }
 
     insert(id: number, caseid: number, time: Date, location: string, transportationid: number): void {
       this.courtDateService.addCourtDate({ id, caseid, time, location, transportationid} as CourtDate)
-        .subscribe(CourtDate => {
-          this.courtDate.push(CourtDate);
-        });
+      .subscribe(() => this.getCourtDates());
     }
 
     cancel(): void {

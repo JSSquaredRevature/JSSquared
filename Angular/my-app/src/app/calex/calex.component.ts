@@ -29,6 +29,8 @@ export class CalexComponent implements OnInit {
     let visitations = this.http.get('http://localhost:8080/JSSquared/visit/json');
     let transportation = this.http.get('http://localhost:8080/JSSquared/transportation/json');
 
+    console.log((cases.subscribe() as any).firstname);
+
     forkJoin([cases, courtDates, transportation, visitations]).subscribe(data=> {
       var eventArr: any[] = [];
 

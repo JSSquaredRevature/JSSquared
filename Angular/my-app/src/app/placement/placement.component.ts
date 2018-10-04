@@ -28,6 +28,7 @@ export class PlacementComponent implements OnInit {
     this.showInsertForm = false;
     this.placementSelected = placement;
   }
+
   getPlacements(){
     this.placementService.getPlacement().subscribe(data=>{
       this.placements=data;
@@ -36,13 +37,11 @@ export class PlacementComponent implements OnInit {
 
   save(): void {
     this.placementService.updatePlacement(this.placementSelected)
-      .subscribe(() => this.goBack());
+    .subscribe(() => this.getPlacements());
   }
   insert(id: number, type: string, maxcapacity: number, agemin: number, agemax: number): void {
     this.placementService.addPlacement({ 'id':id, 'type':type,'maxcapacity':maxcapacity,'agemin':agemin,'agemax': agemax})
-      .subscribe(Placement => {
-        //this.phoneLog.push(PhoneLog);
-      });
+    .subscribe(() => this.getPlacements());
   }
   
   cancel(): void {

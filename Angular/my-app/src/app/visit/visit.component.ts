@@ -43,14 +43,12 @@ export class VisitComponent implements OnInit {
    
     save(): void {
       this.visitService.updateVisits(this.selectedvisit)
-        .subscribe(() => this.goBack());
+      .subscribe(() => this.getVisits());
     }
 
     insert(id: number, socialworkerid: number, caseid: number, time: Date, location: string, transportationid: number): void {
       this.visitService.addVisit({ id, socialworkerid, caseid,time, location, transportationid} as Visit)
-        .subscribe(Visit => {
-         // this.visit.push(Visit);
-        });
+      .subscribe(() => this.getVisits());
     }
 
     cancel(): void {
