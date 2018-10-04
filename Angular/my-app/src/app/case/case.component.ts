@@ -39,4 +39,24 @@ export class CaseComponent implements OnInit {
     this.route.navigate(['phonelog']);
   }
 
+  isGreen(rating){
+      if(Number(rating) >= 80){
+        return true;
+      }
+      return false;
+  }
+  isYellow(rating){
+    if(Number(rating) >= 65 && Number(rating) < 80){
+      return true;
+    }
+    return false;
+  }
+  isRed(rating){
+    if(Number(rating) < 65){
+      return true;
+    }
+    return false;
+  }
+
+
 }

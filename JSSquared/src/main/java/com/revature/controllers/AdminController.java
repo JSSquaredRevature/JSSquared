@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Cases;
-import com.revature.beans.CourtDate;
 import com.revature.data.CasesHibernate;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -62,6 +61,7 @@ public class AdminController {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		System.out.println("\n\n" + result + "\n\n");
 		return result;
 	}
 	

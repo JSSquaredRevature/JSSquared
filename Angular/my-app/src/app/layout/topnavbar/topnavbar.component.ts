@@ -13,4 +13,15 @@ export class TopnavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleMenu(){
+    if(document.getElementsByTagName("body")[0].className.match("skin-blue sidebar-mini sidebar-open sidebar-collapse")){
+      document.body.className = "skin-blue sidebar-mini sidebar-open"
+    }
+    if(document.getElementsByTagName("body")[0].className.match("skin-blue sidebar-mini sidebar-open")) {
+      document.body.className = "skin-blue sidebar-mini sidebar-open sidebar-collapse"
+    }
+    if(document.getElementsByTagName("body")[0].className.match("skin-blue sidebar-mini")){
+      document.body.className = "skin-blue sidebar-mini sidebar-open"
+    }
+  }
 }
