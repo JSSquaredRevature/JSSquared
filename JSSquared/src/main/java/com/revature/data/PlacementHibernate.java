@@ -13,7 +13,7 @@ import com.revature.utils.HibernateUtil;
 @Component
 public class PlacementHibernate implements PlacementDao {
     @Autowired
-    private HibernateUtil hu = new HibernateUtil();
+    private HibernateUtil hu;
     @Override
     public Placement getById(int id) {
         Session se = hu.getSession();

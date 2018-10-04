@@ -14,7 +14,7 @@ import com.revature.utils.HibernateUtil;
 public class CourtDateHibernate implements CourtDateDao {
 
 	@Autowired
-	private HibernateUtil hu = new HibernateUtil();
+	private HibernateUtil hu;
 	
 	@Override
 	public CourtDate getById(int id) {
