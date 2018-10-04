@@ -14,6 +14,11 @@ export class SubmitService {
     const body = `firstname=${firstname}&lastname=${lastname}&birthdate=${birthdate}&rating=${rating}&socialId=${socialw}&placementId=${placement}`;
     return this.http.post(this.url.getUrl()+'createcase', body, {headers: this.headers})
   }
+
+  updateForm(newcase:Object){
+    
+    return this.http.put(this.url.getUrl()+'createcase',newcase);
+  }
 }
 
 
