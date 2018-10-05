@@ -31,8 +31,8 @@ import { VisitComponent } from './visit/visit.component';
 
 import { TransportationComponent } from './transportation/transportation.component';
 import { ProfileComponent } from './profile/profile.component';
-
 import { PlacementComponent } from './placement/placement.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -61,6 +61,7 @@ import { PlacementComponent } from './placement/placement.component';
     BrowserModule,
     HttpClientModule,
     FullCalendarModule,
+    NgxPermissionsModule.forRoot(),
     FormsModule,
     RouterModule.forRoot([
     {
@@ -82,19 +83,17 @@ import { PlacementComponent } from './placement/placement.component';
       component: AdminComponent,
       canActivate: [AuthGuard]
     },
-    {path: 'cases', component: CaseComponent},
-    {path: 'case', component: CaseComponent},
-    {path: 'phonelog', component: PhoneLogComponent },
-    {path: 'socialworker', component: SocialWorkerComponent},
-    {path: 'courtdate', component: CourtDateComponent}, 
+    {path: 'cases', component: CaseComponent, canActivate: [AuthGuard]},
+    {path: 'case', component: CaseComponent, canActivate: [AuthGuard]},
+    {path: 'phonelog', component: PhoneLogComponent, canActivate: [AuthGuard]},
+    {path: 'socialworker', component: SocialWorkerComponent, canActivate: [AuthGuard]},
+    {path: 'courtdate', component: CourtDateComponent, canActivate: [AuthGuard]}, 
+    {path: 'calendar', component: CalexComponent, canActivate: [AuthGuard]},   
+    {path: 'visit', component: VisitComponent, canActivate: [AuthGuard]},
+    {path: 'transportation', component: TransportationComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    {path: 'placement', component: PlacementComponent, canActivate: [AuthGuard]}
 
-    {path: 'calendar', component: CalexComponent},   
-
-    {path: 'calex', component: CalexComponent},
-    {path: 'visit', component: VisitComponent},
-    {path: 'transportation', component: TransportationComponent},
-    {path: 'profile', component: ProfileComponent},
-    {path: 'placement', component: PlacementComponent}
     ])
   ],
   providers: [AuthGuard, UrlService],

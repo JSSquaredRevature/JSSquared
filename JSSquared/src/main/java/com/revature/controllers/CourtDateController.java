@@ -45,17 +45,20 @@ public class CourtDateController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody List<CourtDate> addCourtDate(@RequestBody CourtDate cd) {
-		System.out.println("What" + cd);
 		ch.save(cd);
 		return ch.getAll();
 	    }
 	
 	@RequestMapping(method = RequestMethod.PUT)
 	public @ResponseBody List<CourtDate> updateCourtDate(@RequestBody CourtDate cd) {
-		System.out.println("\nHello" + cd.getTime());
-		System.out.println("\nWorld" + cd);
 		ch.update(cd);
 		return ch.getAll();
+	    }
+	
+	@RequestMapping(value="{id}",method = RequestMethod.DELETE)
+	public @ResponseBody List<CourtDate> deleteCourtDate(@PathVariable("id") int id) {
+		ch.delete(ch.getById(id));
+	    return ch.getAll();
 	    }
 	
 	@RequestMapping(value="/json", method = RequestMethod.GET)

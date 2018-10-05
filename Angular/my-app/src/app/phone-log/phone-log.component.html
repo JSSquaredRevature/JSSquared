@@ -1,11 +1,10 @@
-
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper" style="min-height: 960px;">
     <section class="content">
       <div *ngIf="phoneLogs">
-          <div class="box">
+          <div class="box box-primary">
               <div class="box-header">
                 <h3 class="box-title">Phone Calls for Case {{phoneLogService.getCaseId()}}</h3>
               </div>
@@ -26,95 +25,122 @@
                
                   </tr>
                 </table>
-
-
-
+              </div>
+            </div>
+              <!-- /.box-body -->
                 <div style="text-align:center;">
                   <div class="btn-group">
-                    <button (click)="insertButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
-                    <button (click)="goBack()" class="btn btn-outline-dark">Back</button>
+                    <button (click)="insertButtonSelected()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button (click)="goBack()" class="btn btn-outline-dark"><i class="fa fa-undo" aria-hidden="true"></i></button>
                   </div>
                 </div>
                 <br>
-                <div *ngIf="selectedPhoneLog" style="text-align:center;"> 
-                    <div>
-                      <h3 class="box-title"> Update Form </h3>
-                    </div>
-                    <div>
-                      <label>Phone Log ID
-                        <input [(ngModel)]="selectedPhoneLog.id" class="form-control" placeholder="Phone Log ID">
-                      </label>
-                    <div>
-                      <label>Caller
-                        <input [(ngModel)]="selectedPhoneLog.caller" class="form-control" placeholder="Caller">  
-                      </label>
-                    <div>
-                      <label>Time
-                        <input [ngModel]="selectedPhoneLog.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
-                        (ngModelChange)="selectedPhoneLog.time=$event" class="form-control" placeholder="Time">
-                      </label>
-                    <div>
-                      <label>Duration
-                          <input [(ngModel)]="selectedPhoneLog.duration" class="form-control" placeholder="Duration">
-                      </label>
+                <!-- Start Update Form -->
+                <div *ngIf="selectedPhoneLog" class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                      <div class="box box-primary">
+                          <div class="box-header with-border">
+                            <h3 class="box-title">Update Form</h3>
+                          </div>
+                          <!-- /.box-header -->
+                          <!-- form start -->
+                          <form class="form-horizontal">
+                            <div class="box-body">
+                              <div class="form-group">
+                                <label for="id" class="col-sm-4 control-label">Phone Log ID</label>
+                                <div class="col-sm-8">
+                                  <input [(ngModel)]="selectedPhoneLog.id" name="id" type="text" class="form-control" id="id" placeholder="Phone Log Id" disabled aria-disabled="true">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="caller" class="col-sm-4 control-label">Caller</label>
                       
-                  <div style="text-align:center;" class="box-footer">
-                    <button (click)="save()" class="btn btn-default">Submit</button>
-                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  
-                  <div *ngIf="showInsertForm" style="text-align:center;">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">Insert Form</h3>
-                      <br>
+                                <div class="col-sm-8">
+                                  <input [(ngModel)]="selectedPhoneLog.caller" name="caller" type="text" class="form-control" id="caller" placeholder="Caller">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="time" class="col-sm-4 control-label">Time</label>
+                      
+                                <div class="col-sm-8">
+                                  <input [ngModel]="selectedPhoneLog.time | date:'yyyy-MM-ddThh:mm'" name="time" 
+                                  (ngModelChange)="selectedPhoneLog.time=$event" type="datetime-local" class="form-control" id="time" placeholder="Time">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="duration" class="col-sm-4 control-label">Duration</label>
+                        
+                                  <div class="col-sm-8">
+                                    <input [(ngModel)]="selectedPhoneLog.duration" name="duration" type="text" class="form-control" id="duration" placeholder="Duration">
+                                  </div>
+                              </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button (click)="save()" class="btn btn-primary">Submit</button>
+                                <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                            </div>
+                            <!-- /.box-footer -->
+                          </form>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <label>Phone Log Id
-                        <input #id class="form-control" />
-                      </label>
-                    <div>
-                        <label>Caller
-                          <input #caller class="form-control"/>
-                        </label>
-                    <div>    
-                      <label>Time
-                          <input type="datetime-local" step="any" class="form-control" #time/>
-                        </label>
-                    <div>
-                      <label>Duration
-                          <input #duration class="form-control"/>
-                        </label>
-                   
-                    </div>
-                    <br>
-                  <div style="text-align:center;">
-                    <button (click)="insert(id.value, phoneLogService.getCaseId(), time.value+':00.000Z', duration.value, 
-                                     caller.value); id.value=''; time.value=''; 
-                                     duration.value=''; caller.value='';" class="btn btn-default"> 
-                                     Submit</button>
-                    <button (click)="cancel()" class="btn btn-default">Cancel</button>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-
-
-
-
-
-
-
-
-
-              </div>
-              <!-- /.box-body -->
-            </div>
+                  <!-- End Update Form -->
+                  <!-- Start Insert Form -->
+                  <div *ngIf="showInsertForm" class="row">
+                      <div class="col-md-4 col-md-offset-4">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                              <h3 class="box-title">Add Phone Call</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form class="form-horizontal">
+                              <div class="box-body">
+                                <div class="form-group">
+                                  <label for="id" class="col-sm-4 control-label">Phone Log ID</label>
+                                  <div class="col-sm-8">
+                                    <input #id name="id" type="text" class="form-control" id="id" placeholder="Phone Log Id">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="caller" class="col-sm-4 control-label">Caller</label>
+                        
+                                  <div class="col-sm-8">
+                                    <input #caller name="caller" type="text" class="form-control" id="caller" placeholder="Caller">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="time" class="col-sm-4 control-label">Time</label>
+                        
+                                  <div class="col-sm-8">
+                                    <input #time name="time" type="datetime-local" class="form-control" id="time" placeholder="Time">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duration" class="col-sm-4 control-label">Duration</label>
+                          
+                                    <div class="col-sm-8">
+                                      <input #duration name="duration" type="text" class="form-control" id="duration" placeholder="Duration">
+                                    </div>
+                                </div>
+                              </div>
+                              <!-- /.box-body -->
+                              <div class="box-footer">
+                                  <button (click)="insert(id.value, phoneLogService.getCaseId(), time.value+':00.000Z', duration.value, 
+                                                       caller.value); id.value=''; time.value=''; 
+                                                       duration.value=''; caller.value='';" class="btn btn-primary"> 
+                                                       Submit</button>
+                                      <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                              </div>
+                              <!-- /.box-footer -->
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                  <!-- End Insert Form -->
+              
+            
         </div>
     </section>
   </div><!-- End Content-Wrapper -->

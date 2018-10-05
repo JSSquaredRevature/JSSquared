@@ -4,7 +4,7 @@
   <div class="content-wrapper " style="min-height: 960px;">
     <section class="content">
         <div *ngIf="transportations">
-          <div class="box">
+          <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Transportation</h3>
             </div>
@@ -35,89 +35,131 @@
           </div>
           <div style="text-align:center;">
             <div class="btn-group">
-              <button (click)="insertButtonSelected()" class="btn btn-outline-dark">Show Insert Form</button>
+              <button (click)="insertButtonSelected()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
             </div>
           </div>
     </section>
     <br>
-    <div *ngIf="selectedTransportation" style="text-align:center;"> 
-        <div>
-          <h3 class="box-title"> Update Form </h3>
-          <br>
+    <!-- Start Update Form -->
+    <div *ngIf="selectedTransportation" class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Update Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="id" class="col-sm-4 control-label">Transportation Id</label>
+        
+                  <div class="col-sm-8">
+                    <input [(ngModel)]="selectedTransportation.id" name="id" type="text" class="form-control" placeholder="Transportation Id" disabled aria-disabled="true">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="swi" class="col-sm-4 control-label">Social Worker Id</label>
+                  <div class="col-sm-8">
+                    <input [(ngModel)]="selectedTransportation.socialworkerid" name="swi" type="text" class="form-control" id="swi" placeholder="Social Worker Id">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="cid" class="col-sm-4 control-label">Case Id</label>
+                  <div class="col-sm-8">
+                    <input [(ngModel)]="selectedTransportation.caseid" name="cid" type="text" class="form-control" id="cid" placeholder="Case Id">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="time" class="col-sm-4 control-label">Time</label>
+                  <div class="col-sm-8">
+                    <input [ngModel]="selectedTransportation.time | date:'yyyy-MM-ddThh:mm'" name="time" type="datetime-local" (ngModelChange)="selectedTransportation.time=$event" class="form-control" id="time" placeholder="Time">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location" class="col-sm-4 control-label">Location</label>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="selectedTransportation.location" type="text" class="form-control" name="location" id="location" placeholder="Location">
+                    </div>
+                </div>
+                
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button (click)="save()" class="btn btn-primary">Submit</button>
+                <button (click)="cancel()" class="btn btn-danger">Close</button>
+                <button *ngIf="this.auth.getIsAdmin()==1" (click)=delete() class="btn btn-primary delete pull-right"><i class="fa fa-minus" aria-hidden="true"></i></button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
         </div>
-        <div>
-          <label>Transportation Id
-            <input [(ngModel)]="selectedTransportation.id" class="form-control text-center" placeholder="Transportation Id">
-          </label>
-        <div>
-          <label>Social Worker Id
-            <input [(ngModel)]="selectedTransportation.socialworkerid" class="form-control text-center" placeholder="Social Worker Id">  
-          </label>
-        <div>
-          <label>Case Id
-            <input [(ngModel)]="selectedTransportation.caseid" class="form-control text-center" placeholder="Case Id">
-          </label>
-        <div>
-          <label>Time
-              <input [ngModel]="selectedTransportation.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
-              (ngModelChange)="selectedTransportation.time=$event" class="form-control text-center" placeholder="Time">
-          </label>
-        <div>
-            <label>Location
-              <input [(ngModel)]="selectedTransportation.location" class="form-control text-center" placeholder="Location">
-            </label>
+      </div>
+      <!-- End Update Form -->
+      <!-- Start Insert Form -->
+      <div *ngIf="showInsertForm" class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">Add New Transportation</h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="id" class="col-sm-4 control-label">Transportation Id</label>
+                    <div class="col-sm-8">
+                      <input #id name="id" type="text" class="form-control" id="id" placeholder="Phone Log Id">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="sid" class="col-sm-4 control-label">Social Worker Id</label>
+          
+                    <div class="col-sm-8">
+                      <input #socialworkerid name="sid" type="text" class="form-control" id="sid" placeholder="Social Worker Id">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="cid" class="col-sm-4 control-label">Case Id</label>
+          
+                    <div class="col-sm-8">
+                      <input #caseid name="cid" type="text" class="form-control" id="cid" placeholder="Case Id">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="time" class="col-sm-4 control-label">Time</label>
+          
+                    <div class="col-sm-8">
+                      <input #time name="time" type="datetime-local" class="form-control" id="time" placeholder="Time">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="location" class="col-sm-4 control-label">Location</label>
             
-      <div style="text-align:center;">
-        <br>
-        <button (click)="save()" class="btn btn-default">Submit</button>
-        <button (click)="cancel()" class="btn btn-default">Cancel</button>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      
-      <div *ngIf="showInsertForm" style="text-align:center;">
-        <div>
-          <h3 class="box-title">Insert Form</h3>
-          <br>
+                      <div class="col-sm-8">
+                        <input #location name="location" type="text" class="form-control" id="location" placeholder="Location">
+                      </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value, 
+                             location.value); id.value=''; socialworkerid.value=''; caseid.value=''; 
+                             time.value=''; location.value='';" class="btn btn-primary"> 
+                             Submit</button>
+                <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                </div>
+                <!-- /.box-footer -->
+              </form>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Transportation Id
-            <input #id class="form-control text-center" />
-          </label>
-        <div>
-            <label>Social Worker Id
-              <input #socialworkerid class="form-control text-center"/>
-            </label>
-        <div>    
-          <label>Case Id
-              <input #caseid class="form-control text-center" />
-            </label>
-        <div>
-          <label>Time
-              <input #time type="datetime-local" step="any" class="form-control text-center"/>
-            </label>
-        <div>        
-          <label>Location
-              <input #location class="form-control text-center"/>
-            </label>
-        </div>
-        <br>
-      <div style="text-align:center;">
-        <button (click)="insert(id.value, socialworkerid.value, caseid.value, time.value+':00.000Z', 
-                         location.value); id.value=''; socialworkerid.value=''; caseid.value=''; 
-                         time.value=''; location.value='';" class="btn btn-default"> 
-                         Submit</button>
-        <button (click)="cancel()" class="btn btn-default">Cancel</button>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
+      <!-- End Insert Form -->
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
 </div><!-- End Wrapper -->

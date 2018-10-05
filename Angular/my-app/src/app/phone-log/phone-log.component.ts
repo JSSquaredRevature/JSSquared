@@ -38,6 +38,7 @@ export class PhoneLogComponent implements OnInit {
   save(): void {
     var alteredDate = moment(new Date(this.selectedPhoneLog.time).toISOString(), 'YYYY-MM-DD');
     this.selectedPhoneLog.time = alteredDate['_i'];
+   
     this.phoneLogService.updatePhoneLog(this.selectedPhoneLog)
     .subscribe(() => this.getPhoneLogs());
   }

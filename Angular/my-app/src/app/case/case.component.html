@@ -5,7 +5,7 @@
   <div class="content-wrapper" style="min-height: 960px;">
     <section class="content">
       <div *ngIf="cases">
-          <div class="box">
+          <div class="box box-primary">
               <div class="box-header">
                 <h3 class="box-title">Case</h3>
               </div>
@@ -29,7 +29,9 @@
                     <td> {{case.firstname}} </td>
                     <td> {{case.lastname}} </td>
                     <td> {{case.birthdate}} </td>
-                    <td> {{case.rating}} </td>
+                    <td><span *ngIf="isGreen(case.rating)"><span class="label label-success">{{case.rating}}</span></span>
+                      <span *ngIf="isYellow(case.rating)"><span class="label label-warning">{{case.rating}}</span></span>
+                      <span *ngIf="isRed(case.rating)"><span class="label label-danger">{{case.rating}}</span></span></td>
                     <td> {{case.sw.firstname}} {{case.sw.lastname}} </td>
                     <td> {{case.placement.type}} </td>
                     <td *ngIf="case.siblings[0];else nosiblings"><span *ngFor="let sib of case.siblings">{{sib.firstname }} {{sib.lastname}} <br></span> </td>

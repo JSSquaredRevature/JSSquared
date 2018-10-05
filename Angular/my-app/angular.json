@@ -31,8 +31,7 @@
             ],
             "scripts": [
               "src/assets/bower_components/jquery/dist/jquery.min.js",
-              "src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/plugins/iCheck/icheck.min.js"
+              "src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

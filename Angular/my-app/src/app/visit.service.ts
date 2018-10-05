@@ -34,4 +34,10 @@ export class VisitService {
   addVisit (visit: Visit): Observable<Visit> {
     return this.http.post<Visit>(this.visitUrl, visit, httpOptions);
   }
+
+  deleteVisit (visit: Visit): Observable<Visit> {
+    const url = this.visitUrl + '/' + visit.id;
+  
+    return this.http.delete<Visit>(url, httpOptions);
+  }
 }

@@ -1,9 +1,10 @@
+<ng-template ngxPermissionsOnly="ADMIN">
 <div class="wrapper">
   <app-topnavbar></app-topnavbar>
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper" style="min-height: 960px;">
     <section class="content">
-        <div class="box box-info">
+        <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Add New Case</h3>
             </div>
@@ -40,20 +41,24 @@
                 </div>
                 <div class="form-group">
                     <label for="socialworker" class="col-sm-2 control-label">Social Worker:</label>
-                <select type="text" id="socialworker" placeholder="Social Worker" margin-left="20px">
+                    <div class="col-sm-10">
+                        <select type="text" id="socialworker" placeholder="Social Worker" margin-left="20px">
                     <option [value]="sw.id" *ngFor="let sw of thisSoc">{{sw.firstname+" "+sw.lastname}}</option>
-                </select>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="placement" class="col-sm-2 control-label">Placement:</label>
-                <select type="text" id="placement" placeholder="Placement" [(ngModel)]="selectedp" name="first">
+                    <div class="col-sm-10">
+                        <select type="text" id="placement" placeholder="Placement" [(ngModel)]="selectedp" name="first">
                     <option [ngValue]="p" *ngFor="let p of thisp" >{{p.type}}</option>
-                </select>
+                        </select>
+                    </div>
                 </div>
               </div>
               <!-- /.box-body -->
-              <div class="box-footer col-md-offset-3">
-                <button type="submit" class="btn btn-info">Submit</button>
+              <div class="box-footer col-md-offset-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -62,4 +67,12 @@
   </div><!-- End Content-Wrapper -->
   <app-footer></app-footer>
 </div><!-- End Wrapper -->
-
+</ng-template>
+<ng-template ngxPermissionsOnly="SW">
+    <div class="row">
+    <div class=".col-md-4 col-sm-offset-1">
+        <h1>403 Forbidden</h1>
+        <h3>We know its you {{auth.getFullname()}}.</h3>
+    </div>
+    </div>
+</ng-template>
