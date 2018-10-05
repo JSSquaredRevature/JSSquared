@@ -35,8 +35,11 @@ public class CasesHibernate implements CasesDao {
 		@Override
 		public List<Cases> getByName(String name) {
 			Session s = hu.getSession();
-			List<Cases> c = s.createQuery("From com.revature.beans.Cases where CONCAT(firstname, ' ', lastname) LIKE :name", Cases.class)
-					.setParameter("name", '%' + name + '%').list();
+			List<Cases> c = s.createQuery("From com.revature.beans.Cases where upper(CONCAT(firstname, ' ', lastname)) LIKE :name", Cases.class)
+					.setParameter("name", '%' + name.toUpperCase() + '%').list();
+			
+			
+			System.out.println(name.toUpperCase());
 			s.close();
 			return c;
 		}
@@ -44,9 +47,9 @@ public class CasesHibernate implements CasesDao {
 		@Override
 		public List<Cases> getByNameAndSW(String name, int socialworkerid) {
 			Session s = hu.getSession();
-			List<Cases> c = s.createQuery("From com.revature.beans.Cases where CONCAT(firstname, ' ', lastname) LIKE :name AND socialworkerid= :socialworkerid", Cases.class)
-					.setParameter("name", '%' + name + '%').setParameter("socialworkerid", socialworkerid).list();
-			System.out.println(c);
+			List<Cases> c = s.createQuery("From com.revature.beans.Cases where upper(CONCAT(firstname, ' ', lastname)) LIKE :name AND socialworkerid= :socialworkerid", Cases.class)
+					.setParameter("name", '%' + name.toUpperCase() + '%').setParameter("socialworkerid", socialworkerid).list();
+			System.out.println(name.toUpperCase());
 			s.close();
 			return c;
 		}
