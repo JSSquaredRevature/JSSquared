@@ -63,6 +63,13 @@ export class CaseComponent implements OnInit {
     this.selectedsw=sw;
   }
 
+
+  cancel(): void {
+    this.selectedp = null;
+    this.selectedsw= null;
+  }
+
+
   getCases(): void {
     this.caseService.getCases()
       .subscribe(Case=> this.cases = Case);
