@@ -1,0 +1,19 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar" style="height: auto;">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu tree" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
+      <li><a href="dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="create-form"><i class="fa fa-address-card-o"></i>Add Case</a></li>
+      <li><a href="case"><i class="fa fa-archive"></i>View Cases</a></li>
+      <li *ngIf="auth.getIsAdmin() != 0"><a href="socialworker"><i class="fa fa-users"></i>View Social Workers</a></li>
+      <li><a href="courtdate"><i class="fa fa-gavel"></i>Courtdate</a></li>
+      <li><a href="placement"><i class="fa fa-home"></i>Placement</a></li>
+      <li><a href="transportation"><i class="fa fa-subway"></i>Transportation</a></li>
+      <li><a href="visit"><i class="fa fa-child"></i>Visitation</a></li>  
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside><!-- End aside sidenav -->
+

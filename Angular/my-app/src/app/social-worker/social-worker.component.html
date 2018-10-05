@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <app-topnavbar></app-topnavbar>
+  <app-sidenavbar></app-sidenavbar>
+  <div class="content-wrapper" style="min-height: 960px;">
+    <section class="content">
+      <div>
+        <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Social Worker</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-striped">
+                <tr>
+                  <th style="width: 40px">Social Worker ID</th>
+                  <th style="width: 40px">Administrator Status</th>
+                  <th style="width: 40px">Username</th>
+                  <th style="width: 40px">First Name</th>
+                  <th style="width: 40px">Last Name</th>
+                </tr>
+                <tr *ngFor="let socialWorker of socialWorkers">
+                    <td> {{socialWorker.id}} </td>
+                    <td><span *ngIf="socialWorker.isadmin == 1"><i class="fa fa-check" aria-hidden="true" style="color:green;"></i></span>
+                      <span *ngIf="socialWorker.isadmin == 0"><i class="fa fa-times" aria-hidden="true" style="color:red;"></i></span></td>
+                    <td> {{socialWorker.username}} </td>
+                    <td> {{socialWorker.firstname}} </td>
+                    <td> {{socialWorker.lastname}} </td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+      </div>
+    
+    </section>
+  </div><!-- End Content-Wrapper -->
+  <app-footer></app-footer>
+</div><!-- End Wrapper -->

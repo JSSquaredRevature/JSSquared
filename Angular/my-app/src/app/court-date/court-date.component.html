@@ -1,0 +1,165 @@
+<div class="wrapper">
+  <app-topnavbar></app-topnavbar>
+  <app-sidenavbar></app-sidenavbar>
+  <div class="content-wrapper " style="min-height: 960px;">
+    <section class="content">
+        <div *ngIf="courtDates">
+            <div class="box box-primary">
+              <div class="box-header">
+                <h3 class="box-title">Court Date</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body no-padding">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th> Court Date Id </th>
+                      <th> Case Id </th>
+                      <th> Time </th>
+                      <th> Location </th>
+                      <th> Transportation </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let courtDate of courtDates" (click)="courtDateSelected(courtDate)">
+                      <td> {{courtDate.id}} </td>
+                      <td> {{courtDate.caseid}} </td>
+                      <td> {{courtDate.time | date:'M/d/yy h:mm a'}} </td>
+                      <td> {{courtDate.location}} </td>
+                      <td><span *ngIf="courtDate.transportationid != 0" style="color:green"> Scheduled</span> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+                <div style="text-align:center;">
+                  <div class="btn-group">
+                    <button (click)="insertButtonSelected()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+                <br>
+              <!-- Start Update Form -->
+              <div *ngIf="selectedCourtDate" class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Update Form</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- form start -->
+                      <form class="form-horizontal">
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label for="id" class="col-sm-4 control-label">Court Date ID</label>
+                  
+                            <div class="col-sm-8">
+                              <input [(ngModel)]="selectedCourtDate.id" name="id" type="text" class="form-control" placeholder="Court Date Id" disabled aria-disabled="true">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="cid" class="col-sm-4 control-label">Case ID</label>
+                  
+                            <div class="col-sm-8">
+                              <input [(ngModel)]="selectedCourtDate.caseid" name="cid" type="text" class="form-control" id="cid" placeholder="Case Id">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="time" class="col-sm-4 control-label">Time</label>
+                  
+                            <div class="col-sm-8">
+                              <input [ngModel]="selectedCourtDate.time | date:'yyyy-MM-ddThh:mm'" name="time"  (ngModelChange)="selectedCourtDate.time=$event" type="datetime-local" class="form-control" id="time" placeholder="Time">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="location" class="col-sm-4 control-label">Location</label>
+                    
+                              <div class="col-sm-8">
+                                <input [(ngModel)]="selectedCourtDate.location" name="location" type="text" class="form-control" id="location" placeholder="Location">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="transportationid" class="col-sm-4 control-label">Transportation Id</label>
+                    
+                              <div class="col-sm-8">
+                                <input [(ngModel)]="selectedCourtDate.transportationid" name="transportationid" type="text" class="form-control" id="transportationid" placeholder="Transportation Id">
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                          <button (click)="save()" class="btn btn-primary">Submit</button>
+                          <button (click)="cancel()" class="btn btn-danger">Close</button>
+                          <button *ngIf="this.auth.getIsAdmin()==1" (click)=delete() class="btn btn-primary delete pull-right"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                        </div>
+                        <!-- /.box-footer -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                  <!-- End Update Form -->
+                  <!-- Start Insert Form -->
+              <div *ngIf="showInsertForm" class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Add New Court Date</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <!-- form start -->
+                      <form class="form-horizontal">
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label for="id" class="col-sm-4 control-label">Court Date Id</label>
+                  
+                            <div class="col-sm-8">
+                              <input #id type="text" class="form-control" id="id" placeholder="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="cid" class="col-sm-4 control-label">Case Id</label>
+                  
+                            <div class="col-sm-8">
+                              <input #caseid name="cid" type="text" class="form-control" id="cid" placeholder="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="time" class="col-sm-4 control-label">Time</label>
+                  
+                            <div class="col-sm-8">
+                              <input #time type="datetime-local" class="form-control" id="time" placeholder="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="location" class="col-sm-4 control-label">Location</label>
+                    
+                              <div class="col-sm-8">
+                                <input #location type="text" class="form-control" id="location" placeholder="">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="transportationid" class="col-sm-4 control-label">Transportation Id</label>
+                    
+                              <div class="col-sm-8">
+                                <input #transportationid type="text" class="form-control" id="transportationid" placeholder="">
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button (click)="insert(id.value, caseid.value, time.value+':00.000Z', location.value, 
+                            transportationid.value); id.value=''; caseid.value=''; time.value=''; 
+                            location.value=''; transportationid.value='';" class="btn btn-primary">Submit</button>
+                            <button (click)="cancel()" class="btn btn-danger">Close</button>
+                        </div>
+                        <!-- /.box-footer -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Insert Form -->
+                </section>
+  </div><!-- End Content-Wrapper -->
+  <app-footer></app-footer>
+</div><!-- End Wrapper -->
+

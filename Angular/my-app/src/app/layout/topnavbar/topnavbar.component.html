@@ -1,0 +1,51 @@
+<header class="main-header">
+  <!-- Logo -->
+  <a href="#" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>SW</b>D</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>SW</b>Dashboard</span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+      <a (click)="toggleMenu()" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+           
+            <span class="hidden-xs">{{ auth.getFullname() }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+              
+
+              <p>
+                {{ auth.getFullname() }} - <span *ngIf="auth.getIsAdmin() == 0">Social Worker</span><span *ngIf="auth.getIsAdmin() != 0">Administrator</span>
+              </p>
+            </li>
+            <!-- Menu Body -->
+              <!-- /.row -->
+            
+            <!-- Menu Footer-->
+            <li class="user-footer">
+                <div class="pull-left">
+                    <a href="profile" class="btn btn-primary btn-flat">Profile</a>
+                  </div>
+              <div class="pull-right">
+                <a href="#" class="btn btn-danger btn-flat" (click)="auth.logout()">Sign out</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!-- Control Sidebar Toggle Button -->
+      </ul>
+    </div>
+  </nav>
+</header>
