@@ -68,7 +68,6 @@ export class CaseComponent implements OnInit {
     this.route.navigate(['phonelog']);
   }
 
-<<<<<<< HEAD
   isGreen(rating){
       if(Number(rating) >= 80){
         return true;
@@ -89,7 +88,6 @@ export class CaseComponent implements OnInit {
   }
 
 
-=======
 
 
 
@@ -125,5 +123,4 @@ export class CaseComponent implements OnInit {
     })
   }
 
->>>>>>> staging
 }
