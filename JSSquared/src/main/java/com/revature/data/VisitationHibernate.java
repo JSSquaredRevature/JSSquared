@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.revature.beans.Cases;
 import com.revature.beans.Visitation;
 import com.revature.utils.HibernateUtil;
 
@@ -64,13 +63,11 @@ public class VisitationHibernate implements VisitationDao{
 
 	@Override
 	public void delete(Visitation v) {
-
 		Session se = hu.getSession();
 		Transaction t = se.beginTransaction();
-		se.save(v);
+		se.delete(v);
 		t.commit();
 		se.close();
-		
 	}
 
 	@Override

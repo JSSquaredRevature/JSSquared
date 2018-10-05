@@ -31,7 +31,25 @@ public class CasesHibernate implements CasesDao {
 			s.close();
 			return c;
 		}
+
+		@Override
+		public List<Cases> getByName(String name) {
+			Session s = hu.getSession();
+			List<Cases> c = s.createQuery("From com.revature.beans.Cases where CONCAT(firstname, ' ', lastname) LIKE :name", Cases.class)
+					.setParameter("name", '%' + name + '%').list();
+			s.close();
+			return c;
+		}
 		
+		@Override
+		public List<Cases> getByNameAndSW(String name, int socialworkerid) {
+			Session s = hu.getSession();
+			List<Cases> c = s.createQuery("From com.revature.beans.Cases where CONCAT(firstname, ' ', lastname) LIKE :name AND socialworkerid= :socialworkerid", Cases.class)
+					.setParameter("name", '%' + name + '%').setParameter("socialworkerid", socialworkerid).list();
+			System.out.println(c);
+			s.close();
+			return c;
+		}
 		
 		@Override
 		public List<Cases> getAll() {

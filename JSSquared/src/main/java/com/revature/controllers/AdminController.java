@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,6 +51,20 @@ public class AdminController {
 		return casesList;
 	}
 	
+	@RequestMapping(value="/name", method = RequestMethod.GET)
+	public List<Cases> search(@RequestParam("name") String name){
+		List<Cases> matchingCases = new ArrayList<Cases>();
+		matchingCases = ch.getByName(name);
+		return matchingCases;
+	}
+	
+	@RequestMapping(value="/swname", method = RequestMethod.GET)
+	public List<Cases> search(@RequestParam("name") String name, @RequestParam("id") int id){
+		List<Cases> matchingCases = new ArrayList<Cases>();
+		matchingCases = ch.getByNameAndSW(name, id);
+		return matchingCases;
+	}
+	
 	@RequestMapping(value="/json", method = RequestMethod.GET)
 	public String getCasesAsJSON(){
 		List<Cases> casesList = new ArrayList<>();
@@ -61,7 +76,6 @@ public class AdminController {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		System.out.println("\n\n" + result + "\n\n");
 		return result;
 	}
 	

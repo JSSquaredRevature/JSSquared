@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacementService } from '../create-form/placement.service';
 import { Location, Time } from '@angular/common';
+import { Placement } from '../placement';
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-placement',
   templateUrl: './placement.component.html',
@@ -12,7 +15,8 @@ export class PlacementComponent implements OnInit {
   placements;
   showInsertForm: boolean;
   constructor(private placementService:PlacementService,
-    private location: Location) { }
+    private location: Location,
+    private auth: AuthService) { }
 
   ngOnInit() {
     document.body.className = "hold-transition skin-blue sidebar-mini";
@@ -39,8 +43,16 @@ export class PlacementComponent implements OnInit {
     this.placementService.updatePlacement(this.placementSelected)
     .subscribe(() => this.getPlacements());
   }
+
+  delete(): void {
+    if(confirm("Are you sure you want to delete Court Id #" + this.placementSelected.id)) {
+      this.placementService.deletePlacement(this.placementSelected).subscribe(() => this.getPlacements());
+      this.placementSelected = null;
+    }
+  }
+
   insert(id: number, type: string, maxcapacity: number, agemin: number, agemax: number): void {
-    this.placementService.addPlacement({ 'id':id, 'type':type,'maxcapacity':maxcapacity,'agemin':agemin,'agemax': agemax})
+    this.placementService.addPlacement({ 'id':id, 'type':type,'maxcapacity':maxcapacity,'agemin':agemin,'agemax': agemax} as Placement)
     .subscribe(() => this.getPlacements());
   }
   

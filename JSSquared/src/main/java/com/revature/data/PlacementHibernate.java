@@ -39,8 +39,6 @@ public class PlacementHibernate implements PlacementDao {
         se.delete(p);
         t.commit();
         se.close();
-        
-
     }
 
     @Override

@@ -4,6 +4,15 @@
   <app-sidenavbar></app-sidenavbar>
   <div class="content-wrapper" style="min-height: 960px;">
     <section class="content">
+        <div>
+            <h4>Case Search</h4> 
+            <input #searchVal id="box" (keyup)="search(searchVal.value);" />
+            <ul class="result">
+              <li *ngFor="let case of cases$ | async" (click) = getCase(case)>
+                  {{case.firstname}} {{case.lastname}}
+              </li>
+            </ul>
+          </div>
       <div *ngIf="cases">
           <div class="box box-primary">
               <div class="box-header">

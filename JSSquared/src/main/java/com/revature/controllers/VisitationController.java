@@ -58,6 +58,12 @@ public class VisitationController {
 		return vh.getAll();
 	    }
 	
+	@RequestMapping(value="{id}",method = RequestMethod.DELETE)
+	public @ResponseBody List<Visitation> deleteVisit(@PathVariable("id") int id) {
+		vh.delete(vh.getById(id));
+	    return vh.getAll();
+	    }
+	
 	@RequestMapping(value="/json", method = RequestMethod.GET)
 	public String getVisitationsAsJSON(){
 		List<Visitation> visitationList = new ArrayList<>();

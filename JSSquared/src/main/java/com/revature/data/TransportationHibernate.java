@@ -73,7 +73,6 @@ public class TransportationHibernate implements TransportationDao {
 		s.delete(t);
 		tx.commit();
 		s.close();
-		
 	}
 
 }

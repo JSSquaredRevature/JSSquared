@@ -57,6 +57,12 @@ public class TransportationController {
 		return transportationList;
 	}
 	
+	@RequestMapping(value="{id}",method = RequestMethod.DELETE)
+	public @ResponseBody List<Transportation> deleteTransportation(@PathVariable("id") int id) {
+		th.delete(th.getById(id));
+	    return th.getAll();
+	    }
+	
 	@RequestMapping(value="/json", method = RequestMethod.GET)
 	public String getTransportationAsJSON(){
 		List<Transportation> transportationList = new ArrayList<>();
