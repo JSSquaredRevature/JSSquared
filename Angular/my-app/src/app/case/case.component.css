@@ -1,0 +1,25 @@
+.result li {
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    width:200px;
+    height: 25px;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+    list-style-type: none;
+  }
+
+  #box {
+    width: 200px;
+    height: 20px;
+  }
+
+  .result li:hover {
+    background-color: rgb(60, 140, 188);
+  }
+   
+  ul.result {
+    margin-top: 0;
+    padding-left: 0;
+  }

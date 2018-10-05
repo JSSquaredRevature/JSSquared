@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
 
 import { Case } from '../case';
 import { CaseService }  from '../case.service';
@@ -22,6 +26,7 @@ export class CaseComponent implements OnInit {
   selectedsw=null;
   thisSoc = null;
   thisp = null;
+  cases$: Observable<Case[]>;
 
   selectedcase=null;
   constructor(
@@ -34,32 +39,41 @@ export class CaseComponent implements OnInit {
     private auth: AuthService,
     private socialw:SocialwService) { }
 
+  search(term: String): void {
+    this.cases$ = this.caseService.searchCases(term);
+  }
+
   ngOnInit(): void {
     document.body.className = "hold-transition skin-blue sidebar-mini";
     this.getCases();
     if(+this.auth.getIsAdmin()!=0){
       this.placement.getPlacement().subscribe(data=>{this.thisp=data});
       this.socialw.getSocialW().subscribe(data=>{this.thisSoc=data});
-
     }
-
   }
  
   setCase(c){
     this.selectedcase=c;
   }
-  setSelectedP(p,sw){
 
+  setSelectedP(p,sw){
     console.log(p);
     console.log('change');
     this.selectedp=p;
     this.selectedsw=sw;
   }
+
   getCases(): void {
     this.caseService.getCases()
       .subscribe(Case=> this.cases = Case);
   }
- 
+
+  getCase(case1: Case): void {
+    var arr: Case[] = [];
+    arr.push(case1);
+    this.cases = arr;
+  }
+
   goBack(): void {
     this.location.back();
   }
@@ -87,11 +101,6 @@ export class CaseComponent implements OnInit {
     return false;
   }
 
-
-
-
-
-
   newForm(event){
     event.preventDefault()
     const target = event.target
@@ -109,8 +118,6 @@ export class CaseComponent implements OnInit {
       alert(`Child must be over ${this.selectedp.agemin} for selected placement`);
       return;
     }
-    
-    
     
     this.submit.updateForm(this.selectedcase).subscribe(data =>{
       if(data){
