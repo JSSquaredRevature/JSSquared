@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PhoneLog} from '../phone-log';
 import {PhoneLogService} from '../phone-log.service';
 import { Location, Time } from '@angular/common';
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-phone-log',
   templateUrl: './phone-log.component.html',
@@ -34,8 +36,8 @@ export class PhoneLogComponent implements OnInit {
   }
 
   save(): void {
-   
-    this.selectedPhoneLog.time = new Date( this.selectedPhoneLog.time + ':00.000');
+    var alteredDate = moment(new Date(this.selectedPhoneLog.time).toISOString(), 'YYYY-MM-DD');
+    this.selectedPhoneLog.time = alteredDate['_i'];
     this.phoneLogService.updatePhoneLog(this.selectedPhoneLog)
     .subscribe(() => this.getPhoneLogs());
   }

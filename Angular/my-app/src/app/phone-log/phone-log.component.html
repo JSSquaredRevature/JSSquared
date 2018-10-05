@@ -50,7 +50,8 @@
                       </label>
                     <div>
                       <label>Time
-                        <input [(ngModel)]="selectedPhoneLog.time" type="datetime-local" class="form-control" placeholder="Time">
+                        <input [ngModel]="selectedPhoneLog.time | date:'yyyy-MM-ddThh:mm'" type="datetime-local" step="any" 
+                        (ngModelChange)="selectedPhoneLog.time=$event" class="form-control" placeholder="Time">
                       </label>
                     <div>
                       <label>Duration
