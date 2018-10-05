@@ -37,5 +37,10 @@ export class TransportationService {
   addTransportation (transportation: Transportation): Observable<Transportation> {
     return this.http.post<Transportation>(this.transportationUrl, transportation, httpOptions);
   }
-
+  
+  deleteTransportation (transportation: Transportation): Observable<Transportation> {
+    const url = this.transportationUrl + '/' + transportation.id;
+  
+    return this.http.delete<Transportation>(url, httpOptions);
+  }
 }

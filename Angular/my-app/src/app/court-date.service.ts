@@ -33,4 +33,9 @@ export class CourtDateService {
     return this.http.post<CourtDate>(this.courtDateUrl, courtDate, httpOptions);
   }
   
+  deleteCourtDate (courtDate: CourtDate): Observable<CourtDate> {
+    const url = this.courtDateUrl + '/' + courtDate.id;
+  
+    return this.http.delete<CourtDate>(url, httpOptions);
+  }
 }

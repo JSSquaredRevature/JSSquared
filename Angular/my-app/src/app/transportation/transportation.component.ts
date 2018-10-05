@@ -4,6 +4,7 @@ import * as moment from 'moment';
 
 import { Transportation } from '../transportation';
 import { TransportationService } from '../transportation.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-transportation',
@@ -19,7 +20,8 @@ export class TransportationComponent implements OnInit {
   
   constructor(
     private transportationService: TransportationService,
-    private location: Location) { }
+    private location: Location,
+    private auth: AuthService) { }
 
     ngOnInit(): void {
       document.body.className = "hold-transition skin-blue sidebar-mini";
@@ -46,6 +48,13 @@ export class TransportationComponent implements OnInit {
       this.selectedTransportation.time = alteredDate['_i'];
       this.transportationService.updateTransportation(this.selectedTransportation)
       .subscribe(() => this.getTransportations());
+    }
+
+    delete(): void {
+      if(confirm("Are you sure you want to delete Court Id #" + this.selectedTransportation.id)) {
+        this.transportationService.deleteTransportation(this.selectedTransportation).subscribe(() => this.getTransportations());
+        this.selectedTransportation = null;
+      }
     }
 
     insert(id: number, socialworkerid: number, caseid: number, time: Date, location: string): void {

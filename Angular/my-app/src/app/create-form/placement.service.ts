@@ -16,12 +16,17 @@ export class PlacementService {
   getPlacement(){
     return this.http.get(this.url.getUrl()+'placement')
   }
-  addPlacement(p):Observable<Placement>{
-    return this.http.post(this.url.getUrl()+'placement',p, httpOptions)
 
+  addPlacement(p: Placement): Observable<Placement>{
+    return this.http.post<Placement>(this.url.getUrl()+'placement',p, httpOptions);
   }
-  updatePlacement(p):Observable<Placement>{
-
+  updatePlacement(p): Observable<any>{
     return this.http.put(this.url.getUrl()+'placement',p,httpOptions)
+  }
+
+  deletePlacement (placement: Placement): Observable<Placement> {
+    const url = this.url.getUrl()+'placement' + '/' + placement.id;
+  
+    return this.http.delete<Placement>(url, httpOptions);
   }
 }

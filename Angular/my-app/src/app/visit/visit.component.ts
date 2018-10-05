@@ -4,6 +4,7 @@ import * as moment from 'moment';
 
 import { Visit } from '../visit';
 import { VisitService } from '../visit.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-visit',
@@ -19,7 +20,8 @@ export class VisitComponent implements OnInit {
   
   constructor(
     private visitService: VisitService,
-    private location: Location) { }
+    private location: Location,
+    private auth: AuthService) { }
 
     ngOnInit(): void {
       document.body.className = "hold-transition skin-blue sidebar-mini";
@@ -47,6 +49,13 @@ export class VisitComponent implements OnInit {
       this.selectedvisit.time = alteredDate['_i'];
       this.visitService.updateVisits(this.selectedvisit)
       .subscribe(() => this.getVisits());
+    }
+
+    delete(): void {
+      if(confirm("Are you sure you want to delete Court Id #" + this.selectedvisit.id)) {
+        this.visitService.deleteVisit(this.selectedvisit).subscribe(() => this.getVisits());
+        this.selectedvisit = null;
+      }
     }
 
     insert(id: number, socialworkerid: number, caseid: number, time: Date, location: string, transportationid: number): void {

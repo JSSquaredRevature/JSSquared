@@ -4,6 +4,7 @@ import * as moment from 'moment';
 
 import { CourtDate } from '../court-date';
 import { CourtDateService }  from '../court-date.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-court-date',
@@ -19,7 +20,8 @@ export class CourtDateComponent implements OnInit {
   
   constructor(
     private courtDateService: CourtDateService,
-    private location: Location) { }
+    private location: Location,
+    private auth: AuthService) { }
 
     ngOnInit(): void {
       document.body.className = "hold-transition skin-blue sidebar-mini";
@@ -47,6 +49,13 @@ export class CourtDateComponent implements OnInit {
       this.selectedCourtDate.time = alteredDate['_i'];
       this.courtDateService.updateCourtDate(this.selectedCourtDate)
         .subscribe(() => this.getCourtDates());
+    }
+
+    delete(): void {
+      if(+this.auth.getIsAdmin() === 1 && confirm("Are you sure you want to delete Court Id #" + this.selectedCourtDate.id)) {
+        this.courtDateService.deleteCourtDate(this.selectedCourtDate).subscribe(() => this.getCourtDates());
+        this.selectedCourtDate = null;
+      }
     }
 
     insert(id: number, caseid: number, time: Date, location: string, transportationid: number): void {
