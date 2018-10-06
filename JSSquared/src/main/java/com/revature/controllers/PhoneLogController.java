@@ -17,29 +17,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.beans.PhoneLog;
 import com.revature.data.PhoneLogHibernate;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/phonelog")
 public class PhoneLogController {
-	@Autowired PhoneLogHibernate plh;
-	
-	@RequestMapping(value= "{caseid}",method = RequestMethod.GET)
-	public @ResponseBody List<PhoneLog> processViewPhoneLogsRequest(@PathVariable("caseid") int caseid,HttpSession s) {
+	@Autowired
+	PhoneLogHibernate plh;
+
+	@RequestMapping(value = "{caseid}", method = RequestMethod.GET)
+	public @ResponseBody List<PhoneLog> processViewPhoneLogsRequest(@PathVariable("caseid") int caseid, HttpSession s) {
 		List<PhoneLog> phoneLogList = new ArrayList<>();
 		phoneLogList = plh.getByCaseId(caseid);
-	    return phoneLogList;
-	    }
-	
+		return phoneLogList;
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody List<PhoneLog> addPhoneLog(@RequestBody PhoneLog pl) {
 		plh.save(pl);
 		return plh.getByCaseId(pl.getCaseid());
-	    }
-	
+	}
+
 	@RequestMapping(method = RequestMethod.PUT)
 	public @ResponseBody List<PhoneLog> updatePhoneLog(@RequestBody PhoneLog pl) {
 		plh.update(pl);
 		return plh.getByCaseId(pl.getCaseid());
-	    }
-	
+	}
+
 }

@@ -10,14 +10,14 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.revature.beans.Cases;
+import com.revature.beans.Case;
 import com.revature.beans.CourtDate;
 import com.revature.beans.PhoneLog;
 import com.revature.beans.Placement;
 import com.revature.beans.SocialWorker;
 import com.revature.beans.Transportation;
 import com.revature.beans.Visitation;
-import com.revature.data.CasesHibernate;
+import com.revature.data.CaseHibernate;
 import com.revature.data.CourtDateHibernate;
 import com.revature.data.PhoneLogHibernate;
 import com.revature.data.PlacementHibernate;
@@ -28,7 +28,7 @@ import com.revature.data.VisitationHibernate;
 @ComponentScan(basePackages = "com.revature.beans")
 public class HibernateTest {
 	
-	private static final CasesHibernate ch = new CasesHibernate();
+	private static final CaseHibernate ch = new CaseHibernate();
 	private static final CourtDateHibernate cdh = new CourtDateHibernate();
 	private static final PhoneLogHibernate plh = new PhoneLogHibernate();
 	private static final PlacementHibernate ph = new PlacementHibernate();
@@ -44,25 +44,25 @@ public class HibernateTest {
 	 ******************************************************************/
 	@Test
 	public void testNullCase() {
-		Cases c = ch.getById(0);
+		Case c = ch.getById(0);
 		assertNull(c);
 	}
 	
 	@Test
 	public void testFindCase() {
-		Cases c = ch.getById(1);
+		Case c = ch.getById(1);
 		assertNotNull(c);
 	}
 	
 	@Test
 	public void testGetCasesBySW() {
-		List<Cases> c = ch.getBySocialWorkerId(1);
+		List<Case> c = ch.getBySocialWorkerId(1);
 		assertNotNull(c);
 	}
 	
 	@Test
 	public void testGetAllCases() {
-		List<Cases> c = ch.getAll();
+		List<Case> c = ch.getAll();
 		assertNotNull(c);
 	}
 	/*******************************************************************

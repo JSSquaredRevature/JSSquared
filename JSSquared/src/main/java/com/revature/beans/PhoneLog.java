@@ -9,21 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="phonelog")
+@Table(name = "phonelog")
 public class PhoneLog {
 	@Id
-	@Column(name="id")
-	@SequenceGenerator(name="PHONE_SEQ", sequenceName="PHONE_SEQ", allocationSize=1)
-	@GeneratedValue(generator="PHONE_SEQ", strategy=GenerationType.AUTO)	
+	@Column(name = "id")
+	@SequenceGenerator(name = "PHONE_SEQ", sequenceName = "PHONE_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "PHONE_SEQ", strategy = GenerationType.AUTO)
 	private int id;
 	private int caseid;
 	private String caller;
 	private Timestamp time;
 	private String duration;
+
 	public PhoneLog() {
 		super();
 	}
+
 	public PhoneLog(int id, int caseid, String caller, Timestamp time, String duration) {
 		super();
 		this.id = id;
@@ -32,36 +35,47 @@ public class PhoneLog {
 		this.time = time;
 		this.duration = duration;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getCaseid() {
 		return caseid;
 	}
+
 	public void setCaseid(int caseid) {
 		this.caseid = caseid;
 	}
+
 	public String getCaller() {
 		return caller;
 	}
+
 	public void setCaller(String caller) {
 		this.caller = caller;
 	}
+
 	public Timestamp getTime() {
 		return time;
 	}
+
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
+
 	public String getDuration() {
 		return duration;
 	}
+
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,6 +86,7 @@ public class PhoneLog {
 		result = prime * result + id;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -97,6 +112,7 @@ public class PhoneLog {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "PhoneLog [id=" + id + ", caseid=" + caseid + ", caller=" + caller + ", duration=" + duration + "]";

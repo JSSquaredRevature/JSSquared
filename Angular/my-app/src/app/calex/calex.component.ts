@@ -1,10 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
-import { HttpClient } from '@angular/common/http';
-import {forkJoin} from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
 
 import { Case } from '../case';
+import { CaseService } from '../case.service';
+import { CourtDate } from '../court-date';
+import { CourtDateService } from '../court-date.service';
+import { Transportation } from '../transportation';
+import { TransportationService } from '../transportation.service';
+import { Visit } from '../visit';
+import { VisitService } from '../visit.service';
+import { AuthService } from '../auth.service';
+import { UrlService } from '../url.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
   selector: 'app-calex',
@@ -17,17 +30,37 @@ export class CalexComponent implements OnInit {
   displayEvent: any;
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient,
+    private caseService: CaseService, 
+    private courtDateService: CourtDateService,
+    private transportationService: TransportationService,
+    private visitService: VisitService,
+    private authService: AuthService,
+    private urlService:UrlService) { }
 
   ngOnInit() {
     this.getEvents();
   }
 
   getEvents(): void {
-    let cases = this.http.get('http://localhost:8080/JSSquared/admin/json');
-    let courtDates = this.http.get('http://localhost:8080/JSSquared/courtdate/json');
-    let visitations = this.http.get('http://localhost:8080/JSSquared/visit/json');
-    let transportation = this.http.get('http://localhost:8080/JSSquared/transportation/json');
+    if (+this.authService.getIsAdmin() === 0) {
+      var cases = this.http.get(this.urlService.getUrl() + 'createcase/socialworker/id', 
+      { params: { id: this.authService.getId() } } );
+      var courtDates = this.http.get(this.urlService.getUrl() + 'courtdate/socialworker/id', 
+      { params: { id: this.authService.getId() } } );
+      var transportation = this.http.get(this.urlService.getUrl() + 'transportation/socialworker/id', 
+      { params: { id: this.authService.getId() } } );
+      var visitations = this.http.get(this.urlService.getUrl() + 'visit/socialworker/id', 
+      { params: { id: this.authService.getId() } } );
+    }
+    
+    if (+this.authService.getIsAdmin() === 1) {
+      var cases = this.http.get(this.urlService.getUrl() + 'createcase');
+      var courtDates = this.http.get(this.urlService.getUrl() + 'courtdate');
+      var transportation = this.http.get(this.urlService.getUrl() + 'transportation');
+      var visitations = this.http.get(this.urlService.getUrl() + 'visit');
+    }
 
     forkJoin([cases, courtDates, transportation, visitations]).subscribe(data=> {
       var eventArr: any[] = [];
@@ -42,16 +75,11 @@ export class CalexComponent implements OnInit {
 
         var caseEventObj = {
           caseid: anyCase[i].caseid,
-          firstname: anyCase[i].firstname,
-          lastname: anyCase[i].lastname,
-          rating: anyCase[i].rating,
-          socialworker: anyCase[i].sw,
-          placement: anyCase[i].placement,
-          siblings: anyCase[i].siblings,
-          youngersiblings: anyCase[i].youngersiblings,
           title: eventTitle,
-          start: eventStart
+          start: eventStart,
+          className: 'Case',
         }
+        
         eventArr.push(caseEventObj);
       }
 
@@ -62,49 +90,39 @@ export class CalexComponent implements OnInit {
   
         var courtDateEventObj = {
           id: anyCourtDate[i].id,
-          caseid: anyCourtDate[i].caseid,
-          time: anyCourtDate[i].time,
-          location: anyCourtDate[i].location,
-          transportationid: anyCourtDate[i].transportationid,
           title: eventTitle,
-          start: eventStart
+          start: eventStart,
+          className: 'CourtDate',
         }
         eventArr.push(courtDateEventObj);
       }
 
-      var anyTransportation: any = data[3];
-      for (let i = 0; i < Object.keys(data[3]).length; i++) {
+      var anyTransportation: any = data[2];
+      for (let i = 0; i < Object.keys(data[2]).length; i++) {
         var eventTitle = "Social Worker #" + anyTransportation[i].socialworkerid +
                         "\nCase #" + anyTransportation[i].caseid + '\nTransportation Date';
         var eventStart = (new Date(anyTransportation[i].time)).toISOString();
 
         var transportationEventObj = {
           id: anyTransportation[i].id,
-          socialworkerid: anyTransportation[i].socialworkerid,
-          caseid: anyTransportation[i].caseid,
-          time: anyTransportation[i].time,
-          location: anyTransportation[i].location,
           title: eventTitle,
-          start: eventStart
+          start: eventStart,
+          className: 'Transportation',
         }
         eventArr.push(transportationEventObj);
       }
 
-      var anyVisitation: any = data[2];
-      for (let i = 0; i < Object.keys(data[2]).length; i++) {
+      var anyVisitation: any = data[3];
+      for (let i = 0; i < Object.keys(data[3]).length; i++) {
         var eventTitle = "Social Worker #" + anyVisitation[i].socialworkerid +
         "\nCase #" + anyVisitation[i].caseid + '\nVisitation';
         var eventStart = (new Date(anyVisitation[i].time)).toISOString();
 
         var visitationEventObj = {
           id: anyVisitation[i].id,
-          time: anyVisitation[i].time,
-          location: anyVisitation[i].location,
-          transportationid: anyVisitation[i].transportationid,
-          socialworkerid: anyVisitation[i].socialworkerid,
-          caseid: anyVisitation[i].caseid,
           title: eventTitle,
-          start: eventStart
+          start: eventStart,
+          className: 'Visitation',
         }
         eventArr.push(visitationEventObj);
       }
@@ -143,44 +161,28 @@ export class CalexComponent implements OnInit {
   }
 
   updateEvent(model: any) {
-    // console.log(typeof(model));
-    // model = {
-    //   event: {
-    //     id: model.event.id,
-    //     start: model.event.start,
-    //     end: model.event.end,
-    //     title: model.event.title,
-    //     caseid: model.event.caseid,
-    //     firstname: model.event.firstname,
-    //     lastname: model.event.lastname,
-    //     rating: model.event.rating,
-    //     socialworker: model.event.socialworker,
-    //     placement: model.event.placement,
-    //   },
-    //   duration: {
-    //     _data: model.duration._data
-    //   }
+    
+    if (model.event.className[0] === "Case") {
+      this.http.get<Case>(this.urlService.getUrl() + '/createcase/id', { params: {id: model.event.caseid} })
+      .subscribe(data => { data.birthdate = model.event.start._d;
+                           this.caseService.updateCase(data).subscribe() } );
+    }
+    else if (model.event.className[0] === "CourtDate") {
+      this.http.get<CourtDate>(this.urlService.getUrl() + '/courtdate/id', { params: {id: model.event.id} })
+      .subscribe(data => { data.time = model.event.start._d;
+                           this.courtDateService.updateCourtDate(data).subscribe() } );
+    }
+    else if (model.event.className[0] === "Transportation") {
+      this.http.get<Transportation>(this.urlService.getUrl() + '/transportation/id', { params: {id: model.event.id} })
+      .subscribe(data => { data.time = model.event.start._d;
+                           this.transportationService.updateTransportation(data).subscribe() } );
+    }
+    else if (model.event.className[0] === "Visitation") {
+      this.http.get<Visit>(this.urlService.getUrl() + '/visit/id', { params: {id: model.event.id} })
+      .subscribe(data => { data.time = model.event.start._d;
+                           this.visitService.updateVisits(data).subscribe() } );
+    }
 
-    // }
-    // this.displayEvent = model;
-
-    // this.case.caseid = model.event.caseid;
-    // this.case.firstname = model.event.firstname;
-    // this.case.lastname = model.event.lastname;
-    // var newDate: Date = new Date(model.event.start['_d'].getFullYear() + '-' 
-    // + (model.event.start['_d'].getMonth() +1) + '-' + (model.event.start['_d'].getDate() + 2) +'Z');
-    // console.log(newDate);
-    // this.case.birthdate = newDate;
-    // this.case.rating = model.event.rating;
-    // this.case.sw = model.event.socialworker;
-    // this.case.placement = model.event.placement;
-
-    // this.caseService.updateCase(this.case).subscribe();
-
-    // Need to retrieve data from database to use right before updating.
-    // this.http.get(this.casesUrl + '/update').subscribe(data => {
-  
-    // });
   }
 
 }

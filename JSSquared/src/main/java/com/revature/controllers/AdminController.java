@@ -17,77 +17,55 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.beans.Cases;
-import com.revature.data.CasesHibernate;
+import com.revature.beans.Case;
+import com.revature.data.CaseHibernate;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/admin")
 public class AdminController {
-	
-	@Autowired 
-	private CasesHibernate ch;
-	private ObjectMapper om;
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<Cases> processViewAllCasesRequest(HttpSession s) {
-		
 
-//		SocialWorker sw = (SocialWorker) s.getAttribute("user");
-		List<Cases> casesList = new ArrayList<>();
-/*		if (sw.getIsadmin() == 1)
-			casesList = ch.getAll();
-		else if (sw.getIsadmin() == 0)
-			casesList = ch.getBySocialWorkerId(sw.getId());
-*/
+	@Autowired
+	private CaseHibernate ch;
+	private ObjectMapper om;
+
+	@RequestMapping(method = RequestMethod.GET)
+	public @ResponseBody List<Case> processViewAllCasesRequest(HttpSession s) {
+		List<Case> casesList = new ArrayList<>();
 		casesList = ch.getAll();
-	    return casesList;
+		return casesList;
 	}
-	
-	@RequestMapping(value="{id}", method = RequestMethod.GET)
-	public List<Cases> viewSWCases(@PathVariable("id") int id){
-		List<Cases> casesList = new ArrayList<>();
+
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public List<Case> viewSWCases(@PathVariable("id") int id) {
+		List<Case> casesList = new ArrayList<>();
 		casesList = ch.getBySocialWorkerId(id);
 		return casesList;
 	}
-	
-	@RequestMapping(value="/name", method = RequestMethod.GET)
-	public List<Cases> search(@RequestParam("name") String name){
-		List<Cases> matchingCases = new ArrayList<Cases>();
+
+	@RequestMapping(value = "/name", method = RequestMethod.GET)
+	public List<Case> search(@RequestParam("name") String name) {
+		List<Case> matchingCases = new ArrayList<Case>();
 		matchingCases = ch.getByName(name);
 		return matchingCases;
 	}
-	
-	@RequestMapping(value="/swname", method = RequestMethod.GET)
-	public List<Cases> search(@RequestParam("name") String name, @RequestParam("id") int id){
-		List<Cases> matchingCases = new ArrayList<Cases>();
+
+	@RequestMapping(value = "/swname", method = RequestMethod.GET)
+	public List<Case> search(@RequestParam("name") String name, @RequestParam("id") int id) {
+		List<Case> matchingCases = new ArrayList<Case>();
 		matchingCases = ch.getByNameAndSW(name, id);
 		return matchingCases;
 	}
-	
-	@RequestMapping(value="/json", method = RequestMethod.GET)
-	public String getCasesAsJSON(){
-		List<Cases> casesList = new ArrayList<>();
-		casesList = ch.getAll();
-		om = new ObjectMapper();
-		String result = "";
-		try {
-			result = om.writeValueAsString(casesList);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	
-	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public @ResponseBody List<Cases> addCase(@RequestBody Cases c) {
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public @ResponseBody List<Case> addCase(@RequestBody Case c) {
 		ch.save(c);
 		return ch.getAll();
-	    }
-	
+	}
+
 	@RequestMapping(method = RequestMethod.PUT)
-	public @ResponseBody List<Cases> updateCase(@RequestBody Cases c) {
+	public @ResponseBody List<Case> updateCase(@RequestBody Case c) {
 		ch.update(c);
 		return ch.getAll();
-	    }
+	}
 }

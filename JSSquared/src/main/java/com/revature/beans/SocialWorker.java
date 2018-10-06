@@ -9,22 +9,23 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SOCIAL_WORKER")
+@Table(name = "SOCIAL_WORKER")
 public class SocialWorker {
 	@Id
-	@Column(name="id")
-	@SequenceGenerator(name="SWID_SEQ", sequenceName="SWID_SEQ", allocationSize=1)
-	@GeneratedValue(generator="SWID_SEQ", strategy=GenerationType.AUTO)	
+	@Column(name = "id")
+	@SequenceGenerator(name = "SWID_SEQ", sequenceName = "SWID_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "SWID_SEQ", strategy = GenerationType.AUTO)
 	private int id;
 	private int isadmin;
 	private String username;
 	private String pass;
 	private String firstname;
 	private String lastname;
-	
+
 	public SocialWorker() {
 		super();
 	}
+
 	public SocialWorker(int id, int isadmin, String username, String pass, String firstname, String lastname) {
 		super();
 		this.id = id;
@@ -34,42 +35,55 @@ public class SocialWorker {
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getIsadmin() {
 		return isadmin;
 	}
+
 	public void setIsadmin(int isadmin) {
 		this.isadmin = isadmin;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPass() {
 		return pass;
 	}
+
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
 	public String getFirstname() {
 		return firstname;
 	}
+
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+
 	public String getLastname() {
 		return lastname;
 	}
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,6 +96,7 @@ public class SocialWorker {
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -117,10 +132,11 @@ public class SocialWorker {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Social_Worker [id=" + id + ", isadmin=" + isadmin + ", username=" + username + ", pass=" + pass
 				+ ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
-	
+
 }

@@ -15,7 +15,7 @@ public class PhoneLogHibernate implements PhoneLogDao {
 
 	@Autowired
 	private HibernateUtil hu = new HibernateUtil();
-	
+
 	@Override
 	public PhoneLog getById(int id) {
 		Session se = hu.getSession();
@@ -27,7 +27,8 @@ public class PhoneLogHibernate implements PhoneLogDao {
 	@Override
 	public List<PhoneLog> getByCaseId(int caseid) {
 		Session s = hu.getSession();
-		List<PhoneLog> p = s.createQuery("From com.revature.beans.PhoneLog where caseid=:cid", PhoneLog.class).setParameter("cid", caseid).list();
+		List<PhoneLog> p = s.createQuery("From com.revature.beans.PhoneLog where caseid=:cid", PhoneLog.class)
+				.setParameter("cid", caseid).list();
 		s.close();
 		return p;
 	}

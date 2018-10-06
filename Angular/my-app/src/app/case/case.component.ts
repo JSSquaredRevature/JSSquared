@@ -129,7 +129,7 @@ export class CaseComponent implements OnInit {
     this.submit.updateForm(this.selectedcase).subscribe(data =>{
       if(data){
         window.alert("Case Updated");
-        
+        this.getCases();
       }
       else{
         window.alert("Could not update case")

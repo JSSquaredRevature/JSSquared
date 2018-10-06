@@ -14,6 +14,7 @@ import com.revature.utils.HibernateUtil;
 public class TransportationHibernate implements TransportationDao {
 	@Autowired
 	private HibernateUtil hu = new HibernateUtil();
+
 	@Override
 	public List<Transportation> getAll() {
 		Session s = hu.getSession();
@@ -25,7 +26,9 @@ public class TransportationHibernate implements TransportationDao {
 	@Override
 	public List<Transportation> getBySocialWorkerId(int socialWorkerId) {
 		Session s = hu.getSession();
-		List<Transportation> t = s.createQuery("From com.revature.beans.Transportation where socialworkerid=:swid", Transportation.class).setParameter("swid",socialWorkerId ).list();
+		List<Transportation> t = s
+				.createQuery("From com.revature.beans.Transportation where socialworkerid=:swid", Transportation.class)
+				.setParameter("swid", socialWorkerId).list();
 		s.close();
 		return t;
 	}
@@ -33,7 +36,9 @@ public class TransportationHibernate implements TransportationDao {
 	@Override
 	public List<Transportation> getByCasesId(int casesId) {
 		Session s = hu.getSession();
-		List<Transportation> t = s.createQuery("From com.revature.beans.Transportation where caseid=:cid", Transportation.class).setParameter("cid",casesId ).list();
+		List<Transportation> t = s
+				.createQuery("From com.revature.beans.Transportation where caseid=:cid", Transportation.class)
+				.setParameter("cid", casesId).list();
 		s.close();
 		return t;
 	}
@@ -49,7 +54,7 @@ public class TransportationHibernate implements TransportationDao {
 	@Override
 	public Transportation save(Transportation t) {
 		Session s = hu.getSession();
-		Transaction tx =s.beginTransaction();
+		Transaction tx = s.beginTransaction();
 		s.save(t);
 		tx.commit();
 		s.close();
@@ -59,7 +64,7 @@ public class TransportationHibernate implements TransportationDao {
 	@Override
 	public Transportation update(Transportation t) {
 		Session s = hu.getSession();
-		Transaction tx =s.beginTransaction();
+		Transaction tx = s.beginTransaction();
 		s.update(t);
 		tx.commit();
 		s.close();
@@ -69,7 +74,7 @@ public class TransportationHibernate implements TransportationDao {
 	@Override
 	public void delete(Transportation t) {
 		Session s = hu.getSession();
-		Transaction tx =s.beginTransaction();
+		Transaction tx = s.beginTransaction();
 		s.delete(t);
 		tx.commit();
 		s.close();

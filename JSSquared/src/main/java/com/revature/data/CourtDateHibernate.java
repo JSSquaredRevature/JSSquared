@@ -15,7 +15,7 @@ public class CourtDateHibernate implements CourtDateDao {
 
 	@Autowired
 	private HibernateUtil hu = new HibernateUtil();
-	
+
 	@Override
 	public CourtDate getById(int id) {
 		Session se = hu.getSession();
@@ -31,10 +31,13 @@ public class CourtDateHibernate implements CourtDateDao {
 		s.close();
 		return cd;
 	}
+
 	@Override
-	public List<CourtDate> getBySwId(int swId){
+	public List<CourtDate> getBySwId(int swId) {
 		Session s = hu.getSession();
-		List<CourtDate> cd = s.createQuery("From com.revature.beans.CourtDate where caseid in (From com.revature.beans.Cases where socialworkerid=:swid)", CourtDate.class).setParameter("swid", swId).list();
+		List<CourtDate> cd = s.createQuery(
+				"From com.revature.beans.CourtDate where caseid in (From com.revature.beans.Case where socialworkerid=:swid)",
+				CourtDate.class).setParameter("swid", swId).list();
 		s.close();
 		return cd;
 	}
@@ -42,7 +45,8 @@ public class CourtDateHibernate implements CourtDateDao {
 	@Override
 	public List<CourtDate> getByCaseId(int caseId) {
 		Session s = hu.getSession();
-		List<CourtDate> cd = s.createQuery("From com.revature.beans.CourtDate where caseid=:cid", CourtDate.class).setParameter("cid", caseId).list();
+		List<CourtDate> cd = s.createQuery("From com.revature.beans.CourtDate where caseid=:cid", CourtDate.class)
+				.setParameter("cid", caseId).list();
 		s.close();
 		return cd;
 	}
@@ -76,7 +80,7 @@ public class CourtDateHibernate implements CourtDateDao {
 		se.delete(cd);
 		t.commit();
 		se.close();
-		
+
 	}
 
 }

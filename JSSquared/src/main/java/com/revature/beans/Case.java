@@ -19,46 +19,46 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CASES")
-public class Cases {
-	
+@Table(name = "CASES")
+public class Case {
+
 	@Id
-	@Column(name="caseid")
-	@SequenceGenerator(name="CID_SEQ", sequenceName="CID_SEQ", allocationSize=1)
-	@GeneratedValue(generator="CID_SEQ", strategy=GenerationType.AUTO)	
+	@Column(name = "caseid")
+	@SequenceGenerator(name = "CID_SEQ", sequenceName = "CID_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "CID_SEQ", strategy = GenerationType.AUTO)
 	private int caseid;
 	private String firstname;
 	private String lastname;
 	private Date birthdate;
 	private int rating;
-	// Need to add annotations to denote relationships with SocialWorker and Placement entities
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="socialworkerid")
+	// Need to add annotations to denote relationships with SocialWorker and
+	// Placement entities
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "socialworkerid")
 	private SocialWorker sw;
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="placementid")
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "placementid")
 	private Placement placement;
-	
-	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinTable(name="sibling",joinColumns= {@JoinColumn(name="eldercaseid")},inverseJoinColumns= {@JoinColumn(name="youngercaseid")})
 
-	private Set<Cases> siblings = new HashSet<Cases>();
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "sibling", joinColumns = { @JoinColumn(name = "eldercaseid") }, inverseJoinColumns = {
+			@JoinColumn(name = "youngercaseid") })
 
+	private Set<Case> siblings = new HashSet<Case>();
 
-	
-	public Cases() {
+	public Case() {
 		super();
 	}
 
-	public Cases(int caseid, String firstname, String lastname, Date birthdate, int rating) {
+	public Case(int caseid, String firstname, String lastname, Date birthdate, int rating) {
 		super();
 		this.caseid = caseid;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.rating = rating;
-	
+
 	}
 
 	public Placement getPlacement() {
@@ -69,11 +69,11 @@ public class Cases {
 		this.placement = placement;
 	}
 
-	public Set<Cases> getSiblings() {
+	public Set<Case> getSiblings() {
 		return siblings;
 	}
 
-	public void setSiblings(Set<Cases> siblings) {
+	public void setSiblings(Set<Case> siblings) {
 		this.siblings = siblings;
 	}
 
@@ -84,6 +84,7 @@ public class Cases {
 	public void setSw(SocialWorker sw) {
 		this.sw = sw;
 	}
+
 	public int getCaseid() {
 		return caseid;
 	}
@@ -124,7 +125,6 @@ public class Cases {
 		this.rating = rating;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -134,7 +134,7 @@ public class Cases {
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + rating;
-		
+
 		return result;
 	}
 
@@ -146,7 +146,7 @@ public class Cases {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cases other = (Cases) obj;
+		Case other = (Case) obj;
 		if (birthdate == null) {
 			if (other.birthdate != null)
 				return false;
@@ -164,17 +164,17 @@ public class Cases {
 				return false;
 		} else if (!lastname.equals(other.lastname))
 			return false;
-		
+
 		if (rating != other.rating)
 			return false;
-		
+
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Cases [caseid=" + caseid + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate="
-				+ birthdate + ", rating=" + rating  + "]";
+		return "Case [caseid=" + caseid + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate="
+				+ birthdate + ", rating=" + rating + "]";
 	}
-	
+
 }

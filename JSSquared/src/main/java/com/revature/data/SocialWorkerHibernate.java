@@ -11,9 +11,10 @@ import com.revature.beans.SocialWorker;
 import com.revature.utils.HibernateUtil;
 
 @Component
-public class SocialWorkerHibernate implements SocialWorkerDao{
+public class SocialWorkerHibernate implements SocialWorkerDao {
 	@Autowired
 	private HibernateUtil hu = new HibernateUtil();
+
 	@Override
 	public SocialWorker getById(int id) {
 		Session se = hu.getSession();
@@ -26,15 +27,19 @@ public class SocialWorkerHibernate implements SocialWorkerDao{
 	public List<SocialWorker> getAll() {
 		Session se = hu.getSession();
 		List<SocialWorker> s = se.createQuery("From com.revature.beans.SocialWorker", SocialWorker.class).list();
-		
+
 		se.close();
 		return s;
 	}
+
 	@Override
 	public SocialWorker getByLogin(String username, String pass) {
 		Session se = hu.getSession();
-		SocialWorker s = se.createQuery("From com.revature.beans.SocialWorker where username= :username and pass= :pass", SocialWorker.class).setParameter("username", username).setParameter("pass", pass).uniqueResult();
-		
+		SocialWorker s = se
+				.createQuery("From com.revature.beans.SocialWorker where username= :username and pass= :pass",
+						SocialWorker.class)
+				.setParameter("username", username).setParameter("pass", pass).uniqueResult();
+
 		se.close();
 		return s;
 	}
@@ -66,9 +71,7 @@ public class SocialWorkerHibernate implements SocialWorkerDao{
 		se.delete(s);
 		t.commit();
 		se.close();
-		
-	}
 
-	
+	}
 
 }

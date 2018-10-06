@@ -11,15 +11,15 @@ import com.revature.beans.Visitation;
 import com.revature.utils.HibernateUtil;
 
 @Component
-public class VisitationHibernate implements VisitationDao{
+public class VisitationHibernate implements VisitationDao {
 
 	@Autowired
 	private HibernateUtil hu = new HibernateUtil();
-	
+
 	@Override
 	public Visitation getById(int id) {
 		Session se = hu.getSession();
-		Visitation v = se.get(Visitation.class,  id);
+		Visitation v = se.get(Visitation.class, id);
 		se.close();
 		return v;
 	}
@@ -35,7 +35,8 @@ public class VisitationHibernate implements VisitationDao{
 	@Override
 	public List<Visitation> getByCaseId(int caseId) {
 		Session s = hu.getSession();
-		List<Visitation> v = s.createQuery("From com.revature.beans.Visitation where caseid=:cid", Visitation.class).setParameter("cid", caseId).list();
+		List<Visitation> v = s.createQuery("From com.revature.beans.Visitation where caseid=:cid", Visitation.class)
+				.setParameter("cid", caseId).list();
 		s.close();
 		return v;
 	}
@@ -73,7 +74,8 @@ public class VisitationHibernate implements VisitationDao{
 	@Override
 	public List<Visitation> getBySW(int swid) {
 		Session s = hu.getSession();
-		List<Visitation> v = s.createQuery("From com.revature.beans.Visitation where socialworkerid= :socialworkerid", Visitation.class).setParameter("socialworkerid", swid).list();
+		List<Visitation> v = s.createQuery("From com.revature.beans.Visitation where socialworkerid= :socialworkerid",
+				Visitation.class).setParameter("socialworkerid", swid).list();
 		s.close();
 		return v;
 	}

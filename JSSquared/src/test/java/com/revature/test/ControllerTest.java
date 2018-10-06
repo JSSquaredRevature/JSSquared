@@ -32,7 +32,7 @@ import static org.junit.Assert.*;
 import com.revature.beans.SocialWorker;
 import com.revature.controllers.AdminController;
 import com.revature.controllers.CourtDateController;
-import com.revature.controllers.CreateCaseController;
+import com.revature.controllers.CaseController;
 import com.revature.controllers.HomeController;
 import com.revature.controllers.LoginController;
 import com.revature.controllers.PhoneLogController;
@@ -45,7 +45,7 @@ public class ControllerTest {
 	
 	private static final AdminController ac = new AdminController();
 	private static final CourtDateController cdc = new CourtDateController();
-	private static final CreateCaseController ccc = new CreateCaseController();
+	private static final CaseController ccc = new CaseController();
 	private static final HomeController hc = new HomeController();
 	private static final LoginController lc = new LoginController();
 	private static final PhoneLogController plc = new PhoneLogController();
